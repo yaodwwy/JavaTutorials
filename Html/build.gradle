@@ -1,0 +1,6 @@
+version '1.0-SNAPSHOT'
+
+apply plugin: 'war'
+
+dependencies {
+}

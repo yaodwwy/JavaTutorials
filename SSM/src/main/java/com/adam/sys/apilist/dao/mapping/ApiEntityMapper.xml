@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adam.sys.apilist.dao.ApiDao">
+	<resultMap id="BaseResultMap" type="com.adam.sys.apilist.entity.ApiEntity">
+		<id column="html_id" property="id" jdbcType="INTEGER" />
+		<result column="html_title" property="title" jdbcType="VARCHAR" />
+		<result column="html_content" property="content" jdbcType="VARCHAR" />
+		<result column="html_backup" property="contentBackup" jdbcType="VARCHAR" />
+		<result column="sort" property="sort" jdbcType="INTEGER" />
+		<result column="creator" property="creator" jdbcType="VARCHAR" />
+		<result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+		<result column="updator" property="updator" jdbcType="VARCHAR" />
+		<result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+		<result column="is_deleted" property="isDeleted" jdbcType="INTEGER" />
+		<association  property="apiInfoType" column="html_anchor_url" javaType="com.adam.sys.apilist.entity.ApiInfoType">
+			<id column="name" property="name" jdbcType="VARCHAR" />
+			<result column="url" property="url" jdbcType="VARCHAR" />
+			<result column="sort" property="sort" jdbcType="INTEGER"/>
+		</association>
+	</resultMap>
+	<sql id="Base_Column_List">
+		html_id,html_title,html_content,html_backup,html_anchor_url,t1.sort sort, t1.creator, t1.create_time,t1.updator,t1.update_time, t1.is_deleted,
+		name,url,t2.sort tsort
+	</sql>
+
+	<select id="query" parameterType="map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_site_html t1,t_site_html_anchor t2
+		<where>
+		t1.is_deleted = 0 and t1.html_anchor_url = t2.name 
+		<if test="navi != null">
+		and html_anchor_url = #{navi}
+		</if>
+		and html_title = #{title}
+		</where>
+		order by tsort
+	</select>
+	
+	<select id="queryByTittle" parameterType="map" resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from t_site_html t1,t_site_html_anchor t2
+		<where>
+		is_deleted = 0 and t1.html_anchor_url = t2.name 
+		<if test="title != null">
+			and html_title = #{title}
+		</if>
+		</where>
+		order by tsort
+	</select>
+
+	<update id="update" parameterType="com.adam.sys.apilist.entity.ApiEntity">
+		update t_site_html
+		<set>
+			update_time = now(),html_backup = html_content
+			<if test="title != null">
+				,html_title = #{title}
+			</if>
+			<if test="content != null">
+				,html_content = #{content}
+			</if>
+			<if test="apiInfoType != null">
+				,html_anchor_url = #{apiInfoType}
+			</if>
+		</set>
+		<where>
+			html_id = #{id}
+		</where>
+	</update>
+	<update id="delete" parameterType="com.adam.sys.apilist.entity.ApiEntity">
+		update t_site_html set update_time = now(),is_deleted = 1
+		<where>
+			html_id = #{id}
+		</where>
+	</update>
+
+	<insert id="insert" parameterType="com.adam.sys.apilist.entity.ApiEntity">
+		insert into t_site_html(
+			html_title,html_content,html_backup,html_anchor_url,sort,creator,create_time,updator,update_time,is_deleted)
+		select #{title},#{content},#{contentBackup},#{apiInfoType.name},max(sort)+1,#{creator},now(),#{updator},now(),0 from t_site_html where is_deleted = 0
+	</insert>
+	
+	
+</mapper>

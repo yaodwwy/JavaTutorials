@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adam.sys.userfunc.dao.RoleMenuDao" >
+  <resultMap id="BaseResultMap" type="com.adam.sys.userfunc.entity.RoleMenu" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="role_id" property="roleId" jdbcType="INTEGER" />
+    <result column="menu_id" property="menuId" jdbcType="INTEGER" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="updator" property="updator" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="is_deleted" property="isDeleted" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, role_id, menu_id, creator, create_time, updator, update_time, is_deleted
+  </sql>
+ 
+  <insert id="insert" parameterType="com.adam.sys.userfunc.entity.RoleMenu" >
+    insert into t_sys_rolemenu (role_id, menu_id,creator, create_time,update_time,updator, is_deleted)
+    <foreach collection="list" separator="UNION ALL" item="item">
+       select #{item.roleId},#{item.menuId},#{item.creator},NOW(),NOW(),#{item.creator},0
+    </foreach>
+  </insert>
+  
+  <delete id="delete" parameterType="map">
+	delete from t_sys_rolemenu WHERE role_id =#{roleId} and menu_id in
+	<foreach collection="list" item="menuId" open="(" close=")" separator="," >
+	     #{menuId}
+	</foreach>
+  </delete>
+</mapper>

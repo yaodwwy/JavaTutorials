@@ -1,0 +1,12 @@
+version '1.0-SNAPSHOT'
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = 1.8
+
+dependencies {
+// https://mvnrepository.com/artifact/org.dojotoolkit/dojo
+//compile group: 'org.dojotoolkit', name: 'dojo', version: '1.12.2'
+
+}

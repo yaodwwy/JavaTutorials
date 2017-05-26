@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adam.sys.sdkpublish.dao.SdkPublishDao" >
+  <resultMap id="BaseResultMap" type="com.adam.sys.sdkpublish.entity.SdkPublishEntity" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="version" property="version" jdbcType="VARCHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="sdk_name" property="sdkName" jdbcType="VARCHAR" />
+    <result column="content" property="content" jdbcType="VARCHAR" />
+    <result column="html_sdkinfo" property="sdkinfo" jdbcType="VARCHAR" />
+    <result column="html_sdkinfo_ex" property="sdkinfoEx" jdbcType="VARCHAR" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="updator" property="updator" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="is_deleted" property="isDeleted" jdbcType="INTEGER" />
+    <result column="is_force" property="isForce" jdbcType="INTEGER" />
+    <result column="is_history" property="isHistory" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, version, url, sdk_name, content, html_sdkinfo,html_sdkinfo_ex,creator, create_time, updator, update_time, is_deleted,is_force,is_history
+  </sql>
+  
+  <select id="query" resultMap="BaseResultMap">
+	select 
+	<include refid="Base_Column_List" />
+	from t_site_sdkversion
+	where id = 1
+  </select>
+  
+  <update id="update" parameterType="com.adam.sys.sdkpublish.entity.SdkPublishEntity">
+  	update t_site_sdkversion
+  	<set>
+  		update_time = now()
+  		<if test="url != null">
+  			,url = #{url}
+  		</if>
+  		<if test="sdkName != null">
+  			,sdk_name = #{sdkName}
+  		</if>
+  		<if test="version != null">
+  			,version = #{version}
+  		</if>
+  		<if test="content != null">
+  			,content = #{content}
+  		</if>
+  		<if test="sdkinfo != null">
+  			,html_sdkinfo = #{sdkinfo}
+  		</if>
+  		<if test="sdkinfoEx != null">
+  			,html_sdkinfo_ex = #{sdkinfoEx}
+  		</if>
+  		<if test="isDeleted != null">
+  			,is_deleted = #{isDeleted}
+  		</if>
+  		<if test="isHistory != null">
+  			,is_history = #{isHistory}
+  		</if>
+  	</set>
+  	<where>
+  		id = 1
+  	</where>
+  </update>
+  
+</mapper>

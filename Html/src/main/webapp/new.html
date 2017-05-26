@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <style>
+        * {
+            font-size: 12px;
+        }
+
+        body,
+        dl,
+        dt,
+        dd,
+        a {
+            margin: 0px;
+            padding: 0px;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .bdsug_copy {
+            display: none
+        }
+
+        .primary {}
+
+        .input-prompt-container {
+            background-color: #FFF;
+            border: 1px solid #76c6d1;
+            border-top: 0;
+        }
+
+        .input-prompt-list dl {
+            border-bottom: 1px dashed #e4e4e4;
+            padding: 5px;
+        }
+
+        .input-prompt-list dt {
+            display: inline;
+            font-size: 14px!important;
+            font-weight: bold!important;
+        ;
+            margin-bottom: 2px;
+        }
+
+        .input-prompt-list dt b {
+            font-size: 14px!important;
+            color: #094;
+        }
+
+        .input-prompt-list dt span {
+            color: #989898;
+            font-weight: normal;
+        }
+
+        .input-prompt-list dd {
+            color: #989898;
+            margin-left: 10px;
+        }
+
+        .input-prompt-container .hover {
+            color: #FFE;
+            background-color: #81d0e2;
+        }
+
+        .nephanalysis:hover {
+            border-style: dotted !important;
+        }
+
+        .fanyiBtn:hover {
+            background-color: #249CA9 !important;
+        }
+
+        .searchBtn:hover {
+            background: #3268DA !important;
+        ;
+        }
+
+        .form-group {
+            margin-bottom: 0px !important;
+        }
+
+        .search_input {
+            width: 230px !important;
+            height: 34px !important;
+        }
+
+        .dl-config {
+            float: left;
+            margin: 0px 8px 0px 0px;
+            text-align: center;
+        }
+
+        .btn-primary {
+            border: 1px solid #357ebd;
+            color: #F8F8F8;
+            background: #428bca;
+        }
+
+        .dl-config> dt> a {
+            margin: 1px 0px 5px 0px;
+            padding: 7px 0px 7px 0px;
+            width: 125px;
+            font-size: 14px;
+            font-weight: normal;
+            display: inline-block;
+            border-radius: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .dl-config> dt> a>.btn-primary:hover {
+            background: #2a6496;
+            color: #FFFFFF;
+        }
+
+        .dl-config> dd> a {
+            margin: 1px;
+            width: 125px;
+            height: 30px;
+            line-height: 30px;
+            display: inline-block;
+            border: 1px solid #c8c8c8;
+            color: #888;
+            background: #f8f8f8;
+            border-radius: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .dl-config> dd> a:hover {
+            border-style: dotted;
+            text-decoration: none;
+            background: #eaeaea;
+            color: #888;
+        }
+
+        .dl-config> dd> .two {
+            width: 60px;
+        }
+
+        .dl-config> dd> .three {
+            width: 38px;
+        }
+
+        .shadowsocks {
+            width: 125px;
+            height: 243px;
+        }
+
+        .shadowsocks>img {
+            width: 27px;
+        }
+
+        .grayFilter{
+            filter: gray;filter: grayscale(100%);
+        }
+    </style>
+</head>
+
+<body>
+<div style="width: 690px;height: 102px; text-align: right; line-height: 195px;">
+    <a class="nephanalysis" title="卫星云图" href="http://tianqi.2345.com/t/wxyt/wxyt.htm" target="_blank" style="position: absolute; height: 23px; width: 37px; top: 40px; left: 110px; z-index: 0;
+		border-radius:5px; border: 1px solid #c8c8c8; background: none; display: block;"></a>
+    <iframe style="background:none; margin-right: 12px;" allowtransparency="true" frameborder="0" scrolling="no" width="580" height="85" src="http://tianqi.2345.com/plugin/widget/index.htm?s=1&z=1&t=0&v=0&d=5&bd=0&k=&f=&q=1&e=1&a=1&c=58027&w=675&h=96&align=right"></iframe>
+</div>
+<div style="width: 690px;height: 55px;">
+    <div class="form-group" style="float: left;">
+        <form id="bdForm" target="_blank" class="navbar-form" role="search" action="http://www.baidu.com/s" style="padding: 0px 12px 0px 13px;">
+            <input type="text" class="form-control search_input" id="kw" autocomplete="off" name="wd" placeholder="Search" baiduSug="1">
+            <button type="button" onclick="document.getElementById('bdForm').submit()" class="btn searchBtn" style="background: #3385ff; color:white; margin-left: 3px;height: 34px;">百度一下
+            </button>
+        </form>
+    </div>
+
+    <div class="form-group search_box" style="float: left; margin-left: 5px;">
+        <form id="fyForm" target="_blank" class="navbar-form" role="search" action="http://dict.cn/search.php" style="padding: 0px 11px;">
+            <input id="q" type="text" class="form-control search_input" autocomplete="off" name="q" placeholder="Translate">
+            <button type="button" onclick="document.getElementById('fyForm').submit()" class="btn fanyiBtn" style="background-color: #2dacbf;color:white;margin-left: 3px;height: 34px;">海词翻译
+            </button>
+        </form>
+    </div>
+
+</div>
+<div style="width: 720px;height: 480px; padding-left: 12px; overflow: hidden;">
+    <dl class="dl-config">
+        <dd>
+            <a target="_blank" href="http://www.google.com" style="background:none; border:none;overflow:visible;height:100%;">
+                <img id="shadowsocksImg" alt="Shadowsocks" src="https://www.google.cn/images/branding/googlelogo/1x/googlelogo_color_120x44dp.png"
+                     width="100" height="36" class="grayFilter">
+            </a>
+        </dd>
+        <dd>
+            <div class="shadowsocks" id="shadowsocks">
+                <div style="width:125px;height:125px;overflow:hidden;margin-left:-5%;">
+                    <img id="shadowsockShow" title="日本#1" src="http://freess.org/images/servers/jp01.png" width="135">
+                </div>
+                <img title="日本#1" src="http://freess.org/images/servers/jp01.png">
+                <img title="日本#2" src="http://freess.org/images/servers/jp02.png">
+                <img title="日本#3" src="http://freess.org/images/servers/jp03.png">
+                <img title="美国#1" src="http://freess.org/images/servers/us01.png">
+                <img title="美国#2" src="http://freess.org/images/servers/us02.png">
+                <img title="美国#3" src="http://freess.org/images/servers/us03.png">
+                <img title="美国-DO-洛杉矶" src="http://www.shadowsocks8.com/images/server01.png">
+                <img title="香港-SOFTLAYER" src="http://www.shadowsocks8.com/images/server02.png">
+                <img title="日本-LINODE-东京" src="http://www.shadowsocks8.com/images/server03.png">
+                <img title="A.SSX.HOST" src="http://www.ishadow.site/img/server01.png">
+                <img title="B.SSX.HOST" src="http://www.ishadow.site/img/server02.png">
+                <img title="C.SSX.HOST" src="http://www.ishadow.site/img/server03.png">
+                <!--<iframe src="https://ip-80x86-io.appspot.com/" width="122" height="40" scrolling="no" frameborder="0" marginheight="0" marginwidth="0">
+                    您无法访问谷歌网站
+                </iframe>-->
+            </div>
+
+            <script>
+                var iframe = document.createElement("iframe");
+                iframe.src = "https://ip-80x86-io.appspot.com/";
+                iframe.width='122';
+                iframe.height='40';
+                iframe.scrolling='no';
+                iframe.frameBorder='0';
+                iframe.marginwidth='0';
+                iframe.marginheight='0';
+                if(iframe.attachEvent) {
+                    iframe.attachEvent("onload", function() {
+                        $("#shadowsocksImg").removeClass("grayFilter");
+                    });
+                } else {
+                    iframe.onload = function() {
+                        $("#shadowsocksImg").removeClass("grayFilter");
+                    };
+                }
+                document.getElementById("shadowsocks").appendChild(iframe);
+
+                $(".shadowsocks > img").click(function() {
+                    $("#shadowsockShow").attr("src", this.src);
+                    $("#shadowsockShow").attr("title", this.title);
+                });
+            </script>
+        </dd>
+    </dl>
+
+    <dl class="dl-config">
+        <dt><a class="btn btn-primary">技术</a></dt>
+        <dd>
+            <a class="two" target="_blank" href="https://github.com/yaodwwy">Github</a>
+            <a class="two" target="_blank" href="http://note.youdao.com/web/file">有道笔记</a>
+        </dd>
+        <dd>
+            <a target="_blank" href="https://stackoverflow.com/">StackOverflow</a>
+        </dd>
+        <dd>
+            <a class="two" target="_blank" href="http://v3.bootcss.com/css/">Bootstrap</a>
+            <a class="two" target="_blank" href="http://www.jeasyui.net/tutorial/">EeasyUi</a>
+        </dd>
+        <dd>
+            <a class="two" target="_blank" href="http://www.jeasyui.com/documentation/">EUI文档</a>
+            <a class="two" target="_blank" href="http://hemin.cn/jq/">jQuery</a>
+        </dd>
+        <dd>
+            <a class="two" target="_blank" href="http://www.w3school.com.cn/index.html">w3school</a>
+            <a class="two" target="_blank" href="http://www.51cto.com/">51cto</a>
+        </dd>
+        <dd>
+            <a class="two" target="_blank" href="http://dev.dcloud.net.cn/mui/ui/">MUI文档</a>
+            <a class="two" target="_blank" href="http://www.html5plus.org/doc/h5p.html">H5+</a>
+        </dd>
+        <dd>
+            <a class="two" target="_blank" href="http://ask.csdn.net/">CSDN</a>
+            <a class="two" target="_blank" href="http://www.cnblogs.com/">博客园</a>
+        </dd>
+        <dt>
+            <a class="btn btn-primary">素材收藏</a>
+        </dt>
+        <dd>
+            <a target="_blank" href="http://www.nipic.com/">昵图网</a>
+        </dd>
+        <dd>
+            <a target="_blank" href="http://www.putaojiayuan.com/">葡萄家园</a>
+        </dd>
+        <dd>
+            <a target="_blank" href="http://www.epinv.com/">亿品元素</a>
+        </dd>
+    </dl>
+
+    <dl class="dl-config">
+        <dt><a class="btn btn-primary">常用工具</a></dt>
+        <dd>
+            <a target="_blank" href="http://tool.chinaz.com/">站长统计</a>
+        </dd>
+        <dd>
+            <a target="_blank" href="http://www.wangpansou.cn/">网盘搜索</a>
+        </dd>
+        <dd>
+            <a target="_blank" href="http://yuancheng.xunlei.com/">迅雷远程</a>
+        </dd>
+        <dd>
+            <a target="_blank" href="http://www.ithome.com/">it之家</a>
+        </dd>
+        <dd>
+        </dd>
+        <dd>
+            <a target="_blank" href="http://testsize.com/">分辨率测试</a>
+        </dd>
+        <dd>
+            <a target="_blank" href="http://www.fishlee.net/">火车票工具</a>
+        </dd>
+        <dd>
+            <a target="_blank" href="http://www.bejson.com/json2javapojo/">格式化JSON</a>
+        </dd>
+        <dt>
+            <a class="btn btn-primary" target="_blank" href="shadowssocksCode.html" >VPN\DNS</a>
+        </dt>
+        <dd>
+            <a target="_blank" href="http://www.ishadowsocks.net/">Shadowsocks</a>
+        </dd>
+        <dd>
+            <a target="_blank" href="http://free.0ff0.net/">1小时VPN</a>
+        </dd>
+        <dd>
+            <a class="two" target="_blank" title="yaodwwy.vicp.cc|yaoo.f3322.net" href="http://yaoo.iok.la:9990/">iok.la</a>
+            <a class="two" target="_blank" href="http://www.miwifi.com/">miwifi</a>
+        </dd>
+    </dl>
+
+    <dl class="dl-config">
+        <dt><a class="btn btn-primary">资讯娱乐</a></dt>
+        <dd>
+            <a target="_blank" href="http://www.bbc.com/">BBC News</a>
+        </dd>
+        <dd>
+            <a class="three" target="_blank" href="http://v.ifeng.com/live/">电视</a>
+            <a class="three" target="_blank" href="http://www.dy2018.com/html/gndy/dyzz/index.html">电影</a>
+            <a class="three" target="_blank" href="http://www.9ku.com/fm/">音乐</a>
+        </dd>
+        <dd>
+            <a target="_blank" href="http://tv.cctv.com/live/">中央电视台</a>
+        </dd>
+        <dd>
+        <dd>
+            <a target="_blank" href="http://iservice.10010.com/e3/index_server.html">联通官网</a>
+        </dd>
+        </dd>
+        <dd>
+            <a target="_blank" href="http://cx.xzjgw.com/cxjg.aspx?hphm=C771E6A58C388FB9&amp;hpzl=2">违章查询</a>
+        </dd>
+        <dd>
+            <a target="_blank" href="http://zhlmg.blog.163.com/">导航地图</a>
+        </dd>
+        <dd>
+            <a target="_blank" href="hs.html">历史团购</a>
+        </dd>
+        <dt>
+            <a id="calendar-btn" class="btn btn-primary">万年历</a>
+        </dt>
+        <dd>
+            <a target="_blank" href="http://www.58.com">58同城</a>
+        </dd>
+        <dd>
+            <a target="_blank" href="http://www.ganji.com">赶集网</a>
+        </dd>
+    </dl>
+
+    <dl class="dl-config">
+        <dt><a class="btn btn-primary">收藏夹</a></dt>
+        <dd>
+            <a target="_blank" href="http://www.taobao.com">淘宝网</a>
+        </dd>
+        <dd>
+            <a target="_blank" href="http://www.jd.com">京东商场</a>
+        </dd>
+        <dd>
+            <a target="_blank" href="http://www.yhd.com">1号店</a>
+        </dd>
+        <dd>
+            <a target="_blank" href="http://class.hujiang.com/1510289_v3">沪江网校</a>
+        </dd>
+        <dd>
+
+        </dd>
+    </dl>
+
+</div>
+
+<div id="calendar" style="position:fixed; width: 540px; height: 376px; bottom:10px; right: 10px; z-index: -1;
+overflow: hidden"></div>
+
+<span style="display: block; position: absolute; left: 0px; top:0px;" id="onresize"></span>
+<script>
+</script>
+<script>
+    $(function() {
+        $("#q").get(0).addEventListener("input", function(o) {
+            $("#kw").val($("#q").val());
+        }, false);
+        $("#kw").get(0).addEventListener("input", function(o) {
+            $("#q").val($("#kw").val());
+        }, false);
+
+        $("dt").click(function() {
+            $(this).nextUntil('dt').fadeOut("fast");
+            $(this).nextUntil('dt').fadeIn("fast");
+        });
+
+        $("#calendar-btn").click(function() {
+            if($("#calendar").html()) {
+                $("#calendar").fadeToggle("fast", function() {
+                    $("#calendar-btn").toggleClass("btn-success");
+                });
+            } else {
+                $("#calendar").html("<iframe style=' margin:-137px 0px 0px -120px;' width='700' height='512' " +
+                    "allowtransparency='true' frameborder='0' scrolling='no' " +
+                    "src='https://www.baidu.com/baidu?word=%E4%B8%87%E5%B9%B4%E5%8E%86'></iframe>");
+                $("#calendar").fadeIn("fast");
+                $("#calendar-btn").addClass("btn-success");
+            }
+        });
+
+        window.onresize = function() {
+            setTimeout(function() {
+                $("#onresize").fadeIn("fast");
+            });
+
+            $("#onresize").html("宽度：" + document.documentElement.clientWidth + "，高度：" + document.documentElement.clientHeight);
+
+            setTimeout(function() {
+                $("#onresize").fadeOut(2000);
+            }, 1000);
+        }
+    });
+
+    var multi_langs = '';
+    var idx_ched = '1';
+    var hc_jspath = '#';
+    var langt = 'zh-cn';
+    var cur_dict = 'dict';
+    var i1_home = 'http://i1.haidii.com';
+    var xuehai_home = 'http://xuehai.cn';
+    var passport_home = 'http://passport.dict.cn';
+    var $dict_id = null;
+    var $dict_query = null;
+    var $dict_dict = null;
+    var $user_id = 0;
+    var $dict_ver = 1484140452;
+</script>
+<!-- 百度搜索框提示 -->
+<script charset="gbk" src="https://www.baidu.com/js/opensug.js"></script>
+
+<!-- 海词搜索框提示 -->
+<script type="text/javascript" src="http://i1.haidii.com/v/1408420485/i1/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="http://i1.haidii.com/v/1481554274/i1/js/inputPrompt.min.js"></script>
+<script type="text/javascript" src="http://i1.haidii.com/v/1481554264/i1/js/base.min.js"></script>
+</body>
+
+</html>

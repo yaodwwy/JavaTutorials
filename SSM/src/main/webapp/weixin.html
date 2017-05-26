@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0" />
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="format-detection"content="telephone=no"/>
+		<!--<link type="text/css" rel="stylesheet" href="css/style.css"/>-->
+		
+		<title></title>
+	</head>
+<body>
+<div style="width: auto;height: auto;text-align: center;margin-top: 130px;">
+	<img src="image/start-up.png" style="margin: 0 auto;" />
+</div>
+<div style="width:200px;height:50px;margin: 0 auto;margin-top: 30px;">
+<a  id="mipet"><button style="width:200px;height:50px;margin: 0 auto;background-color: #ff820a;border-radius: 5px;border: none;color: #FFFFFF;font-size: 18px;" >启动铲屎官大人app请在浏览器中打开</button></a>
+</div>
+<!--<a id="mipet" href="">启动铲屎官大人app<a>-->
+<br/>
+<!--<button id="jk">启动铲屎官大人app2</button>  <br/>-->
+<script type="text/javascript" src="js/sys/jquery-1.11.1.js"></script>
+<script>
+/** 
+ * 获取当前URL参数值 
+ * @param name  参数名称 
+ * @return  参数值 
+ */  
+ $(document).ready(function(){ 
+     var id="id";//文章id参数
+	 var isapp="isappinstalled";//判断app是否已安装 1=安装， 0=未安装
+ 	 var reg = new RegExp("(^|&)"+ id +"=([^&]*)(&|$)");
+     var r = window.location.search.substr(1).match(reg);
+     var idv=r[2];
+     $('#mipet').attr('href',"mipet://"+idv); 
+     var reg2 = new RegExp("(^|&)"+ isapp +"=([^&]*)(&|$)");
+     var r2 = window.location.search.substr(1).match(reg2);
+     var isa=r2[2];
+	 if (isa==1) {
+		  document.getElementById("mipet").click();
+	             }
+	 else if(isa==0){
+		  window.location = "loadAPP.html";
+	      }
+     }); 
+/*document.getElementById("jk").addEventListener(
+        "click",function(){
+        WeixinJSBridge.invoke("launch3rdApp",{	
+          "appId" : "wxf2dc4e4a26a4d8f6", //公众号名称，由商户传⼊入    wxb6b8592f3468e43f
+        },
+        function(e){
+          alert(e.err_msg)
+        })
+      },!1);*/
+
+</script>
+</body>
+</html>

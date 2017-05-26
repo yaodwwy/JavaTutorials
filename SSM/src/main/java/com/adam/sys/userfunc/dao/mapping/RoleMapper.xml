@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adam.sys.userfunc.dao.RoleDao" >
+  <resultMap id="BaseResultMap" type="com.adam.sys.userfunc.entity.Role" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="desc" property="desc" jdbcType="VARCHAR" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="updator" property="updator" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="is_deleted" property="isDeleted" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, name, `desc`, creator, create_time, updator, update_time, is_deleted
+  </sql>
+  <select id="queryAll" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List" /> from t_sys_role where is_deleted = 0
+  </select>
+  
+  <update id="delete" parameterType="com.adam.sys.userfunc.entity.Role" >
+    update t_sys_role set is_deleted=1,updator=#{updator} where id = #{id,jdbcType=INTEGER}
+  </update>
+  <insert id="insert" parameterType="com.adam.sys.userfunc.entity.Role" >
+    insert into t_sys_role (name, `desc`, creator, create_time,update_time,updator, is_deleted)
+    values (#{name,jdbcType=VARCHAR}, #{desc,jdbcType=VARCHAR}, #{creator,jdbcType=VARCHAR}, NOW(),NOW(),#{creator,jdbcType=VARCHAR},0)
+  </insert>
+  
+  <update id="update" parameterType="com.adam.sys.userfunc.entity.Role" >
+    update t_sys_role
+    set name = #{name,jdbcType=VARCHAR},
+      `desc` = #{desc,jdbcType=VARCHAR},
+      updator = #{updator,jdbcType=VARCHAR},
+      update_time = NOW()
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

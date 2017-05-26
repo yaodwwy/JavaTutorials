@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.adam.sys.userfunc.dao.UserRoleDao" >
+  <resultMap id="BaseResultMap" type="com.adam.sys.userfunc.entity.UserRole" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="role_id" property="roleId" jdbcType="INTEGER" />
+    <result column="user_id" property="userId" jdbcType="INTEGER" />
+    <result column="creator" property="creator" jdbcType="VARCHAR" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="updator" property="updator" jdbcType="VARCHAR" />
+    <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="is_deleted" property="isDeleted" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, role_id, user_id, creator, create_time, updator, update_time, is_deleted
+  </sql>
+  
+  <select id="query" resultMap="BaseResultMap" parameterType="string" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_sys_userrole
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </select>
+  
+  <delete id="delete" parameterType="string" >
+    delete from t_sys_userrole
+    where user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
+  
+  <insert id="insert" parameterType="list" >
+    insert into t_sys_userrole (role_id, user_id,creator, create_time,updator,update_time, is_deleted)
+    <foreach collection="list" separator="UNION ALL" item="item">
+	     SELECT #{item.roleId},#{item.userId},#{item.creator},NOW(),#{item.creator},NOW(),0 
+	</foreach>
+  </insert>
+ 
+</mapper>

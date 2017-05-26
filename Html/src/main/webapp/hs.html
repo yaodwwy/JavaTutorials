@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <!-- 新 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <!-- 海词样式文件 -->
+    <link rel="stylesheet" href="http://i1.haidii.com/v/1484140452/i1/css/base.min.css"/>
+    <link rel="stylesheet" href="http://i1.haidii.com/v/1484140452/i1/css/obase.min.css"/>
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            font-size: 12px;
+        }
+
+        .nephanalysis:hover {
+            border-style: dotted !important;
+        }
+
+        .fanyiBtn:hover {
+            background-color: #249CA9 !important;
+        }
+
+        .searchBtn:hover {
+            background: #3268DA !important;;
+        }
+
+        .form-group {
+            margin-bottom: 0px !important;
+        }
+
+        .search_input {
+            width: 230px !important;
+        }
+
+        /*控制词典字体显示*/
+        .input-prompt-list > dl > dt > span {
+            font-size: 7px !important;
+        }
+
+        .dl-config {
+            float: left;
+            margin: 0px 8px 0px 0px;
+            text-align: center;
+        }
+
+        .dl-config > dt > a {
+            margin: 5px 0px;
+            width: 125px;
+        }
+
+        .dl-config > dd > a {
+            margin: 1px;
+            padding: 3px;
+            width: 125px;
+            height: 30px;
+            line-height: 24px;
+            display: inline-block;
+            border: 1px solid #c8c8c8;
+            color: #888;
+            background: #f8f8f8;
+            border-radius: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+        }
+
+        .dl-config > dd > a:hover {
+            border-style: dotted;
+            text-decoration: none;
+            background: #eaeaea;
+            color: #888;
+        }
+
+        .dl-config > dd > .two {
+            width: 60px;
+        }
+
+        .dl-config > dd > .three {
+            width: 38px;
+        }
+    </style>
+</head>
+<body>
+<div style="width: 690px;height: 102px; text-align: right; line-height: 195px;">
+    <a class="nephanalysis" title="卫星云图" href="http://tianqi.2345.com/t/wxyt/wxyt.htm" target="_blank"
+       style="position: absolute; height: 23px; width: 37px; top: 40px; left: 110px; z-index: 0;
+		border-radius:5px; border: 1px solid #c8c8c8; background: none; display: block;"></a>
+    <iframe style="background:none; margin-right: 12px;"
+            allowtransparency="true" frameborder="0" scrolling="no" width="580" height="85"
+            src="http://tianqi.2345.com/plugin/widget/index.htm?s=1&z=1&t=0&v=0&d=5&bd=0&k=&f=&q=1&e=1&a=1&c=58027&w=675&h=96&align=right"></iframe>
+</div>
+<div style="width: 690px;height: 55px;">
+    <div class="form-group" style="float: left;">
+        <form id="bdForm" target="_blank" class="navbar-form" role="search" action="http://www.baidu.com/s"
+              style="padding: 0px 12px 0px 13px;">
+            <input type="text" class="form-control search_input" id="kw" name="wd" placeholder="Search" baiduSug="1">
+            <button type="button" onclick="document.getElementById('bdForm').submit()" class="btn searchBtn"
+                    style="background: #3385ff; color:white; margin-left: 3px;">百度一下
+            </button>
+        </form>
+    </div>
+
+    <div class="form-group search_box" style="float: right;">
+        <form id="fyForm" target="_blank" class="navbar-form" role="search" action="http://dict.cn/search.php"
+              style="padding: 0px 14px;">
+            <input id="q" type="text" class="form-control search_input" name="q" placeholder="Translate">
+            <button type="button" onclick="document.getElementById('fyForm').submit()" class="btn fanyiBtn"
+                    style="background-color: #2dacbf;color:white;margin-left: 3px;">海词翻译
+            </button>
+        </form>
+    </div>
+
+</div>
+<div style="height: 480px; padding-left: 12px;">
+    <dl class="dl-config">
+        <dt><a class="btn btn-default" href="http://www.redtone.com.cn/" target="_blank">E秘书</a></dt>
+        <form id="Form1" name="Form1" method="get" action="http://call.redtone.com.cn/WapCall.aspx">
+            <dd>
+                <input class="hiddens" type="hidden" name="__EVENTTARGET" value="">
+                <input class="hiddens" type="hidden" name="__EVENTARGUMENT" value="">
+                <div class="input-group input-group-sm" style="width: 126px; margin-bottom: 5px;">
+                    <span class="input-group-addon" style="padding:4px;">主叫</span>
+                    <input type="text" class="form-control" name="txtNumber" value=""
+                           style="padding: 3px;">
+                </div>
+            </dd>
+            <dd>
+                <div class="input-group input-group-sm" style="width: 126px; margin-bottom: 5px;">
+                    <span class="input-group-addon" style="padding:4px;">被叫</span>
+                    <input type="text" class="form-control" value="" name="txtCallNumber"
+                           style="padding: 3px;">
+                </div>
+            </dd>
+            <dd style="text-align: left;">
+                <button class="btn btn-sm btn-primary" name="cmdCall" type="submit">拨号</button>
+            </dd>
+        </form>
+    </dl>
+
+    <dl class="dl-config">
+        <dt><a class="btn btn-primary">历史团购</a></dt>
+        <dd><a target="_blank" href="http://t.1mall.com/detail/196048_1">坚果荟萃</a></dd>
+        <dd><a target="_blank" href="http://t.1mall.com/detail/206039_1">三色果干</a></dd>
+        <dd><a target="_blank" href="http://t.1mall.com/detail/217072_1">芝麻方块酥</a></dd>
+        <dd><a target="_blank" href="http://t.1mall.com/detail/242250_1">新三色果干</a></dd>
+        <dd><a target="_blank" href="http://t.1mall.com/detail/258002_1">谷动仁心</a></dd>
+        <dd><a target="_blank" href="http://t.1mall.com/detail/298825_1">新坚果荟萃</a></dd>
+        <dd><a target="_blank" href="http://t.1mall.com/detail/319342_1">凤梨酥</a></dd>
+        <dd><a target="_blank" href="http://t.yhd.com/detail/360523_1">黑胡椒酱</a></dd>
+    </dl>
+
+    <dl class="dl-config">
+        <dt><a class="btn btn-primary">历史团购</a></dt>
+        <dd><a target="_blank" href="http://t.yhd.com/detail/360523_1">黑胡椒酱</a></dd>
+        <dd><a target="_blank" href="http://t.yhd.com/detail/567276">面酱组合</a></dd>
+        <dd><a target="_blank" href="http://t.dianping.com/deal/293005">点评团坚果</a></dd>
+        <dd><a target="_blank" href="http://t.dianping.com/deal/295804">点评团三色</a></dd>
+    </dl>
+
+    <dl class="dl-config">
+        <dt><a class="btn btn-primary">历史团购</a></dt>
+        <dd><a target="_blank" href="http://e.dianping.com/tuangou/deliver_1_-1_0___0_-1___">点评团发货</a></dd>
+        <dd><a target="_blank" href="http://t.yhd.com/detail/765816">红薏仁粉</a></dd>
+        <dd><a target="_blank" href="http://try.yhd.com/brand/4524_5">芗园试用</a></dd>
+    </dl>
+</div>
+
+<div id="calendar" style="position:fixed; width: 540px; height: 376px; bottom:10px; right: 10px;
+overflow: hidden"></div>
+
+<span style="display: block; position: absolute; left: 0px; top:0px;" id="onresize"></span>
+<script>
+</script>
+<script>
+    $(function () {
+        $("#q").get(0).addEventListener("input", function (o) {
+            $("#kw").val($("#q").val());
+        }, false);
+        $("#kw").get(0).addEventListener("input", function (o) {
+            $("#q").val($("#kw").val());
+        }, false);
+
+        $("dt").click(function () {
+            $(this).nextUntil('dt').fadeOut("fast");
+            $(this).nextUntil('dt').fadeIn("fast");
+        });
+
+        $("#calendar-btn").click(function () {
+            if ($("#calendar").html()) {
+                $("#calendar").fadeToggle("fast",function () {
+                    $("#calendar-btn").toggleClass("btn-success");
+                });
+            } else {
+                $("#calendar").html("<iframe style=' margin:-137px 0px 0px -120px;' width='700' height='512' " +
+                    "allowtransparency='true' frameborder='0' scrolling='no' " +
+                    "src='https://www.baidu.com/baidu?word=%E4%B8%87%E5%B9%B4%E5%8E%86'></iframe>");
+                $("#calendar").fadeIn("fast");
+                $("#calendar-btn").addClass("btn-success");
+            }
+        });
+
+        window.onresize = function () {
+            setTimeout(function () {
+                $("#onresize").fadeIn("fast");
+            });
+
+            $("#onresize").html("宽度：" + document.documentElement.clientWidth + "，高度：" + document.documentElement.clientHeight);
+
+            setTimeout(function () {
+                $("#onresize").fadeOut(2000);
+            },1000);
+        }
+    });
+
+
+    var multi_langs = '';
+    var idx_ched = '1';
+    var hc_jspath = '#';
+    var langt = 'zh-cn';
+    var cur_dict = 'dict';
+    var i1_home = 'http://i1.haidii.com';
+    var xuehai_home = 'http://xuehai.cn';
+    var passport_home = 'http://passport.dict.cn';
+    var $dict_id = null;
+    var $dict_query = null;
+    var $dict_dict = null;
+    var $user_id = 0;
+    var $dict_ver = 1484140452;
+</script>
+<!-- 百度搜索框提示 -->
+<script charset="gbk" src="https://www.baidu.com/js/opensug.js"></script>
+
+<!-- 海词搜索框提示 -->
+<script type="text/javascript" src="http://i1.haidii.com/v/1408420485/i1/js/jquery-1.8.0.min.js"></script>
+<script type="text/javascript" src="http://i1.haidii.com/v/1481554274/i1/js/inputPrompt.min.js"></script>
+<script type="text/javascript" src="http://i1.haidii.com/v/1481554264/i1/js/base.min.js"></script>
+</body>
+</html>
+
+
+
+
+
+

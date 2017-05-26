@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.adam.mipet.article.dao.UserArticleMapper">
+  <resultMap id="BaseResultMap" type="com.adam.mipet.article.entity.UserArticle">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="portion" jdbcType="INTEGER" property="portion" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="html_content" jdbcType="VARCHAR" property="htmlContent" />
+    <result column="likes" jdbcType="INTEGER" property="likes" />
+    <result column="comments" jdbcType="INTEGER" property="comments" />
+    <result column="pub_time" jdbcType="TIMESTAMP" property="pubTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="deleted" jdbcType="INTEGER" property="deleted" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="head_pic" jdbcType="VARCHAR" property="headPic" />
+  </resultMap>
+  
+   <resultMap id="BaseResult_One_Map" type="com.adam.mipet.article.entity.UserArticle">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="portion" jdbcType="INTEGER" property="portion" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="html_content" jdbcType="VARCHAR" property="htmlContent" />
+    <result column="likes" jdbcType="INTEGER" property="likes" />
+    <result column="comments" jdbcType="INTEGER" property="comments" />
+    <result column="pub_time" jdbcType="TIMESTAMP" property="pubTime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="deleted" jdbcType="INTEGER" property="deleted" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="head_pic" jdbcType="VARCHAR" property="headPic" />
+    <result column="liked" jdbcType="INTEGER" property="isLiked"/>
+    <result column="favsed" jdbcType="INTEGER" property="isFavs"/>
+	<collection property="images" javaType="ArrayList" column="id" ofType="com.adam.mipet.article.entity.ArticleImage" select="selectImagesForArticle"/>
+  </resultMap>
+  
+  
+  
+  
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, portion, user_id, title, html_content, likes, comments, pub_time, status, deleted, 
+    update_time
+  </sql>
+  <select id="queryArticleListById" resultMap="BaseResultMap" parameterType="com.adam.mipet.article.entity.UserArticleExample">
+  	select a.*,u.head_pic,u.nickname from user_article a left join user_info u on a.user_id = u.id where a.deleted = 0  
+  	<if test="id != null">
+       and u.id = #{id,jdbcType=INTEGER}
+    </if>
+    <if test="portion != null">
+       and a.portion = #{portion,jdbcType=INTEGER}
+     </if>
+    <if test="searchinput != null and searchinput != '' ">
+       and a.title like concat('%',#{searchinput},'%') 
+     </if>
+    order by a.pub_time desc
+	limit #{start},#{limit}
+  </select>
+  
+  <select id="selectArticle_By_ArticleId" resultMap="BaseResult_One_Map" parameterType="com.adam.mipet.article.entity.UserArticleExample">
+	select	a.*, u.head_pic,	u.nickname
+	<if test="userId!=null and userId!=''">
+		,l.id liked,f.id favsed
+	</if>
+	from
+	user_article a
+	left outer join user_info u on a.user_id = u.id
+	<if test="userId!=null and userId!=''">
+		left outer join article_like l on a.id = l.article_id and l.user_id = #{userId}
+		left outer join user_favs f on a.id = f.article_id and f.user_id = #{userId}
+	</if>
+	where
+	a.deleted = 0
+	and a.id = #{id}
+  </select>
+  <select id="selectImagesForArticle" resultType="com.adam.mipet.article.entity.ArticleImage">
+  	select id,article_id articleId,image_url imageUrl from article_image where article_id = #{id}
+  </select>
+  
+  <select id="selectByExample" parameterType="com.adam.mipet.article.entity.UserArticleExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from user_article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="order !=null and sort!=null">
+	    order  by  #{sort}  #{order}  
+	 </if> 
+    <if test="start !=0 or limit!=0">
+		 limit #{start},#{limit}
+	</if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from user_article
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from user_article
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.adam.mipet.article.entity.UserArticleExample">
+    delete from user_article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.adam.mipet.article.entity.UserArticle">
+    insert into user_article (portion, user_id, title, html_content, 
+    likes,  comments, pub_time, status, deleted, update_time)
+    values (#{portion,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{htmlContent,jdbcType=VARCHAR}, 
+    0, 0, now(), 0, 0, now())
+  </insert>
+  <select id="countByExample" parameterType="com.adam.mipet.article.entity.UserArticleExample" resultType="java.lang.Integer" >
+    select count(*) from user_article
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update user_article
+    <set>
+      <if test="record.portion != null">
+        portion = #{record.portion,jdbcType=INTEGER},
+      </if>
+      <if test="record.title != null">
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.htmlContent != null">
+        html_content = #{record.htmlContent,jdbcType=VARCHAR},
+      </if>
+      <if test="record.likes != null">
+        likes = #{record.likes,jdbcType=INTEGER},
+      </if>
+      <if test="record.comments != null">
+        comments = #{record.comments,jdbcType=INTEGER},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
+      <if test="record.deleted != null">
+        deleted = #{record.deleted,jdbcType=INTEGER},
+      </if>
+      <if test="record.updateTime != null">
+        update_time = now(),
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update user_article
+    set portion = #{record.portion,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=VARCHAR},
+      html_content = #{record.htmlContent,jdbcType=VARCHAR},
+      likes = #{record.likes,jdbcType=INTEGER},
+      comments = #{record.comments,jdbcType=INTEGER},
+      status = #{record.status,jdbcType=INTEGER},
+      deleted = #{record.deleted,jdbcType=INTEGER},
+      update_time = now()
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.adam.mipet.article.entity.UserArticle">
+    update user_article
+    <set>
+      <if test="portion != null">
+        portion = #{portion,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="htmlContent != null">
+        html_content = #{htmlContent,jdbcType=VARCHAR},
+      </if>
+      <if test="likes != null">
+        likes = #{likes,jdbcType=INTEGER},
+      </if>
+      <if test="comments != null">
+        comments = #{comments,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = now(),
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.adam.mipet.article.entity.UserArticle">
+    update user_article
+    set portion = #{portion,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      html_content = #{htmlContent,jdbcType=VARCHAR},
+      likes = #{likes,jdbcType=INTEGER},
+      comments = #{comments,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER},
+      deleted = #{deleted,jdbcType=INTEGER},
+      update_time =  now()
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
