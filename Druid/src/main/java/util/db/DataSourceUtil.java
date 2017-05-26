@@ -5,12 +5,12 @@ import javax.sql.DataSource;
 import org.apache.commons.dbcp.BasicDataSourceFactory;
 
 import com.alibaba.druid.pool.DruidDataSourceFactory;
-import com.whyun.util.config.MySqlConfigProperty;
-import com.whyun.util.config.MySqlConfigProperty2;
-import com.whyun.util.db.source.AbstractDataSource;
-import com.whyun.util.db.source.impl.DbcpSourceMysql;
-import com.whyun.util.db.source.impl.DruidSourceMysql;
-import com.whyun.util.db.source.impl.DruidSourceMysql2;
+import util.config.MySqlConfigProperty;
+import util.config.MySqlConfigProperty2;
+import util.db.source.AbstractDataSource;
+import util.db.source.impl.DbcpSourceMysql;
+import util.db.source.impl.DruidSourceMysql;
+import util.db.source.impl.DruidSourceMysql2;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -75,7 +75,7 @@ public class DataSourceUtil {
 	}
 	
 	/**
-	 * 根据数据库类型标示获取DataSource对象，跟{@link com.whyun.util.db.DataSourceUtil#getDataSource(int)}
+	 * 根据数据库类型标示获取DataSource对象，跟{@link DataSourceUtil#getDataSource(int)}
 	 * 不同的是，这里DataSource获取的时候使用了单体模式
 	 *
 	 * @param sourceType 数据源类型

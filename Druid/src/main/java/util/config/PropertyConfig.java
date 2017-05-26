@@ -7,8 +7,8 @@ import java.io.InputStream;
 import java.util.Properties;
 
 import org.apache.log4j.Logger;
+import util.ConfigFileUtil;
 
-import com.whyun.util.ConfigFileUtil;
 
 public abstract class PropertyConfig {
 	private static  Logger logger = Logger.getLogger(PropertyConfig.class);

@@ -5,7 +5,7 @@ import java.sql.SQLException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.whyun.druid.model.TableOperator;
+import druid.model.TableOperator;
 
 public class SpringDruidTest {
 

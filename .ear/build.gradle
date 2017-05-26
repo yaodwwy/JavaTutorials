@@ -10,16 +10,16 @@ dependencies {
     // will be placed in the ear root
     // deploy project(':war')
 //    deploy project(':Ejb')
-    deploy project(path: ':Servlet', configuration: 'archives')
+//    deploy project(path: ':Servlet', configuration: 'archives')
 
 
     // The following dependencies will become ear libs and will
     // be placed in a dir configured via the libDirName property
     // earlib group: 'log4j', name: 'log4j'
-    earlib group: 'javax', name: 'javaee-api', version: '7.0'
-    earlib group: 'org.wildfly', name: 'wildfly-feature-pack', version: '10+'
-    earlib group: 'org.wildfly', name: 'wildfly-spec-api', version: '10+'
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+//    earlib group: 'javax', name: 'javaee-api', version: '7.0'
+//    earlib group: 'org.wildfly', name: 'wildfly-feature-pack', version: '10+'
+//    earlib group: 'org.wildfly', name: 'wildfly-spec-api', version: '10+'
+//    testCompile group: 'junit', name: 'junit', version: '4.12'
 }
 
 ear {

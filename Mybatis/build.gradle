@@ -1,8 +1,11 @@
-version '1.0-SNAPSHOT'
-
-apply plugin: 'java'
-
-sourceCompatibility = 1.8
+repositories {
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
+    mavenCentral()
+}
 
 dependencies {
+    compile project(':Ejb')
+    compile group: 'org.mybatis', name: 'mybatis', version: '3.4.4'
+    compile group: 'org.mybatis.generator', name: 'mybatis-generator-maven-plugin', version: '1.3.5'
+    compile group: 'org.postgresql', name: 'postgresql', version: '9.4.1212'
 }
