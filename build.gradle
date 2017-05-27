@@ -20,10 +20,5 @@ subprojects {
     }
 }
 
-project(':Ejb') {
-}
-project(':Servlet') {
-}
-project(':Mybatis') {
-}
-
+//project(':Ejb') {
+//}

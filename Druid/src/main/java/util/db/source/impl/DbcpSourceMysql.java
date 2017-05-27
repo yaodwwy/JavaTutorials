@@ -1,9 +1,8 @@
 package util.db.source.impl;
 
 import org.apache.commons.dbcp.BasicDataSourceFactory;
-
-import com.whyun.util.config.MySqlConfigProperty;
-import com.whyun.util.db.source.AbstractDataSource;
+import util.config.MySqlConfigProperty;
+import util.db.source.AbstractDataSource;
 
 public class DbcpSourceMysql extends AbstractDataSource {
 

@@ -1,0 +1,151 @@
+//它定义了一个叫做 hello 的任务
+//输入 gradle -q hello 来执行构建脚本
+task hello {
+    doLast {
+        println 'Hello World!'
+    }
+}
+
+//它定义了一个叫做 hello2 的任务
+//doLast 被替换成了 <<. 它们有一样的功能
+//The Task.leftShift(Closure) method has been deprecated and is
+// scheduled to be removed in Gradle 5.0.
+// Please use Task.doLast(Action) instead.
+task hello2 << {
+    println 'Hello World 2 !'
+}
+
+//gradle -q upper 命令的输出
+task upper << {
+    String str = 'mY-NaMe'
+    println "Original: " + str
+    println "Upper case: " + str.toUpperCase()
+}
+
+task count << {
+    6.times { print "$it " }
+}
+
+//申明任务之间的依赖关系
+//intro 依赖于 hello, 所以执行 intro 的时候 hello 命令会被优先执行来作为启动 intro 任务的条件.
+task intro(dependsOn: hello) << {
+    println "I'm Gradle"
+}
+
+//在加入一个依赖之前, 这个依赖的任务不需要提前定义
+//Lazy dependsOn - 其他的任务还没有存在
+task taskX(dependsOn: 'taskY') << {
+    println 'taskX'
+}
+task taskY << {
+    println 'taskY'
+}
+
+//动态的创建一个任务
+4.times { counter ->
+    task "task$counter" << {
+        println "I'm task number $counter"
+    }
+}
+//加入一个依赖
+task0.dependsOn task2, task3
+
+//给一个已经存在的任务加入行为
+task hello3 << {
+    println 'Hello Earth'
+}
+hello3.doFirst {
+    println 'Hello Venus'
+}
+hello3.doLast {
+    println 'Hello Mars'
+}
+hello3 << {
+    println 'Hello Jupiter'
+}
+
+//当成构建脚本的属性来访问一个任务
+task hello4 {
+    doLast {
+        println 'Hello world!'
+    }
+}
+hello4.doLast {
+    println "Greetings from the $hello4.name task."
+}
+
+//给任务加入自定义属性
+task myTask {
+    ext.myProperty = "myValue"
+    ext.ok = "ok"
+}
+
+task printTaskProperties << {
+    println myTask.myProperty
+    println myTask.ok
+}
+
+//使用 AntBuilder 来执行 ant.loadfile 任务
+task loadfile << {
+    def files = file('antLoadfileResources').listFiles().sort()
+    files.each { File file ->
+        if (file.isFile()) {
+            ant.loadfile(srcFile: file, property: file.name)
+            println " *** $file.name ***"
+            println "${ant.properties[file.name]}"
+        }
+    }
+}
+
+//使用方法组织脚本逻辑
+task checksum << {
+    fileList('../antLoadfileResources').each {File file ->
+        ant.checksum(file: file, property: "cs_$file.name")
+        println "$file.name Checksum: ${ant.properties["cs_$file.name"]}"
+    }
+}
+
+task loadfile2 << {
+    fileList('../antLoadfileResources').each {File file ->
+        ant.loadfile(srcFile: file, property: file.name)
+        println "I'm fond of $file.name"
+    }
+}
+
+File[] fileList(String dir) {
+    file(dir).listFiles({file -> file.isFile() } as FileFilter).sort()
+}
+
+//定义默认任务
+
+defaultTasks 'clean', 'run'
+
+/*task clean << {
+    println 'Default Cleaning!'
+}*/
+
+task run << {
+    println 'Default Running!'
+}
+
+task other << {
+    println "I'm not a default task!"
+}
+
+//根据选择的任务产生不同的输出
+
+task distribution << {
+    println "We build the zip with version=$version"
+}
+
+task release(dependsOn: 'distribution') << {
+    println 'We release now'
+}
+
+gradle.taskGraph.whenReady {taskGraph ->
+    if (taskGraph.hasTask(release)) {
+        version = '1.0'
+    } else {
+        version = '1.0-SNAPSHOT'
+    }
+}

@@ -1,5 +1,6 @@
 .gradle
 classes
 .idea
+out
 /*/build
 /*/.gradle

@@ -1,8 +1,8 @@
 package util.db.source.impl;
 
 import com.alibaba.druid.pool.DruidDataSourceFactory;
-import com.whyun.util.config.MySqlConfigProperty2;
-import com.whyun.util.db.source.AbstractDataSource;
+import util.config.MySqlConfigProperty2;
+import util.db.source.AbstractDataSource;
 
 public class DruidSourceMysql2 extends AbstractDataSource {
 
