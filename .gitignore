@@ -3,4 +3,5 @@ classes
 .idea
 out
 /*/build
+/*/*/build
 /*/.gradle

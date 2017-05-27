@@ -1,9 +1,22 @@
 version '1.0-SNAPSHOT'
-
 apply plugin: 'java'
 apply plugin: 'war'
 
 sourceCompatibility = 1.8
 
 dependencies {
+    //include spring-aop spring-aspects spring-beans spring-context spring-core spring-expression
+//    compile 'org.springframework:spring-webmvc:4+'
+//    
+    compile 'org.springframework:spring-aspects:4+'
+//    compile 'org.springframework:spring-context-support:4+' //待学习
+
+    /*
+
+    compile group: 'org.springframework', name: 'spring-jdbc', version:$springVersion
+    compile group: 'org.springframework', name: 'spring-orm', version:$springVersion
+    compile group: 'org.springframework', name: 'spring-tx', version:$springVersion
+    compile group: 'org.springframework', name: 'spring-test', version:$springVersion
+
+    */
 }

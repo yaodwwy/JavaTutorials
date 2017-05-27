@@ -34,9 +34,9 @@ dependencies {
      * testCompile      编译测试代码的依赖. 默认的, 包含生成的类运行所需的依赖和编译源代码的依赖.
      * testRuntime      运行测试所需要的依赖. 默认的, 包含上面三个依赖.
      */
-    compile group: 'org.springframework', name: 'spring-webmvc', version: '4.+'
+//    compile group: 'org.springframework', name: 'spring-webmvc', version: '4.+'
     //简写形式    compile "group:name:version".
-    testCompile group: 'junit', name: 'junit', version: '4.+'
+//    testCompile group: 'junit', name: 'junit', version: '4.+'
 
 }
 

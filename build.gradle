@@ -2,7 +2,6 @@ subprojects {
     apply plugin: 'java'
 
     repositories {
-        maven { url 'http://maven.aliyun.com/nexus/content/groups/public' }
         maven { url "http://mvn.gt.igexin.com/nexus/content/repositories/releases/" }
         maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
         maven { url "http://repo.maven.apache.org/maven2" }
@@ -10,7 +9,7 @@ subprojects {
     }
 
     dependencies {
-        testCompile 'junit:junit:4.12'
+//        testCompile 'junit:junit:4.12'
     }
 
     version '1.0-SNAPSHOT'
