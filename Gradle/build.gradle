@@ -3,15 +3,41 @@ version = '1.2'
 //增加Java项目的Build Clean JavaDoc task等
 apply plugin: 'java'
 
+//sourceCompatibility:指定编译编译.java文件的jdk版本
 sourceCompatibility = 1.8
+//targetCompatibility：确保class文件与targetCompatibility指定版本
+// 或者更新的java虚拟机兼容
+targetCompatibility = 1.8
 
 repositories {
+    //Maven central 仓库
     mavenCentral()
+    //远程的 Maven 仓库
+    maven {
+        url "http://repo.mycompany.com/maven2"
+    }
+    //远程的 Ivy 仓库
+    ivy {
+        url "http://repo.mycompany.com/repo"
+    }
+    //本地的 Ivy 目录
+    ivy {
+        // URL can refer to a local directory
+        url "../local-repo"
+    }
 }
 
 dependencies {
-    compile group: 'commons-collections', name: 'commons-collections', version: '3.2'
+    /**
+     * compile          用来编译项目源代码的依赖.
+     * runtime          在运行时被生成的类使用的依赖. 默认的, 也包含了编译时的依赖.
+     * testCompile      编译测试代码的依赖. 默认的, 包含生成的类运行所需的依赖和编译源代码的依赖.
+     * testRuntime      运行测试所需要的依赖. 默认的, 包含上面三个依赖.
+     */
+    compile group: 'org.springframework', name: 'spring-webmvc', version: '4.+'
+    //简写形式    compile "group:name:version".
     testCompile group: 'junit', name: 'junit', version: '4.+'
+
 }
 
 jar {
