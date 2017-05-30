@@ -5,18 +5,24 @@ apply plugin: 'war'
 sourceCompatibility = 1.8
 
 dependencies {
-    //include spring-aop spring-aspects spring-beans spring-context spring-core spring-expression
-//    compile 'org.springframework:spring-webmvc:4+'
-//    
-    compile 'org.springframework:spring-aspects:4+'
-//    compile 'org.springframework:spring-context-support:4+' //待学习
+    //include   aop beans context core expression web webmvc
+    compile 'org.springframework:spring-webmvc:4+'
 
-    /*
+    //include   aspectj aspects
+//    compile 'org.springframework:spring-aspects:4+'
 
-    compile group: 'org.springframework', name: 'spring-jdbc', version:$springVersion
-    compile group: 'org.springframework', name: 'spring-orm', version:$springVersion
-    compile group: 'org.springframework', name: 'spring-tx', version:$springVersion
-    compile group: 'org.springframework', name: 'spring-test', version:$springVersion
+    //include  beans core jdbc tx
+//    compile 'org.springframework:spring-jdbc:4+'
 
-    */
+    //include  aop beans context context-support core expression
+//    compile 'org.springframework:spring-context-support:4+'
+
+    //include  beans core jdbc orm tx
+//    compile 'org.springframework:spring-orm:4+'
+
+    //include  beans core tx
+//    compile 'org.springframework:spring-tx:4+'
+
+    //include  core test
+//    compile 'org.springframework:spring-test:4+'
 }
