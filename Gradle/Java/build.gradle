@@ -4,6 +4,8 @@ apply plugin: 'java'
 
 sourceCompatibility = 1.8
 
+description = '此为项目描述信息'
+
 repositories {
     mavenCentral()
 }
@@ -16,7 +18,6 @@ dependencies {
 
 //测试阶段加入一个系统属性
 test {
-    println 'test-1.0'
     systemProperties 'property': 'value'
 }
 
@@ -34,3 +35,27 @@ task dist(type: Zip) {
 artifacts {
     archives dist
 }*/
+
+//发布一个 Ivy 库
+//gradle uploadArchives, Gradle 将构建和上传你的 Jar. Gradle 也会生成和上传 ivy.xml .
+uploadArchives {
+    repositories {
+        ivy {
+            credentials {
+                username "username"
+                password "pw"
+            }
+            url "http://repo.mycompany.com"
+        }
+    }
+}
+
+//发布 Maven 库
+apply plugin: 'maven'
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            repository(url: "file://localhost/tmp/myRepo/")
+        }
+    }
+}

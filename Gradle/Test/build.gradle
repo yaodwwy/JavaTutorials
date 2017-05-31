@@ -1,3 +1,5 @@
+description = '描述信息：Test为所有 task 自定义测试'
+
 //它定义了一个叫做 hello 的任务
 //输入 gradle -q hello 来执行构建脚本
 task hello {
@@ -11,39 +13,52 @@ task hello {
 //The Task.leftShift(Closure) method has been deprecated and is
 // scheduled to be removed in Gradle 5.0.
 // Please use Task.doLast(Action) instead.
-task hello2 << {
-    println 'Hello World 2 !'
+task hello2 {
+    doLast {
+        println 'Hello World 2 !'
+    }
 }
 
 //gradle -q upper 命令的输出
-task upper << {
-    String str = 'mY-NaMe'
-    println "Original: " + str
-    println "Upper case: " + str.toUpperCase()
+task upper {
+    doLast {
+        String str = 'mY-NaMe'
+        println "Original: " + str
+        println "Upper case: " + str.toUpperCase()
+    }
 }
 
-task count << {
-    6.times { print "$it " }
+task count {
+    doLast {
+        6.times { print "$it " }
+    }
 }
 
 //申明任务之间的依赖关系
 //intro 依赖于 hello, 所以执行 intro 的时候 hello 命令会被优先执行来作为启动 intro 任务的条件.
-task intro(dependsOn: hello) << {
-    println "I'm Gradle"
+task intro(dependsOn: hello) {
+    doLast {
+        println "I'm Gradle"
+    }
 }
 
 //在加入一个依赖之前, 这个依赖的任务不需要提前定义
 //Lazy dependsOn - 其他的任务还没有存在
-task taskX(dependsOn: 'taskY') << {
-    println 'taskX'
+task taskX(dependsOn: 'taskY') {
+    doLast {
+        println 'taskX'
+    }
 }
-task taskY << {
-    println 'taskY'
+task taskY {
+    doLast {
+        println 'taskY'
+    }
 }
 
 //动态的创建一个任务
 4.times { counter ->
-    task "task$counter" << {
+    task "task$counter" {
+        doLast {}
         println "I'm task number $counter"
     }
 }
@@ -51,8 +66,10 @@ task taskY << {
 task0.dependsOn task2, task3
 
 //给一个已经存在的任务加入行为
-task hello3 << {
-    println 'Hello Earth'
+task hello3 {
+    doLast {
+        println 'Hello Earth'
+    }
 }
 hello3.doFirst {
     println 'Hello Venus'
@@ -60,8 +77,10 @@ hello3.doFirst {
 hello3.doLast {
     println 'Hello Mars'
 }
-hello3 << {
-    println 'Hello Jupiter'
+hello3 {
+    doLast {
+        println 'Hello Jupiter'
+    }
 }
 
 //当成构建脚本的属性来访问一个任务
@@ -80,72 +99,153 @@ task myTask {
     ext.ok = "ok"
 }
 
-task printTaskProperties << {
-    println myTask.myProperty
-    println myTask.ok
+task printTaskProperties {
+    doLast {
+        println myTask.myProperty
+        println myTask.ok
+    }
 }
 
 //使用 AntBuilder 来执行 ant.loadfile 任务
-task loadfile << {
-    def files = file('antLoadfileResources').listFiles().sort()
-    files.each { File file ->
-        if (file.isFile()) {
-            ant.loadfile(srcFile: file, property: file.name)
-            println " *** $file.name ***"
-            println "${ant.properties[file.name]}"
+task loadfile {
+    doLast {
+        def files = file('antLoadfileResources').listFiles().sort()
+        files.each { File file ->
+            if (file.isFile()) {
+                ant.loadfile(srcFile: file, property: file.name)
+                println " *** $file.name ***"
+                println "${ant.properties[file.name]}"
+            }
         }
     }
 }
 
 //使用方法组织脚本逻辑
-task checksum << {
-    fileList('../antLoadfileResources').each {File file ->
-        ant.checksum(file: file, property: "cs_$file.name")
-        println "$file.name Checksum: ${ant.properties["cs_$file.name"]}"
+task checksum {
+    doLast {
+        fileList('../antLoadfileResources').each { File file ->
+            ant.checksum(file: file, property: "cs_$file.name")
+            println "$file.name Checksum: ${ant.properties["cs_$file.name"]}"
+        }
     }
 }
 
-task loadfile2 << {
-    fileList('../antLoadfileResources').each {File file ->
-        ant.loadfile(srcFile: file, property: file.name)
-        println "I'm fond of $file.name"
+task loadfile2 {
+    doLast {
+        fileList('../antLoadfileResources').each { File file ->
+            ant.loadfile(srcFile: file, property: file.name)
+            println "I'm fond of $file.name"
+        }
     }
 }
 
 File[] fileList(String dir) {
-    file(dir).listFiles({file -> file.isFile() } as FileFilter).sort()
+    file(dir).listFiles({ file -> file.isFile() } as FileFilter).sort()
 }
 
 //定义默认任务
 
 defaultTasks 'clean', 'run'
 
-/*task clean << {
+/*task clean { doLast{}
     println 'Default Cleaning!'
 }*/
 
-task run << {
-    println 'Default Running!'
+task run {
+    doLast {
+        println 'Default Running!'
+    }
 }
 
-task other << {
-    println "I'm not a default task!"
+task other {
+    doLast {
+        println "I'm not a default task!"
+    }
 }
 
 //根据选择的任务产生不同的输出
 
-task distribution << {
-    println "We build the zip with version=$version"
+task distribution {
+    doLast {
+        println "We build the zip with version=$version"
+    }
 }
 
-task release(dependsOn: 'distribution') << {
-    println 'We release now'
+task release(dependsOn: 'distribution') {
+    doLast {
+        println 'We release now'
+    }
 }
 
-gradle.taskGraph.whenReady {taskGraph ->
+gradle.taskGraph.whenReady { taskGraph ->
     if (taskGraph.hasTask(release)) {
         version = '1.0'
     } else {
         version = '1.0-SNAPSHOT'
+    }
+}
+
+//多任务调用
+
+task compile {
+    doLast {
+        println 'compiling source --- >>> 1 --- >>>'
+    }
+}
+
+task compileTest(dependsOn: compile) {
+    doLast {
+        println 'compiling unit tests  --- >>> 2 --- >>>'
+    }
+}
+
+task test1(dependsOn: [compile, compileTest]) {
+    doLast {
+        println 'running unit tests --- >>> 3 --- >>>'
+    }
+}
+//gradle dist -x test1  排除任务
+//--continue 失败后继续执行构建
+task dist(dependsOn: [compile, test1]) {
+    doLast {
+        println 'building the distribution --- >>> 4 --- >>>'
+    }
+}
+
+//局部变量
+def dest = "dest yaya"
+
+task copy {
+    doLast {
+        println dest
+    }
+}
+
+// 使用扩展属性
+ext {
+    springVersion1 = "3.1.0.RELEASE"
+    emailNotification = "build@master.org"
+}
+
+sourceSets.all { ext.purpose = null }
+
+sourceSets {
+    main {
+        purpose = "production"
+    }
+    test {
+        purpose = "test"
+    }
+    plugin {
+        purpose = "production"
+    }
+
+}
+
+task printProperties {
+    doLast {
+        println springVersion1
+        println emailNotification
+        sourceSets.matching { it.purpose == "production" }.each { println it.name }
     }
 }

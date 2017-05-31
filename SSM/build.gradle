@@ -9,6 +9,7 @@ tasks.withType(JavaCompile) {
 jar.enabled = true
 buildscript {
     ext {
+        //在这里可以声明版本的变量，也可以写在gradle.properties文件中
         $springVersion = "4+"
     }
 }

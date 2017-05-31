@@ -9,6 +9,8 @@ sourceCompatibility = 1.8
 // 或者更新的java虚拟机兼容
 targetCompatibility = 1.8
 
+description = 'Gradle 项目测试'
+
 repositories {
     //Maven central 仓库
     mavenCentral()
@@ -62,5 +64,19 @@ uploadArchives {
     }
 }
 subprojects {
+    //操作项目对象的属性
+    println "name: " + name
+    println "project.name: " + project.name
+    println "description: " + this.description
+    println "path: " + path
+    println "projectDir: " + projectDir
+    println "build: " + build
+}
 
+task myCopy(type: Copy)
+
+myCopy {
+    from 'resources'
+    into 'target'
+    include('**/*.txt', '**/*.xml', '**/*.properties')
 }
