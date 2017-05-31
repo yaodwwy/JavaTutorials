@@ -34,7 +34,8 @@
             display: none
         }
 
-        .primary {}
+        .primary {
+        }
 
         .input-prompt-container {
             background-color: #FFF;
@@ -49,14 +50,13 @@
 
         .input-prompt-list dt {
             display: inline;
-            font-size: 14px!important;
-            font-weight: bold!important;
-        ;
+            font-size: 14px !important;
+            font-weight: bold !important;;
             margin-bottom: 2px;
         }
 
         .input-prompt-list dt b {
-            font-size: 14px!important;
+            font-size: 14px !important;
             color: #094;
         }
 
@@ -80,12 +80,11 @@
         }
 
         .fanyiBtn:hover {
-            background-color: #249CA9 !important;
+            background: #3268DA !important;
         }
 
         .searchBtn:hover {
             background: #3268DA !important;
-        ;
         }
 
         .form-group {
@@ -109,7 +108,7 @@
             background: #428bca;
         }
 
-        .dl-config> dt> a {
+        .dl-config > dt > a {
             margin: 1px 0px 5px 0px;
             padding: 7px 0px 7px 0px;
             width: 125px;
@@ -121,12 +120,12 @@
             overflow: hidden;
         }
 
-        .dl-config> dt> a>.btn-primary:hover {
+        .dl-config > dt > a > .btn-primary:hover {
             background: #2a6496;
             color: #FFFFFF;
         }
 
-        .dl-config> dd> a {
+        .dl-config > dd > a {
             margin: 1px;
             width: 125px;
             height: 30px;
@@ -140,18 +139,18 @@
             overflow: hidden;
         }
 
-        .dl-config> dd> a:hover {
+        .dl-config > dd > a:hover {
             border-style: dotted;
             text-decoration: none;
             background: #eaeaea;
             color: #888;
         }
 
-        .dl-config> dd> .two {
+        .dl-config > dd > .two {
             width: 60px;
         }
 
-        .dl-config> dd> .three {
+        .dl-config > dd > .three {
             width: 38px;
         }
 
@@ -160,35 +159,59 @@
             height: 243px;
         }
 
-        .shadowsocks>img {
-            width: 27px;
+        .shadowsocks > img {
+            width: 37px;
         }
 
-        .grayFilter{
-            filter: gray;filter: grayscale(100%);
+        .mask {
+            display: none;
+            height: 100%;
+            width: 100%;
+            position: fixed;
+            _position: absolute;
+            top: 0;
+            z-index: 2;
+        }
+
+        .opacity {
+            opacity: 0.3;
+            filter: alpha(opacity=30);
+            background-color: #000;
         }
     </style>
 </head>
 
 <body>
+
+
+
+</div>
 <div style="width: 690px;height: 102px; text-align: right; line-height: 195px;">
     <a class="nephanalysis" title="卫星云图" href="http://tianqi.2345.com/t/wxyt/wxyt.htm" target="_blank" style="position: absolute; height: 23px; width: 37px; top: 40px; left: 110px; z-index: 0;
 		border-radius:5px; border: 1px solid #c8c8c8; background: none; display: block;"></a>
-    <iframe style="background:none; margin-right: 12px;" allowtransparency="true" frameborder="0" scrolling="no" width="580" height="85" src="http://tianqi.2345.com/plugin/widget/index.htm?s=1&z=1&t=0&v=0&d=5&bd=0&k=&f=&q=1&e=1&a=1&c=58027&w=675&h=96&align=right"></iframe>
+    <iframe style="background:none; margin-right: 12px;" allowtransparency="true" frameborder="0" scrolling="no"
+            width="580" height="85"
+            src="http://tianqi.2345.com/plugin/widget/index.htm?s=1&z=1&t=0&v=0&d=5&bd=0&k=&f=&q=1&e=1&a=1&c=58027&w=675&h=96&align=right"></iframe>
 </div>
 <div style="width: 690px;height: 55px;">
     <div class="form-group" style="float: left;">
-        <form id="bdForm" target="_blank" class="navbar-form" role="search" action="http://www.baidu.com/s" style="padding: 0px 12px 0px 13px;">
-            <input type="text" class="form-control search_input" id="kw" autocomplete="off" name="wd" placeholder="Search" baiduSug="1">
-            <button type="button" onclick="document.getElementById('bdForm').submit()" class="btn searchBtn" style="background: #3385ff; color:white; margin-left: 3px;height: 34px;">百度一下
+        <form id="bdForm" target="_blank" class="navbar-form" role="search" action="http://www.baidu.com/s"
+              style="padding: 0px 12px 0px 13px;">
+            <input type="text" class="form-control search_input" id="kw" autocomplete="off" name="wd"
+                   placeholder="Search" baiduSug="1">
+            <button type="button" onclick="document.getElementById('bdForm').submit()" class="btn searchBtn"
+                    style="background: #3385ff; color:white; margin-left: 3px;height: 34px;">百度一下
             </button>
         </form>
     </div>
 
     <div class="form-group search_box" style="float: left; margin-left: 5px;">
-        <form id="fyForm" target="_blank" class="navbar-form" role="search" action="http://dict.cn/search.php" style="padding: 0px 11px;">
-            <input id="q" type="text" class="form-control search_input" autocomplete="off" name="q" placeholder="Translate">
-            <button type="button" onclick="document.getElementById('fyForm').submit()" class="btn fanyiBtn" style="background-color: #2dacbf;color:white;margin-left: 3px;height: 34px;">海词翻译
+        <form id="fyForm" target="_blank" class="navbar-form" role="search" action="https://translate.google.cn"
+              style="padding: 0px 11px;">
+            <input id="q" type="text" class="form-control search_input" autocomplete="off" name="q"
+                   placeholder="Translate">
+            <button type="button" onclick="document.getElementById('fyForm').submit()" class="btn fanyiBtn"
+                    style="background-color: #4d90fe;color:white;margin-left: 3px;height: 34px;">谷歌翻译
             </button>
         </form>
     </div>
@@ -197,58 +220,76 @@
 <div style="width: 720px;height: 480px; padding-left: 12px; overflow: hidden;">
     <dl class="dl-config">
         <dd>
-            <a target="_blank" href="http://www.google.com" style="background:none; border:none;overflow:visible;height:100%;">
-                <img id="shadowsocksImg" alt="Shadowsocks" src="https://www.google.cn/images/branding/googlelogo/1x/googlelogo_color_120x44dp.png"
-                     width="100" height="36" class="grayFilter">
-            </a>
-        </dd>
-        <dd>
-            <div class="shadowsocks" id="shadowsocks">
-                <div style="width:125px;height:125px;overflow:hidden;margin-left:-5%;">
-                    <img id="shadowsockShow" title="日本#1" src="http://freess.org/images/servers/jp01.png" width="135">
-                </div>
-                <img title="日本#1" src="http://freess.org/images/servers/jp01.png">
-                <img title="日本#2" src="http://freess.org/images/servers/jp02.png">
-                <img title="日本#3" src="http://freess.org/images/servers/jp03.png">
-                <img title="美国#1" src="http://freess.org/images/servers/us01.png">
-                <img title="美国#2" src="http://freess.org/images/servers/us02.png">
-                <img title="美国#3" src="http://freess.org/images/servers/us03.png">
-                <img title="美国-DO-洛杉矶" src="http://www.shadowsocks8.com/images/server01.png">
-                <img title="香港-SOFTLAYER" src="http://www.shadowsocks8.com/images/server02.png">
-                <img title="日本-LINODE-东京" src="http://www.shadowsocks8.com/images/server03.png">
-                <img title="A.SSX.HOST" src="http://www.ishadow.site/img/server01.png">
-                <img title="B.SSX.HOST" src="http://www.ishadow.site/img/server02.png">
-                <img title="C.SSX.HOST" src="http://www.ishadow.site/img/server03.png">
-                <!--<iframe src="https://ip-80x86-io.appspot.com/" width="122" height="40" scrolling="no" frameborder="0" marginheight="0" marginwidth="0">
-                    您无法访问谷歌网站
-                </iframe>-->
+            <div class="shadowsocks">
+                <a target="_blank" href="https://www.google.com"
+                   style="background:none; border:none;overflow:visible;height:100%;">
+                    <img id="google" alt="google" title="google"
+                         src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_120x44dp.png"
+                         width="100"
+                         height="36">
+                </a>
+
+                <hr style="margin: 8px 0px 8px 0px;">
+
+                <a target="_blank" href="https://www.youtube.com"
+                   style="background:none; border:none;overflow:visible;height:100%;">
+                    <img id="youtube" alt="youtube" title="youtube"
+                         src="https://www.youtube.com/yt/img/logo_2x.png"
+                         width="100"
+                         height="36">
+                </a>
+
+                <hr style="margin: 8px 0px 8px 0px;">
+
+                <a target="_blank" href="http://mvnrepository.com/"
+                   style="background:none; border:none;overflow:visible;height:100%; width: 100px;">
+                    <img id="maven" alt="maven" title="maven"
+                         src="http://maven.apache.org/images/maven-logo-black-on-white.png"
+                         width="100">
+                </a>
+
+                <hr style="margin: 8px 0px 8px 0px;">
+
+                <a target="_blank" href="https://github.com/yaodwwy"
+                   style="background:none; border:none;overflow:visible;height:100%; width: 100px;">
+                    <img id="Github" alt="Github" title="Github"
+                         src="https://ss1.baidu.com/70cFfyinKgQFm2e88IuM_a/forum/pic/item/472309f790529822f4f4ba96d5ca7bcb0b46d4a4.jpg"
+                         height="45">
+                </a>　<a target="_blank" href="https://www.facebook.com/"
+                   style="background:none; border:none;overflow:visible;height:100%; width: 100px;">
+                    <img id="facebook" alt="facebook" title="facebook"
+                         src="https://fb-s-c-a.akamaihd.net/h-ak-xtf1/v/t1.0-1/p200x200/12006203_10154088276211729_2432197377106462187_n.png?oh=51ea5391b3c3cb6123e3260030b38b26&oe=5939F2FE&__gda__=1497463515_38b30f470162d2646d0da093c3633518"
+                         height="40">
+                </a>
+                <hr style="margin: 8px 0px 8px 0px;">
+                <a target="_blank" href="https://www.yahoo.com/"
+                   style="background:none; border:none;overflow:visible;height:100%; width: 100px;">
+                    <img id="yahoo" alt="yahoo" title="yahoo"
+                         src="https://s.yimg.com/zz/nn/lib/metro/g/my/yahoo_en-US_f_p_190x45_2x.png"
+                         width="100">
+                </a>
+
+                <hr style="margin: 8px 0px 8px 0px;">
+
+                <a target="_blank" href="https://twitter.com/"
+                   style="background:none; border:none;overflow:visible;height:100%; width: 100px;">
+                    <img id="Twitter" alt="Twitter" title="Twitter"
+                         src="https://ea.twimg.com/email/self_serve/media/Twitter_logo_180-1468901451975.png"
+                         height="50">
+                </a>
+
+                <hr style="margin: 8px 0px 8px 0px;">
+
+                <div style="width:125px;height:125px;overflow:hidden;margin-left:-4%;">
+                    <img id="shadowsockShow" src="http://freess.org/images/servers/jp01.png" width="135">
+
+                    <div style="position: fixed;margin-top: -10px; margin-left: 17px;">
+                        <iframe style="-webkit-transform:scale(0.7,0.7);"
+                                src="https://ip-80x86-io.appspot.com/"
+                                width="115" height="21" scrolling="no" frameborder="0"
+                                marginheight="0" marginwidth="0"></iframe>
+                    </div>
             </div>
-
-            <script>
-                var iframe = document.createElement("iframe");
-                iframe.src = "https://ip-80x86-io.appspot.com/";
-                iframe.width='122';
-                iframe.height='40';
-                iframe.scrolling='no';
-                iframe.frameBorder='0';
-                iframe.marginwidth='0';
-                iframe.marginheight='0';
-                if(iframe.attachEvent) {
-                    iframe.attachEvent("onload", function() {
-                        $("#shadowsocksImg").removeClass("grayFilter");
-                    });
-                } else {
-                    iframe.onload = function() {
-                        $("#shadowsocksImg").removeClass("grayFilter");
-                    };
-                }
-                document.getElementById("shadowsocks").appendChild(iframe);
-
-                $(".shadowsocks > img").click(function() {
-                    $("#shadowsockShow").attr("src", this.src);
-                    $("#shadowsockShow").attr("title", this.title);
-                });
-            </script>
         </dd>
     </dl>
 
@@ -321,16 +362,18 @@
             <a target="_blank" href="http://www.bejson.com/json2javapojo/">格式化JSON</a>
         </dd>
         <dt>
-            <a class="btn btn-primary" target="_blank" href="shadowssocksCode.html" >VPN\DNS</a>
+            <a class="btn btn-primary">VPN\DNS</a>
         </dt>
         <dd>
-            <a target="_blank" href="http://www.ishadowsocks.net/">Shadowsocks</a>
+            <a target="_blank" href="http://51.ruyo.net/shadowsocks/">影梭</a>
         </dd>
         <dd>
-            <a target="_blank" href="http://free.0ff0.net/">1小时VPN</a>
+            <!--<a class="two" target="_blank" href="http://kxss.tk/user">开心兔子</a>-->
+            <a target="_blank" href="http://xsly.ml/user/node.php">学术乐游</a>
         </dd>
         <dd>
-            <a class="two" target="_blank" title="yaodwwy.vicp.cc|yaoo.f3322.net" href="http://yaoo.iok.la:9990/">iok.la</a>
+            <a class="two" target="_blank" title="yaodwwy.vicp.cc|yaoo.f3322.net"
+               href="http://yaoo.iok.la:9990/">iok.la</a>
             <a class="two" target="_blank" href="http://www.miwifi.com/">miwifi</a>
         </dd>
     </dl>
@@ -349,9 +392,7 @@
             <a target="_blank" href="http://tv.cctv.com/live/">中央电视台</a>
         </dd>
         <dd>
-        <dd>
             <a target="_blank" href="http://iservice.10010.com/e3/index_server.html">联通官网</a>
-        </dd>
         </dd>
         <dd>
             <a target="_blank" href="http://cx.xzjgw.com/cxjg.aspx?hphm=C771E6A58C388FB9&amp;hpzl=2">违章查询</a>
@@ -394,48 +435,50 @@
 
 </div>
 
-<div id="calendar" style="position:fixed; width: 540px; height: 376px; bottom:10px; right: 10px; z-index: -1;
-overflow: hidden"></div>
-
+<div id="calendar" style="position:absolute; width: 540px;height: 380px;
+		display:none;z-index:3;overflow:hidden; left:50%;top:50%;
+		margin-left:-270px;margin-top:-188px;border-radius: 6px;
+		border: 4px white solid;box-shadow: 0px 2px 40px grey;"></div>
+<div id="mask" class="mask opacity"></div>
 <span style="display: block; position: absolute; left: 0px; top:0px;" id="onresize"></span>
 <script>
 </script>
 <script>
-    $(function() {
-        $("#q").get(0).addEventListener("input", function(o) {
+
+    $(function () {
+        $("#q").get(0).addEventListener("input", function (o) {
             $("#kw").val($("#q").val());
         }, false);
-        $("#kw").get(0).addEventListener("input", function(o) {
+        $("#kw").get(0).addEventListener("input", function (o) {
             $("#q").val($("#kw").val());
         }, false);
 
-        $("dt").click(function() {
-            $(this).nextUntil('dt').fadeOut("fast");
-            $(this).nextUntil('dt').fadeIn("fast");
+        $("#mask").click(function () {
+            $("#mask").fadeOut();
+            $("#calendar").fadeOut();
         });
 
-        $("#calendar-btn").click(function() {
-            if($("#calendar").html()) {
-                $("#calendar").fadeToggle("fast", function() {
-                    $("#calendar-btn").toggleClass("btn-success");
-                });
+        $("#calendar-btn").click(function (e) {
+            $("#mask").fadeIn();
+            if ($("#calendar").html()) {
+                $("#calendar").fadeIn("fast");
             } else {
-                $("#calendar").html("<iframe style=' margin:-137px 0px 0px -120px;' width='700' height='512' " +
+                $("#calendar").html("<iframe style=' margin:-137px 0px 0px -120px;' width='700' height='520' " +
                     "allowtransparency='true' frameborder='0' scrolling='no' " +
                     "src='https://www.baidu.com/baidu?word=%E4%B8%87%E5%B9%B4%E5%8E%86'></iframe>");
                 $("#calendar").fadeIn("fast");
-                $("#calendar-btn").addClass("btn-success");
             }
+            e ? e.stopPropagation() : event.cancelBubble = true;
         });
 
-        window.onresize = function() {
-            setTimeout(function() {
+        window.onresize = function () {
+            setTimeout(function () {
                 $("#onresize").fadeIn("fast");
             });
 
             $("#onresize").html("宽度：" + document.documentElement.clientWidth + "，高度：" + document.documentElement.clientHeight);
 
-            setTimeout(function() {
+            setTimeout(function () {
                 $("#onresize").fadeOut(2000);
             }, 1000);
         }
@@ -457,11 +500,10 @@ overflow: hidden"></div>
 </script>
 <!-- 百度搜索框提示 -->
 <script charset="gbk" src="https://www.baidu.com/js/opensug.js"></script>
-
 <!-- 海词搜索框提示 -->
 <script type="text/javascript" src="http://i1.haidii.com/v/1408420485/i1/js/jquery-1.8.0.min.js"></script>
-<script type="text/javascript" src="http://i1.haidii.com/v/1481554274/i1/js/inputPrompt.min.js"></script>
-<script type="text/javascript" src="http://i1.haidii.com/v/1481554264/i1/js/base.min.js"></script>
+<script type="text/javascript" src="http://gomro-resources.oss-cn-hangzhou.aliyuncs.com/js/jQuery/easyui-1.5.1/webapp/inputPrompt.min.js"></script>
+<script type="text/javascript" src="http://gomro-resources.oss-cn-hangzhou.aliyuncs.com/js/jQuery/easyui-1.5.1/webapp/base.min.js"></script>
 </body>
 
 </html>
