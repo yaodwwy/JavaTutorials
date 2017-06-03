@@ -566,10 +566,10 @@
 
         }
 
-        $("img").mouseover(function () {
-            $(this).css("position", "relative");
-            if (!($(this).is(":animated"))) {
-                $(this).animate({top: "-6px"}, 90).animate({top: "-0px"}, 150).animate({top: "-5px"}, 90).animate({top: "-0px"}, 150)
+        $("a").mouseover(function () {
+            $(this).children("img").css("position", "relative");
+            if (!($(this).children("img").is(":animated"))) {
+                $(this).children("img").animate({top: "-6px"}, 90).animate({top: "-0px"}, 150).animate({top: "-5px"}, 90).animate({top: "-0px"}, 150)
                     .animate({top: "-2px"}, 60).animate({top: "-1px"}, 90).animate({top: "-1px"}, 60).animate({top: "-0px"}, 90);
             }
         });
