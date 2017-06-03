@@ -353,7 +353,8 @@
         <dt><a class="btn btn-primary">常用工具</a></dt>
         <dd>
             <a target="_blank" href="http://note.youdao.com/web/file">
-                <img style="max-height: 32px;margin-right: -6px;margin-left: -10px;" src="https://shared-https.ydstatic.com/ynote/ydoc/images/de40898e.loading-pen.gif">
+                <img style="max-height: 32px;margin-right: -6px;margin-left: -10px;"
+                     src="https://shared-https.ydstatic.com/ynote/ydoc/images/de40898e.loading-pen.gif">
                 <!--<img src="https://note.youdao.com/favicon.ico"/>-->
                 有道笔记</a>
         </dd>
@@ -518,7 +519,8 @@
 <div id="mask" class="mask opacity"></div>
 <div id="onresize">
     <iframe
-        style="-webkit-transform: scale(0.6); margin-left: -15px;" src="https://ip-80x86-io.appspot.com/" width="115"
+            style="-webkit-transform: scale(0.6); margin-left: -15px;" src="https://ip-80x86-io.appspot.com/"
+            width="115"
             height="20" scrolling="no" frameborder="0" marginheight="0" marginwidth="0"></iframe>
 </div>
 <script>
@@ -564,14 +566,13 @@
 
         }
 
-            $("a").mouseover(function(){
-                if(!($(this).children("img").is(":animated"))){
-                    $(this).children("img").animate({top:"-6px"},90).animate({top:"-0px"},150)
-                        .animate({top:"-5px"},90).animate({top:"-0px"},150)
-                        .animate({top:"-2px"},60).animate({top:"-1px"},90)
-                        .animate({top:"-1px"},60).animate({top:"-0px"},90);
-                }
-            });
+        $("img").mouseover(function () {
+            $(this).css("position", "relative");
+            if (!($(this).is(":animated"))) {
+                $(this).animate({top: "-6px"}, 90).animate({top: "-0px"}, 150).animate({top: "-5px"}, 90).animate({top: "-0px"}, 150)
+                    .animate({top: "-2px"}, 60).animate({top: "-1px"}, 90).animate({top: "-1px"}, 60).animate({top: "-0px"}, 90);
+            }
+        });
     });
 
     var multi_langs = '';

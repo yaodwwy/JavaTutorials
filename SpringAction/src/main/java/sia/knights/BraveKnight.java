@@ -9,6 +9,7 @@ public class BraveKnight implements Knight {
   }
 
   public void embarkOnQuest() {
+    System.out.println("embarkOnQuest()");
     quest.embark();
   }
 
