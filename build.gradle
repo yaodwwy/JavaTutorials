@@ -35,6 +35,7 @@ project(':SpringAction') {
         mavenCentral()
     }
     dependencies {
+
         compile("org.springframework:spring-context:${springVersion}")
         compile("org.aspectj:aspectjweaver:${aspectJVersion}")
         compile("log4j:log4j:${log4jVersion}")
@@ -42,5 +43,7 @@ project(':SpringAction') {
         testCompile("junit:junit:${junitVersion}")
         testCompile("org.mockito:mockito-core:${mockitoVersion}")
         testCompile("org.springframework:spring-test:${springVersion}")
+        testCompile "com.github.stefanbirkner:system-rules:${systemRulesVersion}"
+
     }
 }

@@ -235,7 +235,7 @@
     </div>
 
 </div>
-<div style="width: 720px;height: 480px; padding-left: 12px; overflow: hidden;">
+<div style="width: 720px;height: 480px; padding-left: 12px;">
 
     <div class="dl-config">
         <dd>
@@ -569,8 +569,13 @@
         $("a").mouseover(function () {
             $(this).children("img").css("position", "relative");
             if (!($(this).children("img").is(":animated"))) {
-                $(this).children("img").animate({top: "-6px"}, 90).animate({top: "-0px"}, 150).animate({top: "-5px"}, 90).animate({top: "-0px"}, 150)
-                    .animate({top: "-2px"}, 60).animate({top: "-1px"}, 90).animate({top: "-1px"}, 60).animate({top: "-0px"}, 90);
+                $(this).children("img")
+                    .animate({top: "-6px"}, 100)
+                    .animate({top: "0px"}, 100)
+                    .animate({top: "-5px"}, 100)
+                    .animate({top: "0px"}, 100)
+                    .animate({top: "-2px"}, 100)
+                    .animate({top: "0px"}, 100);
             }
         });
     });
