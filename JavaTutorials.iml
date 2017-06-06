@@ -4,27 +4,27 @@
     <facet type="javaeeApplication" name="javaEEApplication">
       <configuration>
         <descriptors>
-          <deploymentDescriptor name="application.xml" url="file://$MODULE_DIR$/.ear/build/tmp/ear/application.xml" />
+          <deploymentDescriptor name="application.xml" url="file://$MODULE_DIR$/SpringMVC/src/main/webapp/index.jsp" />
         </descriptors>
       </configuration>
     </facet>
     <facet type="web" name="Web">
       <configuration>
         <descriptors>
-          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/Servlet/src/main/webapp/WEB-INF/web.xml" />
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/SSM/src/main/webapp/WEB-INF/web.xml" />
         </descriptors>
         <webroots>
-          <root url="file://$MODULE_DIR$/Servlet/src/main/webapp" relative="/" />
+          <root url="file://$MODULE_DIR$/SSM/src/main/webapp" relative="/" />
         </webroots>
       </configuration>
     </facet>
     <facet type="web" name="Web2">
       <configuration>
         <descriptors>
-          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/Druid/src/main/webapp/WEB-INF/web.xml" />
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/Servlet/src/main/webapp/WEB-INF/web.xml" />
         </descriptors>
         <webroots>
-          <root url="file://$MODULE_DIR$/Druid/src/main/webapp" relative="/" />
+          <root url="file://$MODULE_DIR$/Servlet/src/main/webapp" relative="/" />
         </webroots>
       </configuration>
     </facet>
@@ -41,10 +41,10 @@
     <facet type="web" name="Web4">
       <configuration>
         <descriptors>
-          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/SSM/src/main/webapp/WEB-INF/web.xml" />
+          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/Druid/src/main/webapp/WEB-INF/web.xml" />
         </descriptors>
         <webroots>
-          <root url="file://$MODULE_DIR$/SSM/src/main/webapp" relative="/" />
+          <root url="file://$MODULE_DIR$/Druid/src/main/webapp" relative="/" />
         </webroots>
       </configuration>
     </facet>
@@ -52,9 +52,7 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="" />
-        <datasource-mapping>
-          <factory-entry name="postgres" />
-        </datasource-mapping>
+        <datasource-mapping />
         <deploymentDescriptor name="persistence.xml" url="file://$MODULE_DIR$/Ejb/src/main/resources/META-INF/persistence.xml" />
       </configuration>
     </facet>
