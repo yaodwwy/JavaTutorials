@@ -58,8 +58,9 @@ task taskY {
 //动态的创建一个任务
 4.times { counter ->
     task "task$counter" {
-        doLast {}
+        doLast {
         println "I'm task number $counter"
+        }
     }
 }
 //加入一个依赖
