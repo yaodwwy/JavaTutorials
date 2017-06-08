@@ -31,4 +31,5 @@ include 'Servlet'
 include 'Thymeleaf'
 include 'Utils'
 include 'WebService'*/
+include 'DesignPattern'
 
