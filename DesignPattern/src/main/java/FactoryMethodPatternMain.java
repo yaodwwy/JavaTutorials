@@ -26,10 +26,10 @@ class OrdinaryRoom extends Room {
     }
 }
 
-abstract class MazeGame {
+abstract class MazeGameFactory {
     private final List<Room> rooms = new ArrayList<>();
 
-    public MazeGame() {
+    public MazeGameFactory() {
         Room room1 = makeRoom();
         Room room2 = makeRoom();
         room1.connect(room2);
@@ -39,27 +39,27 @@ abstract class MazeGame {
     abstract protected Room makeRoom();
 }
 
-class MagicMazeGame extends MazeGame {
+class MagicMazeGameFactory extends MazeGameFactory {
     @Override
     protected Room makeRoom() {
-        System.out.println("MagicMazeGame --> makeRoom");
+        System.out.println("MagicMazeGameFactory --> makeRoom");
         return new MagicRoom();
     }
 }
 
-class OrdinaryMazeGame extends MazeGame {
+class OrdinaryMazeGameFactory extends MazeGameFactory {
     @Override
     protected Room makeRoom() {
-        System.out.println("OrdinaryMazeGame --> makeRoom");
+        System.out.println("OrdinaryMazeGameFactory --> makeRoom");
         return new OrdinaryRoom();
     }
 }
 
 public class FactoryMethodPatternMain{
     public static void main(String[] args) throws Exception {
-        MazeGame ordinaryGame = new OrdinaryMazeGame();
+        MazeGameFactory ordinaryGame = new OrdinaryMazeGameFactory();
         Room ordinaryRoom = ordinaryGame.makeRoom();
-        MazeGame magicGame = new MagicMazeGame();
+        MazeGameFactory magicGame = new MagicMazeGameFactory();
         Room magicRoom = magicGame.makeRoom();
     }
 }
