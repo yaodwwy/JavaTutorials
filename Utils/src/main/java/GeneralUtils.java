@@ -10,6 +10,7 @@ import java.util.prefs.Preferences;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+@SuppressWarnings("all")
 public class GeneralUtils {
     private static final Logger logger = Logger.getLogger("GeneralUtils");
 
@@ -125,19 +126,19 @@ public class GeneralUtils {
             Preferences prefs = rootType.getRoot().node(dir);
             Object obj = null;
             if (String.class.getName().equals(valueType.getName())) {
-                obj = prefs.get(key, defaultValue != null ? (String) defaultValue : null);
+                obj = prefs.get(key, null != defaultValue ? (String) defaultValue : null);
             } else if (Boolean.class.getName().equals(valueType.getName())) {
-                obj = prefs.getBoolean(key, defaultValue != null ? (Boolean) defaultValue : null);
+                obj = prefs.getBoolean(key, (null != defaultValue) ? (Boolean) defaultValue : null);
             } else if (byte.class.getName().equals(valueType.getName())) {
-                obj = prefs.getByteArray(key, defaultValue != null ? (byte[]) defaultValue : null);
+                obj = prefs.getByteArray(key, null != defaultValue ? (byte[]) defaultValue : null);
             } else if (Double.class.getName().equals(valueType.getName())) {
-                obj = prefs.getDouble(key, defaultValue != null ? (Double) defaultValue : null);
+                obj = prefs.getDouble(key, null != defaultValue ? (Double) defaultValue : null);
             } else if (Float.class.getName().equals(valueType.getName())) {
-                obj = prefs.getFloat(key, defaultValue != null ? (Float) defaultValue : null);
+                obj = prefs.getFloat(key, null != defaultValue ? (Float) defaultValue : null);
             } else if (int.class.getName().equals(valueType.getName())) {
-                obj = prefs.getInt(key, defaultValue != null ? (int) defaultValue : null);
+                obj = prefs.getInt(key, null != defaultValue ? (int) defaultValue : null);
             } else if (long.class.getName().equals(valueType.getName())) {
-                obj = prefs.getLong(key, defaultValue != null ? (long) defaultValue : null);
+                obj = prefs.getLong(key, (null != defaultValue) ? (long) defaultValue : null);
             } else {
                 throw new Exception("value type is unavailable");
             }

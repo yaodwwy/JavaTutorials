@@ -60,13 +60,11 @@ public class Utils {
         return Pattern.compile("[\u4e00-\u9fa5]").matcher(val).find();
     }
 
-    //TODO:
     public static double toDouble(String val) {
         if (val == null) return 0;
         return Double.parseDouble(val);
     }
 
-    //TODO:
     public static int toInt(String val) {
         if (val == null) return 0;
         return Integer.parseInt(val);
