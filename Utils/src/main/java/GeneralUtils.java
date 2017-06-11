@@ -352,8 +352,103 @@ public class GeneralUtils {
 
     static class Main {
         public static void main(String[] args) throws IOException, BackingStoreException {
+            test2();
+        }
+
+        public static void test1() throws IOException {
+
+            // 从标准输入设备读数据
+            //1. 用System.in的BufferedInputStream()读取字节
+            int b = System.in.read();
+            System.out.println("Read data: " + (char)b);  // 强制转换为字符
+            //2. BufferedReader读取文本
+            //如果从Stream转成Reader，使用InputStreamReader类
+            BufferedReader is = new BufferedReader(new
+                    InputStreamReader(System.in));
+            String inputLine;
+            for (int i = 0; i <2 ; i++) {
+                if((inputLine = is.readLine()) != null) {
+                    System.out.println(inputLine);
+                    int val = Integer.parseInt(inputLine);  // 如果inputLine为整数
+                }
+            }
+            is.close();
+        }
+
+        public static void test2() throws IOException {
+            // 向标准输出设备写数据
+            //1. 用System.out的println()打印数据
+            //2. 用PrintWriter打印
+            PrintWriter pw = new PrintWriter(System.out);
+            pw.println("The answer is name at this time.");
+            pw.flush();
+            System.out.println("..");
+            // Formatter类
+            //格式化打印内容
+            Formatter fmtr = new Formatter();
+            fmtr.format("%1$04d - the year of %2$f", 1951, Math.PI);
+            System.out.println(fmtr);
+            //或者System.out.printf();或者System.out.format();
+            // 原始扫描
+            InputStream resourceAsStream = GeneralUtils.class.getResourceAsStream("msconfig.properties");
+            System.out.println(resourceAsStream);
+            BufferedReader is = new BufferedReader(new
+                    InputStreamReader(resourceAsStream));
+//            String inputLine;
+//            for (int i = 0; i <2 ; i++) {
+//                if((inputLine = is.readLine()) != null) {
+//                    System.out.println(inputLine);
+//                }
+//            }
+            doFile(is);
+            // Scanner扫描
+           // Scanner可以读取File, InputStream, String, Readable
+            try {
+                Scanner scan = new Scanner(new File("d:/a.txt"));
+                while (scan.hasNext()) {
+                    String s = scan.next();
+                    System.out.println(s);
+                }
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            }
+            // 读取文件
+            BufferedReader is2 = new BufferedReader(new FileReader("d:/a.txt"));
+            BufferedOutputStream bos = new BufferedOutputStream(new FileOutputStream("d:/bytes.bat"));
+            is2.close();
+            bos.close();
+
+            // 复制文件
+            BufferedInputStream is3 = new BufferedInputStream(new FileInputStream("d:/a.txt"));
+            BufferedOutputStream os = new BufferedOutputStream(new FileOutputStream("d:/newFile.txt"));
+            int b;
+            while ((b = is3.read()) != -1) {
+                os.write(b);
+            }
+            is3.close();
+            os.close();
+
+            // 文件读入字符串
+            StringBuffer sb = new StringBuffer();
+            char[] b5 = new char[8192];
+            b5[0] = 'a';
+            int n = 1;
+            // 读一个块，如果有字符，加入缓冲区
+            while ((n = is.read(b5)) > 0) {
+                sb.append(b5, 0, n);
+                System.out.println("1" + sb.toString());
+            }
+            System.out.println("2" + sb.toString());
 
 
+        }
+        }
+        // 原始扫描
+        static void doFile(Reader is) throws IOException {
+            int c;
+            while ((c = is.read()) != -1) {
+                System.out.print((char)c);
+            }
         }
     }
 
@@ -361,262 +456,6 @@ public class GeneralUtils {
 
 
 /*
-
-
-//7. 结构化数据
-// 数组拷贝
-        System.arrayCopy(oldArray, 0, newArray, 0, oldArray.length);
-
-        // ArrayList
-        add(Object o)  // 在末尾添加给定元素
-
-        add( int i, Object o)  // 在指定位置插入给定元素
-
-        clear()  // 从集合中删除全部元素
-
-        Contains(Object o)  // 如果Vector包含给定元素，返回真值
-
-        get( int i)  // 返回指定位置的对象句柄
-
-        indexOf(Object o)  // 如果找到给定对象，则返回其索引值；否则，返回-1
-
-        remove(Object o)  // 根据引用删除对象
-
-        remove( int i)  // 根据位置删除对象
-
-        toArray()  // 返回包含集合对象的数组
-
-        // Iterator
-        List list = new ArrayList();
-        Iterator it = list.iterator();
-        while (it.hasNext())
-            Object o = it.next();
-
-        // 链表
-        LinkedList list = new LinkedList();
-        ListIterator it = list.listIterator();
-        while (it.hasNext())
-            Object o = it.next();
-
-        // HashMap
-        HashMap<String, String> hm = new HashMap<String, String>();
-        hm.get(key);  // 通过key得到value
-        hm.put("No1", "Hexinyu");
-        hm.put("No2", "Sean");
-        // 方法1: 获取全部键值
-        Iterator<String> it = hm.values().iterator();
-        while (it.hasNext())
-
-        {
-            String myKey = it.next();
-            String myValue = hm.get(myKey);
-        }
-// 方法2: 获取全部键值
-        for (
-                String key : hm.keySet())
-
-        {
-            String myKey = key;
-            String myValue = hm.get(myKey);
-        }
-
-        // Preferences - 与系统相关的用户设置，类似名-值对
-        Preferences prefs = Preferences.userNodeForPackage(ArrayDemo.class);
-        String text = prefs.get("textFontName", "lucida-bright");
-        String display = prefs.get("displayFontName", "lucida-balckletter");
-        System.out.println(text);
-        System.out.println(display);
-// 用户设置了新值，存储回去
-        prefs.put("textFontName", "new-bright");
-        prefs.put("displayFontName", "new-balckletter");
-
-        // Properties - 类似名-值对，key和value之间，可以用"="，":"或空格分隔，用"#"和"!"注释
-        InputStream in = MediationServer.class.getClassLoader().getResourceAsStream("msconfig.properties");
-        Properties prop = new Properties();
-        prop.load(in);
-        in.close();
-        prop.setProperty(key, value);
-        prop.getProperty(key);
-
-// 排序
-        1. 数组：Arrays.sort(strings);
-        2. List：Collections.sort(list);
-        3. 自定义类：
-
-        class SubComp implements Comparator
-    然后使用Arrays.
-
-        sort(strings, new SubComp())
-
-// 两个接口
-        1. java.lang.Comparable:提供对象的自然排序，内置于类中
-
-        int compareTo (Object o);
-
-    boolean equals(Object o2);
-2.java.util.Comparator:提供特定的比较方法
-
-    int compare(Object o1, Object o2)
-
-    // 避免重复排序，可以使用TreeMap
-    TreeMap sorted = new TreeMap(unsortedHashMap);
-
-    // 排除重复元素
-    Hashset hs -new
-
-    HashSet();
-
-    // 搜索对象
-    binarySearch():快速查询 -Arrays,
-
-    Collections
-    contains():线型搜索 -ArrayList,HashSet,Hashtable,linkedList,Properties,
-
-    Vector
-    containsKey():检查集合对象是否包含给定 -HashMap,Hashtable,Properties,
-
-    TreeMap
-    containsValue():
-
-    主键(或给定值) -HashMap,Hashtable,Properties,
-
-    TreeMap
-    indexOf():若找到给定对象，返回其位置 -ArrayList,linkedList,List,Stack,
-
-    Vector
-    search():线型搜素 -
-
-    Stack
-
-// 集合转数组
-    toArray();
-
-// 集合总结
-    Collection:Set -HashSet,TreeSet
-    Collection:List -ArrayList,Vector,LinkedList
-    Map:HashMap,HashTable,TreeMap
-
-
-    //8. 泛型与foreach
-// 泛型
-    List<String> myList = new ArrayList<String>();
-
-// foreach
-for(
-    String s :myList)
-
-    {
-        System.out.println(s);
-    }
-
-
-    //9. 面向对象
-// toString()格式化
-    public class ToStringWith {
-        int x, y;
-
-        public ToStringWith(int anX, int aY) {
-            x = anX;
-            y = aY;
-        }
-
-        public String toString() {
-            return "ToStringWith[" + x + "," + y + "]";
-        }
-
-        public static void main(String[] args) {
-            System.out.println(new ToStringWith(43, 78));
-        }
-    }
-
-    // 覆盖equals方法
-    public boolean equals(Object o) {
-        if (o == this)  // 优化
-            return true;
-        if (!(o instanceof EqualsDemo))  // 可投射到这个类
-            return false;
-        EqualsDemo other = (EqualsDemo) o;  // 类型转换
-        if (int1 != other.int1)  // 按字段比较
-            return false;
-        if (!obj1.equals(other.obj1))
-            return false;
-        return true;
-    }
-
-    // 覆盖hashcode方法
-    private volatile int hashCode = 0;  //延迟初始化
-
-    public int hashCode() {
-        if (hashCode == 0) {
-            int result = 17;
-            result = 37 * result + areaCode;
-        }
-        return hashCode;
-    }
-
-// Clone方法
-    要克隆对象，必须先做两步:1.
-
-    覆盖对象的clone()方法; 2.实现空的Cloneable接口
-
-    public class Clone1 implements Cloneable {
-        public Object clone() {
-            return super.clone();
-        }
-    }
-
-    // Finalize方法
-    Object f = new Object() {
-        public void finalize() {
-            System.out.println("Running finalize()");
-        }
-    };
-Runtime.getRuntime().
-
-    addShutdownHook(new Thread() {
-        public void run () {
-            System.out.println("Running Shutdown Hook");
-        }
-    });
-在调用System.exit(0);的时候，这两个方法将被执行
-
-    // Singleton模式
-// 实现1
-    public class MySingleton()
-
-    {
-        public static final MySingleton INSTANCE = new MySingleton();
-    private MySingleton() {
-    }
-    }
-
-    // 实现2
-    public class MySingleton()
-
-    {
-        public static MySingleton instance = new MySingleton();
-    private MySingleton() {
-    }
-
-    public static MySingleton getInstance() {
-        return instance;
-    }
-}
-
-// 自定义异常
-Exception:编译时检查
-        RuntimeException:运行时检查
-
-public class MyException extends RuntimeException {
-    public MyException() {
-        super();
-    }
-
-    public MyException(String msg) {
-        super(msg);
-    }
-}
-
 
 //10. 输入和输出
 // Stream, Reader, Writer
@@ -757,4 +596,3 @@ Stream:处理字节流
         System.out.println("Read: "+line);
         }
         }*/
-}

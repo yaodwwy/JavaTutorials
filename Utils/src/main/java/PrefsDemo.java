@@ -23,23 +23,24 @@ public class PrefsDemo {
         String keys[] = {"sunway", "copyright", "author"};
         String values[] = {"sunway technology company", "copyright 2002", "turbochen@163.com"};
 
-        Preferences prefsdemo = Preferences.userNodeForPackage(PrefsDemo.class).node("/im");
-//        Preferences prefsdemo = Preferences.userRoot().node("/com/sunway/spc");
+//        Preferences prefsdemo = Preferences.userNodeForPackage(PrefsDemo.class).node("/im");
+        Preferences prefsdemo = Preferences.userRoot().parent().parent();
 
         for (int i = 0; i < keys.length; i++) {
             prefsdemo.put(keys[i], values[i]);
         }
-        try {
+        prefsdemo.flush();
+        /*try {
             FileOutputStream fos = new FileOutputStream("/prefsdemo.xml");
             prefsdemo.exportNode(fos);
         } catch (Exception e) {
             System.err.println("Cannot export nodes: " + e);
-        }
-        Preferences.userRoot().node("/im").remove("sunway");
-        Preferences.userRoot().node("/com").removeNode();
-        Preferences.userRoot().node("/im").removeNode();
-        Preferences.userRoot().node("/<unnamed>").removeNode();
-        Preferences.userRoot().node("/user").removeNode();
+        }*/
+//        Preferences.userRoot().node("/im").remove("sunway");
+//        Preferences.userRoot().node("/com").removeNode();
+//        Preferences.userRoot().node("/im").removeNode();
+//        Preferences.userRoot().node("/<unnamed>").removeNode();
+//        Preferences.userRoot().node("/user").removeNode();
 
     }
 }
