@@ -6,8 +6,6 @@ import org.jboss.shrinkwrap.api.spec.JavaArchive;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 
-import static org.junit.Assert.*;
-
 @RunWith(Arquillian.class)
 public class FilesDemoTest {
     @Test
@@ -29,7 +27,7 @@ public class FilesDemoTest {
     @Deployment
     public static JavaArchive createDeployment() {
         return ShrinkWrap.create(JavaArchive.class)
-                .addClass(FilesDemo.class)
+                .addClass(FilesDemoTest.class)
                 .addAsManifestResource(EmptyAsset.INSTANCE, "beans.xml");
     }
 

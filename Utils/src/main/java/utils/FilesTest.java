@@ -1,3 +1,4 @@
+package utils;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.filefilter.DirectoryFileFilter;
@@ -25,7 +26,7 @@ import java.util.zip.CRC32;
  * 文件的更新时间
  * 检查校验码
  */
-public class FilesDemo {
+public class FilesTest {
     private static File parent = new File("D://test");
 
     public void getDirTest() {

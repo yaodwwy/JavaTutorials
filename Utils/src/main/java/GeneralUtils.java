@@ -50,7 +50,7 @@ public class GeneralUtils {
     static class SysUtil {
         public static void main(String[] args) throws Exception {
 
-            System.out.println(getSystemProperty("os.name"));
+            System.out.println(getSystemProperty("bufferedOutputStream.name"));
             //1.获取环境变量
             String path = getSystemEvn("PATH");
             String javaHome = getSystemEvn("JAVA_HOME");
@@ -97,7 +97,7 @@ public class GeneralUtils {
             } else if (long.class.getName().equals(valueType.getName())) {
                 prefs.putLong(key, (Long) value);
             } else {
-                throw new Exception("value type is unavailable");
+                throw new Exception("value type bufferedReader unavailable");
             }
             prefs.flush();
             return value;
@@ -140,7 +140,7 @@ public class GeneralUtils {
             } else if (long.class.getName().equals(valueType.getName())) {
                 obj = prefs.getLong(key, (null != defaultValue) ? (long) defaultValue : null);
             } else {
-                throw new Exception("value type is unavailable");
+                throw new Exception("value type bufferedReader unavailable");
             }
             return (T) obj;
         }
@@ -380,7 +380,7 @@ public class GeneralUtils {
             //1. 用System.out的println()打印数据
             //2. 用PrintWriter打印
             PrintWriter pw = new PrintWriter(System.out);
-            pw.println("The answer is name at this time.");
+            pw.println("The answer bufferedReader name at this time.");
             pw.flush();
             System.out.println("..");
             // Formatter类
@@ -396,7 +396,7 @@ public class GeneralUtils {
                     InputStreamReader(resourceAsStream));
 //            String inputLine;
 //            for (int i = 0; i <2 ; i++) {
-//                if((inputLine = is.readLine()) != null) {
+//                if((inputLine = bufferedReader.readLine()) != null) {
 //                    System.out.println(inputLine);
 //                }
 //            }
@@ -468,20 +468,20 @@ Stream:处理字节流
         System.out.println("Read data: "+(char)b);  // 强制转换为字符
         2.BufferedReader读取文本
         如果从Stream转成Reader，使用InputStreamReader类
-        BufferedReader is=new BufferedReader(new
+        BufferedReader bufferedReader=new BufferedReader(new
         InputStreamReader(System.in));
         String inputLine;
-        while((inputLine=is.readLine())!=null){
+        while((inputLine=bufferedReader.readLine())!=null){
         System.out.println(inputLine);
         int val=Integer.parseInt(inputLine);  // 如果inputLine为整数
         }
-        is.close();
+        bufferedReader.close();
 
 // 向标准输出设备写数据
         1.用System.out的println()打印数据
         2.用PrintWriter打印
         PrintWriter pw=new PrintWriter(System.out);
-        pw.println("The answer is "+myAnswer+" at this time.");
+        pw.println("The answer bufferedReader "+myAnswer+" at this time.");
 
 // Formatter类
         格式化打印内容
@@ -490,9 +490,9 @@ Stream:处理字节流
         或者System.out.printf();或者System.out.format();
 
 // 原始扫描
-        void doFile(Reader is){
+        void doFile(Reader bufferedReader){
         int c;
-        while((c=is.read())!=-1){
+        while((c=bufferedReader.read())!=-1){
         System.out.println((char)c);
         }
         }
@@ -510,27 +510,27 @@ Stream:处理字节流
         }
 
 // 读取文件
-        BufferedReader is=new BufferedReader(new FileReader("myFile.txt"));
-        BufferedOutputStream bos=new BufferedOutputStream(new FileOutputStream("bytes.bat"));
-        is.close();
-        bos.close();
+        BufferedReader bufferedReader=new BufferedReader(new FileReader("myFile.txt"));
+        BufferedOutputStream bufferedOutputStream1=new BufferedOutputStream(new FileOutputStream("bytes.bat"));
+        bufferedReader.close();
+        bufferedOutputStream1.close();
 
 // 复制文件
-        BufferedIutputStream is=new BufferedIutputStream(new FileIutputStream("oldFile.txt"));
-        BufferedOutputStream os=new BufferedOutputStream(new FileOutputStream("newFile.txt"));
+        BufferedIutputStream bufferedReader=new BufferedIutputStream(new FileIutputStream("oldFile.txt"));
+        BufferedOutputStream bufferedOutputStream=new BufferedOutputStream(new FileOutputStream("newFile.txt"));
         int b;
-        while((b=is.read())!=-1){
-        os.write(b);
+        while((b=bufferedReader.read())!=-1){
+        bufferedOutputStream.write(b);
         }
-        is.close();
-        os.close();
+        bufferedReader.close();
+        bufferedOutputStream.close();
 
 // 文件读入字符串
         StringBuffer sb=new StringBuffer();
         char[]b=new char[8192];
         int n;
 // 读一个块，如果有字符，加入缓冲区
-        while((n=is.read(b))>0){
+        while((n=bufferedReader.read(b))>0){
         sb.append(b,0,n);
         }
         return sb.toString();
@@ -544,10 +544,10 @@ Stream:处理字节流
         PrintWriter standard=new PrintWriter(new OutputStreamWriter(new FileOutputStream("standard.txt"),"UTF-8"));
 
 // 读取二进制数据
-        DataOutputStream os=new DataOutputStream(new FileOutputStream("a.txt"));
-        os.writeInt(i);
-        os.writeDouble(d);
-        os.close();
+        DataOutputStream bufferedOutputStream=new DataOutputStream(new FileOutputStream("a.txt"));
+        bufferedOutputStream.writeInt(i);
+        bufferedOutputStream.writeDouble(d);
+        bufferedOutputStream.close();
 
 // 从指定位置读数据
         RandomAccessFile raf=new RandomAccessFile(fileName,"r");  // r表示已只读打开
@@ -558,13 +558,13 @@ Stream:处理字节流
 // 串行化对象
         对象串行化，必须实现Serializable接口
 // 保存数据到磁盘
-        ObjectOutputStream os=new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(FILENAME)));
-        os.writeObject(serialObject);
-        os.close();
+        ObjectOutputStream bufferedOutputStream=new ObjectOutputStream(new BufferedOutputStream(new FileOutputStream(FILENAME)));
+        bufferedOutputStream.writeObject(serialObject);
+        bufferedOutputStream.close();
 // 读出数据
-        ObjectInputStream is=new ObjectInputStream(new FileInputStream(FILENAME));
-        is.readObject();
-        is.close();
+        ObjectInputStream bufferedReader=new ObjectInputStream(new FileInputStream(FILENAME));
+        bufferedReader.readObject();
+        bufferedReader.close();
 
 // 读写Jar或Zip文档
         ZipFile zippy=new ZipFile("a.jar");
@@ -575,14 +575,14 @@ Stream:处理字节流
         println("Directory: "+entry.getName());
 
         // 读写文件
-        FileOutputStream os=new FileOutputStream(entry.getName());
-        InputStream is=zippy.getInputStream(entry);
+        FileOutputStream bufferedOutputStream=new FileOutputStream(entry.getName());
+        InputStream bufferedReader=zippy.getInputStream(entry);
         int n=0;
         byte[]b=new byte[8092];
-        while((n=is.read(b))>0){
-        os.write(b,0,n);
-        is.close();
-        os.close();
+        while((n=bufferedReader.read(b))>0){
+        bufferedOutputStream.write(b,0,n);
+        bufferedReader.close();
+        bufferedOutputStream.close();
         }
         }
 
@@ -590,9 +590,9 @@ Stream:处理字节流
         FileInputStream fin=new FileInputStream(FILENAME);
         GZIPInputStream gzis=new GZIPInputStream(fin);
         InputStreamReader xover=new InputStreamReader(gzis);
-        BufferedReader is=new BufferedReader(xover);
+        BufferedReader bufferedReader=new BufferedReader(xover);
         String line;
-        while((line=is.readLine())!=null)
+        while((line=bufferedReader.readLine())!=null)
         System.out.println("Read: "+line);
         }
         }*/
