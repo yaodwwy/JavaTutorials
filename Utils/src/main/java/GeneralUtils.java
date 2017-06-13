@@ -15,11 +15,17 @@ import java.util.regex.Pattern;
 
 @SuppressWarnings("all")
 public class GeneralUtils {
+
     private static final Logger logger = Logger.getLogger("GeneralUtils");
 
     static class SysUtil {
         public static void main(String[] args) throws Exception {
-
+            InputStream inputStream = new InputStream() {
+                @Override
+                public int read() throws IOException {
+                    return 0;
+                }
+            };
             System.out.println(getSystemProperty("bufferedOutputStream.name"));
             //1.获取环境变量
             String path = getSystemEvn("PATH");

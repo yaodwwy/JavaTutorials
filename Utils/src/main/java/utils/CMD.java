@@ -144,7 +144,7 @@ import java.io.OutputStream;
  由于它不是在java程序中执行的而是在操纵系统上执行的
  你可以这样Runtime.getRuntime.exec("cmd /c start javac ");
  */
-public class MainTest {
+public class CMD {
     public static void main(String[] args) throws Exception {
         Runtime runtime=Runtime.getRuntime();
         try{
