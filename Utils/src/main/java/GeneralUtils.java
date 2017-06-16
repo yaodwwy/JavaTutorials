@@ -21,12 +21,12 @@ public class GeneralUtils {
         public static void main(String[] args) throws Exception {
 
             System.out.println(getSystemProperty("bufferedOutputStream.name"));
-            //1.获取环境变量
+            //获取环境变量
             String path = getSystemEvn("PATH");
             String javaHome = getSystemEvn("JAVA_HOME");
             //System.out.println(path + " \n " + javaHome);
 
-            //2.获取系统属性
+            //获取系统属性
             String systemProperty = getSystemProperty("java.specification.version");
             System.out.println(systemProperty);
             Properties systemProperties = getSystemProperty();
