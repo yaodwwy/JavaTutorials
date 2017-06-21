@@ -1,0 +1,49 @@
+//以一个基准目录创建一个文件树
+FileTree tree = fileTree(dir: 'src/main')
+
+// 添加包含和排除规则
+tree.include '**/*.java'
+tree.exclude '**/Abstract*'
+
+// 使用路径创建一个树
+tree = fileTree('src').include('**/*.java')
+
+// 使用闭合创建一个数
+tree = fileTree('src') {
+    include '**/*.java'
+}
+
+// 使用map创建一个树
+tree = fileTree(dir: 'src', include: '**/*.java')
+tree = fileTree(dir: 'src', includes: ['**/*.java', '**/*.xml'])
+tree = fileTree(dir: 'src', include: '**/*.java', exclude: '**/*test*/**')
+
+// 遍历文件树
+tree.each {File file ->
+    println file
+}
+
+// 过滤文件树
+FileTree filtered = tree.matching {
+    include 'org/gradle/api/**'
+}
+
+// 合并文件树A
+FileTree sum = tree + fileTree(dir: 'src/test')
+
+// 访问文件数的元素
+tree.visit {element ->
+    println "$element.relativePath => $element.file"
+}
+
+// 使用路径创建一个 ZIP 文件
+FileTree zip = zipTree('someFile.zip')
+
+// 使用路径创建一个 TAR 文件
+FileTree tar = tarTree('someFile.tar')
+
+//tar tree 能够根据文件扩展名得到压缩方式,如果你想明确的指定压缩方式,你可以使用下面方法
+FileTree someTar = tarTree(resources.gzip('someTar.ext'))
+
+print someTar.asFileTree
+print "---------------------------------->>"

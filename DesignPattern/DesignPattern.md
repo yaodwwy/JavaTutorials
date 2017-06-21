@@ -20,3 +20,10 @@
     - 单例：
         SingletonPattern.java
         
+    - 适配器：
+        AdapterPattern.java
+        
+    - 桥接：
+        BridgePattern.java
+        
+        

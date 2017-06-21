@@ -5,13 +5,13 @@
  * @Link https://en.wikipedia.org/wiki/Singleton_pattern
  */
 
-public class SingletonPatternMain {
-    private static final SingletonPatternMain INSTANCE = new SingletonPatternMain();
+public class SingletonPattern {
+    private static final SingletonPattern INSTANCE = new SingletonPattern();
 
-    private SingletonPatternMain() {
+    private SingletonPattern() {
     }
 
-    public static SingletonPatternMain getInstance() {
+    public static SingletonPattern getInstance() {
         return INSTANCE;
     }
 }

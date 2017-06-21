@@ -1,7 +1,9 @@
 //gradle -q -b Gradle/War/myBuildFile.gradle hello 的输出
 //使用 -b 参数选择其他目录的构建文件
-task hello << {
-    println "using build file '$buildFile.name' in '$buildFile.parentFile.name'."
+task hello {
+    doLast {
+        println "using build file '$buildFile.name' in '$buildFile.parentFile.name'."
+    }
     //输出 using build file 'myBuildFile.gradle' in 'War'.
 
 }

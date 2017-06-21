@@ -1,5 +1,5 @@
 apply plugin: 'war'
-apply plugin: 'jetty'
+//apply plugin: 'jetty'
 description = 'War包插件测试'
 task hello {
     doLast {
