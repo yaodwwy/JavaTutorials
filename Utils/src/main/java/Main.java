@@ -1,14 +1,14 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 /**
  * Created by Adam_Yao on 2017/6/20.
  */
 public class Main {
+
     public static void main(String[] args) {
-        Integer size = 10;
+        final double d = 019.5;
+        final double d2 = 1e1;
+        System.out.println(23 % -4);
+
+        /*Integer size = 10;
         System.out.print(size + "道门 :");
         Map<Integer, String> nums = new HashMap<>();
         List<Integer> list = new ArrayList<>();
@@ -55,7 +55,7 @@ public class Main {
                 System.out.println(nums);
                 count++;
             }
-        }
+        }*/
 
 
     }

@@ -33,3 +33,5 @@ include 'Thymeleaf'
 include 'WebService'*/
 include 'DesignPattern'
 include 'Utils'
+include 'GUI'
+
