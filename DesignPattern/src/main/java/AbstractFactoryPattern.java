@@ -40,7 +40,7 @@ class OSXButton implements IButton {
     }
 }
 
-public class AbstractFactoryPatternMain {
+public class AbstractFactoryPattern {
 
     public static void main(String[] args) throws Exception {
         IGUIFactory factory = null;

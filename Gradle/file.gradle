@@ -1,0 +1,198 @@
+// 使用一个相对路径
+FileCollection collection = files('src/file1.txt',
+        new File('src/file2.txt'),
+        ['src/file3.txt', 'src/file4.txt'])
+
+File configFile = file('knight.xml')
+
+// 使用一个绝对路径
+
+configFile = file(configFile.absolutePath)
+
+// 使用一个项目路径的文件对象
+
+configFile = file(new File('knight.xml'))
+
+// 对文件集合进行迭代
+collection.each { File file ->
+    println file.name
+    println file.absolutePath
+}
+
+// 转换文件集合为其他类型
+Set set = collection.files
+Set set2 = collection as Set
+List list = collection as List
+String path = collection.asPath
+//File file = collection.singleFile
+//File file2 = collection as File
+
+// 增加和减少文件集合
+def union = collection + files('knight.xml')
+def different = collection - files('README.MD')
+
+task listTest {
+    doLast {
+        File srcDir
+
+        // 使用闭合创建一个文件集合
+        collection = files { srcDir.listFiles() }
+
+        srcDir = file('src')
+        println "Contents of $srcDir.name"
+        collection.collect { relativePath(it) }.sort().each { println it }
+
+        srcDir = file('src2')
+        println "Contents of $srcDir.name"
+        collection.collect { relativePath(it) }.sort().each { println it }
+    }
+}
+
+/*//指定一组输入文件
+//使用一个 File 对象设置源目录
+compile {
+    source = file('src/main/java')
+}
+
+//使用一个字符路径设置源目录
+compile {
+    source = 'src/main/java'
+}
+
+// 使用一个集合设置多个源目录
+compile {
+    source = ['src/main/java', '../shared/java']
+}
+
+// 使用 FileCollection 或者 FileTree 设置源目录
+compile {
+    source = fileTree(dir: 'src/main/java').matching { include 'org/gradle/api/' }
+}
+
+// 使用一个闭合设置源目录
+compile {
+    source = {
+        // Use the contents of each zip file in the src dir
+        file('src').listFiles().findAll { it.name.endsWith('.zip') }.collect { zipTree(it) }
+    }
+}
+compile {
+    // 使用字符路径添加源目录
+    source 'src/main/java', 'src/main/groovy'
+
+    // 使用 File 对象添加源目录
+    source file('../shared/java')
+
+    // 使用闭合添加源目录
+    source { file('src/test/').listFiles() }
+}*/
+//使用复制任务复制文件
+task copyTask(type: Copy) {
+    from 'src/main/webapp'
+    into 'build/explodedWar'
+}
+
+task anotherCopyTask(type: Copy) {
+    // 复制 src/main/webapp 目录下的所有文件
+    //from 'src/main/webapp'
+    // 复制一个单独文件
+    //from 'src/staging/index.html'
+    // 复制一个任务输出的文件
+    //from copyTask
+    // 显式使用任务的 outputs 属性复制任务的输出文件
+    //from copyTaskWithPatterns.outputs
+    // 复制一个 ZIP 压缩文件的内容
+    from zipTree('src/main/assets.zip')
+    // 最后指定目标目录
+    into { getDestDir() }
+}
+//选择要复制文件
+task copyTaskWithPatterns(type: Copy) {
+    from 'src/main/webapp'
+    into 'build/explodedWar'
+    include '**/*.html'
+    include '**/*.jsp'
+    exclude { details -> details.file.name.endsWith('.html') &&
+            details.file.text.contains('staging') }
+}
+//不使用最新检查方式下用 copy() 方法复制文件
+task copyMethod {doLast {
+    copy {
+        from 'src/main/webapp'
+        into 'build/explodedWar'
+        include '**/*.html'
+        include '**/*.jsp'
+    }}
+}
+/// 使用最新的检查方式下用 copy() 方法复制文件
+task copyMethodWithExplicitDependencies{
+
+    // 对输入做最新检查,添加 copyTask 作为依赖
+    inputs.file copyTask
+    outputs.dir 'some-dir' //对输出做最新检查
+    doLast{
+        copy {
+            // 复制 copyTask 的输出
+            from copyTask
+            into 'some-dir'
+        }
+    }
+}
+//在复制时重命名文件
+task rename(type: Copy) {
+    from 'src/main/webapp'
+    into 'build/explodedWar'
+    // 使用一个闭合映射文件名
+    rename { String fileName ->
+        fileName.replace('-staging-', '')
+    }
+    // 使用正则表达式映射文件名
+    rename '(.+)-staging-(.+)', '$1$2'
+    rename(/(.+)-staging-(.+)/, '$1$2')
+}
+
+//在复制时过滤文件
+import org.apache.tools.ant.filters.FixCrLfFilter
+import org.apache.tools.ant.filters.ReplaceTokens
+
+task filter(type: Copy) {
+    from 'src/main/webapp'
+    into 'build/explodedWar'
+    // 在文件中替代属性标记
+    expand(copyright: '2009', version: '2.3.1')
+    expand(project.properties)
+    // 使用 Ant 提供的过滤器
+    filter(FixCrLfFilter)
+    filter(ReplaceTokens, tokens: [copyright: '2009', version: '2.3.1'])
+    // 用一个闭合来过滤每一行
+    filter { String line ->
+        "[$line]"
+    }
+    // 使用闭合来删除行
+    filter { String line ->
+        line.startsWith('-') ? null : line
+    }
+}
+
+//使用同步任务
+//使用 Sync 任务复制依赖关系
+task libs(type: Sync) {
+    from configurations.runtime
+    into "$buildDir/libs"
+}
+
+apply plugin: 'java'
+
+task zip(type: Zip) {
+    from '/'
+    //配置归档任务- 附加其他后缀
+    baseName = 'customName'
+    appendix = 'wrapper'
+    classifier = 'src'
+    into('libs') {
+        from configurations.runtime
+    }
+}
+
+println zip.archiveName
+

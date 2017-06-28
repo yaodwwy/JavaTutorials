@@ -65,7 +65,7 @@ class Ellipse implements Graphic {
 /**
  * Client
  */
-public class CompositePatternMain {
+public class CompositePattern {
 
     public static void main(String[] args) {
 

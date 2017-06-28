@@ -44,12 +44,12 @@ task intro(dependsOn: hello) {
 
 //在加入一个依赖之前, 这个依赖的任务不需要提前定义
 //Lazy dependsOn - 其他的任务还没有存在
-task taskX(dependsOn: 'taskY') {
+task taskX1(dependsOn: 'taskY') {
     doLast {
         println 'taskX'
     }
 }
-task taskY {
+task taskY1 {
     doLast {
         println 'taskY'
     }
@@ -59,7 +59,7 @@ task taskY {
 4.times { counter ->
     task "task$counter" {
         doLast {
-        println "I'm task number $counter"
+            println "I'm task number $counter"
         }
     }
 }

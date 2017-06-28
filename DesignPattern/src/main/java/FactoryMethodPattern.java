@@ -55,7 +55,7 @@ class OrdinaryMazeGameFactory extends MazeGameFactory {
     }
 }
 
-public class FactoryMethodPatternMain{
+public class FactoryMethodPattern {
     public static void main(String[] args) throws Exception {
         MazeGameFactory ordinaryGame = new OrdinaryMazeGameFactory();
         Room ordinaryRoom = ordinaryGame.makeRoom();

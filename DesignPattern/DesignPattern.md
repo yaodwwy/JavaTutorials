@@ -3,16 +3,27 @@
 已完成学习测试：
 
     - 抽象工厂：
-        AbstractFactoryPatternMain.java
+        AbstractFactoryPattern.java
         
     - 建造者：
-        BuilderPatternMain.java
+        BuilderPattern.java
         
     - 组合：
-        CompositePatternMain.java
+        CompositePattern.java
         
     - 简单工厂：
-        FactoryMethodPatternMain.java
+        FactoryMethodPattern.java
+        
+    - 原型：
+        PrototypePattern.java
         
     - 单例：
-        SingletonPatternMain.java
+        SingletonPattern.java
+        
+    - 适配器：
+        AdapterPattern.java
+        
+    - 桥接：
+        BridgePattern.java
+        
+        
