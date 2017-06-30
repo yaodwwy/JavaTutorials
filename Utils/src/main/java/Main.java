@@ -2,11 +2,17 @@
  * Created by Adam_Yao on 2017/6/20.
  */
 public class Main {
-
+    static int digit(long n){
+        int c = 0;
+        do {
+            c++;
+            n/=10;
+            System.out.println(n);
+        }while (n!=0);
+        return c;
+    }
     public static void main(String[] args) {
-        final double d = 019.5;
-        final double d2 = 1e1;
-        System.out.println(23 % -4);
+        System.out.println(digit(1234));
 
         /*Integer size = 10;
         System.out.print(size + "道门 :");

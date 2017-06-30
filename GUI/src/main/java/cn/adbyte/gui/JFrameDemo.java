@@ -38,6 +38,9 @@ class JFrameDemo2 extends JFrame{
     static JFrameDemo2 win1;
     static JFrameDemo2 win2;
     public static void main(String[] args) {
+        final int i = 007;
+        final int j = 0x3abb;
+        final int m = 5000;
         JButton jButton1 = new JButton("按钮1");
         win1 = new JFrameDemo2("窗口标题1", jButton1, Color.gray, 300, 400);
 
