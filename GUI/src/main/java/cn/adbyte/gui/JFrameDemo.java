@@ -9,24 +9,42 @@ import java.awt.event.ActionListener;
  * Created by Adam on 2017/6/28.
  */
 public class JFrameDemo extends JFrame{
-    public JFrameDemo(String title) throws HeadlessException {
+    public JFrameDemo(String title,LayoutManager layout,int w,int h) throws HeadlessException {
         super(title);
-    }
-
-    public static void main(String[] args) {
-        JFrameDemo jFrameDemo = new JFrameDemo("我的第一个窗口");
-        jFrameDemo.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        jFrameDemo.setSize(350,280);
+        setSize(w,h);
+        setLayout(layout);
 
         //---------------------------设置窗口居中----------------------------------------------------------
-        int windowWidth = jFrameDemo.getWidth();               //获得窗口宽
-        int windowHeight = jFrameDemo.getHeight();             //获得窗口高
+        int windowWidth = getWidth();               //获得窗口宽
+        int windowHeight = getHeight();             //获得窗口高
         Toolkit kit = Toolkit.getDefaultToolkit();             //定义工具包
         Dimension screenSize = kit.getScreenSize();            //获取屏幕的尺寸
         int screenWidth = screenSize.width;                    //获取屏幕的宽
         int screenHeight = screenSize.height;                  //获取屏幕的高
-        jFrameDemo.setLocation(screenWidth/2-windowWidth/2, screenHeight/2-windowHeight/2);//设置窗口居中显示
+        setLocation(screenWidth/2-windowWidth/2, screenHeight/2-windowHeight/2);//设置窗口居中显示
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
+    }
+
+    public JFrameDemo(String title,LayoutManager layout) throws HeadlessException {
+        super(title);
+        setSize(640,480);
+        setLayout(layout);
+
+        //---------------------------设置窗口居中----------------------------------------------------------
+        int windowWidth = getWidth();               //获得窗口宽
+        int windowHeight = getHeight();             //获得窗口高
+        Toolkit kit = Toolkit.getDefaultToolkit();             //定义工具包
+        Dimension screenSize = kit.getScreenSize();            //获取屏幕的尺寸
+        int screenWidth = screenSize.width;                    //获取屏幕的宽
+        int screenHeight = screenSize.height;                  //获取屏幕的高
+        setLocation(screenWidth/2-windowWidth/2, screenHeight/2-windowHeight/2);//设置窗口居中显示
+        setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+    }
+
+    public static void main(String[] args) {
+        JFrameDemo jFrameDemo = new JFrameDemo("我的第一个窗口",new FlowLayout(),350,280);
         JButton jButton = new JButton("点击");
         jFrameDemo.getContentPane().add(jButton);
         jFrameDemo.setVisible(true);
@@ -61,14 +79,14 @@ class JFrameDemo2 extends JFrame{
 
 }
 
-class JFrameDemo3 extends JFrame implements ActionListener{
+class JButtonListenerDemo3 extends JFrame implements ActionListener{
 
     public static void main(String[] args) {
-        JFrameDemo3 jFrameDemo3 = new JFrameDemo3("按钮事件", 250, 200);
-        jFrameDemo3.setVisible(true);
+        JButtonListenerDemo3 jButtonListenerDemo3 = new JButtonListenerDemo3("按钮事件", 250, 200);
+        jButtonListenerDemo3.setVisible(true);
     }
 
-    public JFrameDemo3(String title,int w,int h) throws HeadlessException {
+    public JButtonListenerDemo3(String title, int w, int h) throws HeadlessException {
         super(title);
         setSize(w,h);
         Container contentPane = getContentPane();

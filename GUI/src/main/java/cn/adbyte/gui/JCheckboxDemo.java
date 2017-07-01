@@ -1,6 +1,7 @@
 package cn.adbyte.gui;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
 
@@ -9,8 +10,7 @@ import java.awt.event.ItemListener;
  */
 public class JCheckboxDemo {
     public static void main(String[] args) {
-        JFrameDemo jCheckBoxDemo = new JFrameDemo("JCheckBoxDemo");
-        jCheckBoxDemo.setSize(400,300);
+        JFrameDemo jCheckBoxDemo = new JFrameDemo("JCheckBoxDemo",new FlowLayout(),400,300);
         MyPanel myPanel = new MyPanel();
         jCheckBoxDemo.add(myPanel);
         jCheckBoxDemo.setVisible(true);
