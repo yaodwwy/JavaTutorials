@@ -34,7 +34,7 @@ public class RemoteEJBClient {
         // needed for a login module that requires the password in plaintext
         jndiProperties.put(Context.PROVIDER_URL, "remote://10.0.3.33:8080");
         jndiProperties.put(Context.SECURITY_PRINCIPAL, "admin");
-        jndiProperties.put(Context.SECURITY_CREDENTIALS, "echoshen");
+        jndiProperties.put(Context.SECURITY_CREDENTIALS, "123456");
         jndiProperties.put("jboss.naming.client.ejb.context", true);
         final Context context = new InitialContext(jndiProperties);
 
@@ -54,7 +54,7 @@ public class RemoteEJBClient {
         //ejbProperties.put("remote.connection.1.connect.options.org.xnio.Options.SASL_DISALLOWED_MECHANISMS", "JBOSS-LOCAL-USER"); // needed for forcing authentication over remoting (i.e. if you have a custom login module)
         //ejbProperties.put("remote.connection.default.connect.options.org.xnio.Options.SASL_POLICY_NOPLAINTEXT", "false"); // needed for a login module that requires the password in plaintext
         ejbProperties.put("remote.connection.1.username", "admin");
-        ejbProperties.put("remote.connection.1.password", "echoshen");
+        ejbProperties.put("remote.connection.1.password", "123456");
         ejbProperties.put("org.jboss.ejb.client.scoped.context", "true"); // Not needed when EJBClientContext.setSelector is called programatically. ATTENTION: Client-Interceptor registration below does not work with this property! BUG?
 
         final EJBClientConfiguration ejbClientConfiguration = new PropertiesBasedEJBClientConfiguration(ejbProperties);

@@ -36,7 +36,7 @@ public class Login extends JFrame implements ActionListener {
         try {
 
             Class.forName("org.postgresql.Driver");
-            ct = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "echoshen");
+            ct = DriverManager.getConnection("jdbc:postgresql://localhost:5432/postgres", "postgres", "123456");
             Statement statement = ct.createStatement();
             statement.execute("DROP TABLE IF EXISTS t_login_info CASCADE");
             statement.execute("CREATE TABLE t_login_info (  权限  VARCHAR(50),  用户名 VARCHAR(50),  密码  VARCHAR(50),  学号  VARCHAR(50),  姓名  VARCHAR(50))");

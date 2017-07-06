@@ -7,7 +7,7 @@
         <driver>postgresql</driver>
         <security>
             <user-name>postgres</user-name>
-            <password>echoshen</password>
+            <password>123456</password>
         </security>
         <validation>
             <valid-connection-checker

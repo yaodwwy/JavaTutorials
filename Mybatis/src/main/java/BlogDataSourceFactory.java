@@ -13,7 +13,7 @@ public class BlogDataSourceFactory {
         properties.setProperty("driver", "org.postgresql.Driver");
         properties.setProperty("url", "jdbc:postgresql://localhost:5432/postgres");
         properties.setProperty("username", "postgres");
-        properties.setProperty("password", "echoshen");
+        properties.setProperty("password", "123456");
         PooledDataSourceFactory pooledDataSourceFactory = new PooledDataSourceFactory();
         pooledDataSourceFactory.setProperties(properties);
         return pooledDataSourceFactory.getDataSource();
@@ -24,7 +24,7 @@ public class BlogDataSourceFactory {
         properties.setProperty("url", "jdbc:postgresql://localhost:5432/postgres");
         properties.setProperty("driverClassName", "org.postgresql.Driver");
         properties.setProperty("username", "postgres");
-        properties.setProperty("password", "echoshen");
+        properties.setProperty("password", "123456");
         properties.setProperty("filters", "stat");
         properties.setProperty("maxActive", "20");
         properties.setProperty("initialSize", "1");
