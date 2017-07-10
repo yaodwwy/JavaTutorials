@@ -25,8 +25,8 @@
     </driver>
 
     <!--主机地址配置-->
-    <host name="service.yao.com" default-web-module="gomro.ear/service.war" alias="x.service.yao.com"/>
-    <host name="web.yao.com" default-web-module="gomro.ear/web.war" alias="x.web.yao.com"/>
+    <host name="service.adbyte.com" default-web-module="service.war" alias="x.adbyte.cn"/>
+    <host name="web.adbyte.com" default-web-module="web.war" alias="x.adbyte.cn"/>
 
     <!--消息队列配置-->
     <jms-queue name="MyMessage" entries="java:/jms/queue/MyMessage"/>

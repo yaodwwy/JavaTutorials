@@ -14,11 +14,6 @@ export PATH=$PATH:$GRADLE_HOME/bin
 
 filePath: /etc/hosts
 
-127.0.0.1		x.service.gomro.cn
-127.0.0.1		x.pm.gomro.cn
-127.0.0.1		x.login.gomro.cn
-10.0.3.13		x.gomro.cn
-
 ###chrome通过file协议浏览
 
 "C:\Program Files\Google\Chrome\Application\chrome.exe" --enable-file-cookies --allow-file-access-from-files
