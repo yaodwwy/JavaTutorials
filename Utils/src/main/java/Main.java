@@ -2,14 +2,9 @@
  * Created by Adam_Yao on 2017/6/20.
  */
 public class Main {
-
-    public static void main(String[] args) {
-
-
-    }
 }
 
-class A{
+class A {
     static int i = 1;
 
     public static void main(String[] args) {
@@ -33,14 +28,14 @@ class A{
                 i++;
                 System.out.println(i);
 
-                if(i==100){
+                if (i == 100) {
                     return;
                 }
             }
         };
 
         runnable.run();
-        for (;;) {
+        for (; ; ) {
             i++;
             System.out.println(i);
             if (i == 100) {
