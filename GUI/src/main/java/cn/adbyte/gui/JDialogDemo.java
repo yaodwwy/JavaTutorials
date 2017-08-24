@@ -31,6 +31,8 @@ public class JDialogDemo extends JFrame implements ActionListener {
         con.add(jButton2);
         con.add(text1);
         con.add(text2);
+//        JOptionPane.showConfirmDialog(this, "确定吗？", "退出", JOptionPane.YES_NO_CANCEL_OPTION);
+        JOptionPane.showMessageDialog(this, "确定吗？", "退出", JOptionPane.PLAIN_MESSAGE);
 
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 
