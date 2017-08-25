@@ -31,13 +31,13 @@ class MyMouseTest extends JFrame implements MouseListener {
         super(title);
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         Container con = this.getContentPane();
-        con.setLayout(new GridLayout(2, 1));
-        this.setSize(200, 300);
-        this.setLocation(100, 100);
+        con.setLayout(new GridLayout(2, 2));
+        this.setSize(640, 480);
+        this.setLocation(300, 300);
         panel = new MyGraphicsPanel();
         con.add(panel);
         text = new JTextArea(10, 20);
-        text.setBackground(Color.BLUE);
+        text.setBackground(Color.GRAY);
         con.add(text);
         addMouseListener(this);
         this.setVisible(true);
@@ -58,6 +58,7 @@ class MyMouseTest extends JFrame implements MouseListener {
         x = e.getX();
         y = e.getY();
         mouseFlg = 0;
+        this.print(this.getGraphics());
         repaint();
     }
 
@@ -66,7 +67,7 @@ class MyMouseTest extends JFrame implements MouseListener {
         x = e.getX();
         y = e.getY();
         mouseFlg = 1;
-        repaint();
+        this.print(this.getGraphics());
     }
 
     @Override
@@ -74,7 +75,7 @@ class MyMouseTest extends JFrame implements MouseListener {
         x = e.getX();
         y = e.getY();
         mouseFlg = 2;
-        repaint();
+        this.print(this.getGraphics());
     }
 
     @Override
