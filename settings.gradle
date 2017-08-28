@@ -17,7 +17,6 @@ findProject(':Gradle:War')?.name = 'War'*/
 include 'Druid'
 include 'ExcelPoi'
 include 'Fx'
-include 'Html'
 include 'Hibernate'
 include 'Jpa'
 include 'Junit'
@@ -31,6 +30,7 @@ include 'Servlet'
 include 'Thymeleaf'
 
 include 'WebService'*/
+include 'Html'
 include 'DesignPattern'
 include 'Utils'
 include 'GUI'
