@@ -4,12 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Welcome</title>
-    <!-- 新 Bootstrap 核心 CSS 文件 -->
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
-    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
     <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
     <style>
         * {
             font-size: 12px;
@@ -67,6 +63,7 @@
         .input-prompt-list dt:hover {
             color: #FFE;
         }
+
         .input-prompt-list dd {
             color: #989898;
             margin-left: 10px;
@@ -96,6 +93,7 @@
         .search_input {
             width: 230px !important;
             height: 34px !important;
+            float: left !important;
         }
 
         .dl-config {
@@ -222,28 +220,36 @@
             text-rendering: optimizeLegibility;
             -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
             box-shadow: 0 1px 3px rgba(0, 0, 0, .2);
-            -webkit-animation:myfirst 2s; /* Safari and Chrome */
+            -webkit-animation: myfirst 2s; /* Safari and Chrome */
             border-radius: 5px;
         }
+
         .wp:hover {
-            -webkit-animation:width 0.2s, height 0.2s,font-size 0.2s; /* Safari and Chrome */
-            font-size:15px;
+            -webkit-animation: width 0.2s, height 0.2s, font-size 0.2s; /* Safari and Chrome */
+            font-size: 15px;
         }
 
-        @keyframes myfirst
-        {
-            0%   {background: url(http://adbyte.cn/wp/wp-admin/images/w-logo-white.png) center 10px no-repeat #0073aa;
+        @keyframes myfirst {
+            0% {
+                background: url(http://adbyte.cn/wp/wp-admin/images/w-logo-white.png) center 10px no-repeat #0073aa;
                 -webkit-background-size: 65px 65px;
-                background-size: 65px 65px;}
-            25%  {background: url(http://adbyte.cn/wp/wp-admin/images/w-logo-white.png) center 5px no-repeat #338eaa;
+                background-size: 65px 65px;
+            }
+            25% {
+                background: url(http://adbyte.cn/wp/wp-admin/images/w-logo-white.png) center 5px no-repeat #338eaa;
                 -webkit-background-size: 40px 40px;
-                background-size: 40px 40px;}
-            50%  {background: url(http://adbyte.cn/wp/wp-admin/images/w-logo-white.png) center 15px no-repeat #4a80aa;
+                background-size: 40px 40px;
+            }
+            50% {
+                background: url(http://adbyte.cn/wp/wp-admin/images/w-logo-white.png) center 15px no-repeat #4a80aa;
                 -webkit-background-size: 70px 70px;
-                background-size: 70px 70px;}
-            100% {background: url(http://adbyte.cn/wp/wp-admin/images/w-logo-white.png) center 10px no-repeat #0073aa;
+                background-size: 70px 70px;
+            }
+            100% {
+                background: url(http://adbyte.cn/wp/wp-admin/images/w-logo-white.png) center 10px no-repeat #0073aa;
                 -webkit-background-size: 65px 65px;
-                background-size: 65px 65px;}
+                background-size: 65px 65px;
+            }
         }
     </style>
 </head>
@@ -256,7 +262,7 @@
             src="http://tianqi.2345.com/plugin/widget/index.htm?s=1&z=1&t=0&v=0&d=5&bd=0&k=&f=&q=1&e=1&a=1&c=58027&w=675&h=96&align=right"></iframe>
 </div>
 <div style="width: 690px;height: 55px;">
-    <div class="form-group">
+    <div class="form-group" style="overflow: hidden; z-index: 4;">
         <form id="bdForm" target="_blank" class="navbar-form" role="search" action="http://www.baidu.com/s"
               style="padding: 0px 12px 0px 13px; float: left;">
             <input type="text" class="form-control search_input" id="kw" autocomplete="off" name="wd"
@@ -597,18 +603,6 @@
             e ? e.stopPropagation() : event.cancelBubble = true;
         });
 
-        window.onresize = function () {
-            setTimeout(function () {
-                $("#onresize").fadeIn("fast");
-            });
-
-            $("#onresize").html("宽度：" + document.documentElement.clientWidth + "，高度：" + document.documentElement.clientHeight);
-
-            setTimeout(function () {
-                $("#onresize").fadeOut(2000);
-            }, 1500);
-
-        }
 
         $("a").mouseover(function () {
             $(this).children("img").css("position", "relative");
@@ -623,25 +617,10 @@
             }
         });
     });
-
-    var multi_langs = '';
-    var idx_ched = '1';
-    var hc_jspath = '#';
-    var langt = 'zh-cn';
-    var cur_dict = 'dict';
-    var i1_home = '';
-    var xuehai_home = '';
-    var passport_home = '';
-    var $dict_id = null;
-    var $dict_query = null;
-    var $dict_dict = null;
-    var $user_id = 0;
-    var $dict_ver = 1484140452;
 </script>
 <!-- 百度搜索框提示 -->
 <script charset="gbk" src="https://www.baidu.com/js/opensug.js"></script>
 <!-- 海词搜索框提示 -->
-<script type="text/javascript" src="http://i1.haidii.com/v/1408420485/i1/js/jquery-1.8.0.min.js"></script>
 <script type="text/javascript" src="inputPrompt.min.js"></script>
 <script type="text/javascript" src="base.min.js"></script>
 </body>
