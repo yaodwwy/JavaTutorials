@@ -170,6 +170,30 @@
             overflow: visible;
             height: 100%;
         }
+        .mySuccess{
+            color: #3c763d;
+            background-color: #dff0d8;
+            border-color: #d6e9c6;
+        }
+        .myWarning {
+            color: #8a6d3b;
+            background-color: #fcf8e3;
+            border-color: #faebcc;
+        }
+        #ss {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 0;
+            text-align: center;
+            padding: 2px;
+            width: 180px;
+            max-height: 22px;
+            margin-left: 12px;
+            border: 1px solid transparent;
+            border-radius: 4px;
+            font-size: 7px;
+        }
 
         .mask {
             display: none;
@@ -192,7 +216,7 @@
         }
 
         .wp {
-            background: url(http://adbyte.cn/wp/wp-admin/images/w-logo-white.png) center 10px no-repeat #0073aa;
+            background: url(http://static.gomro.cn/file/w.png) center 10px no-repeat #0073aa;
             -webkit-background-size: 65px 65px;
             background-size: 65px 65px;
             color: #fff;
@@ -217,22 +241,26 @@
 
         @keyframes myfirst {
             0% {
-                background: url(http://adbyte.cn/wp/wp-admin/images/w-logo-white.png) center 10px no-repeat #0073aa;
+                background-position: center 10px;
+                background-color: #0073aa;
                 -webkit-background-size: 65px 65px;
                 background-size: 65px 65px;
             }
             25% {
-                background: url(http://adbyte.cn/wp/wp-admin/images/w-logo-white.png) center 5px no-repeat #338eaa;
+                background-position: center 5px;
+                background-color: #338eaa;
                 -webkit-background-size: 40px 40px;
                 background-size: 40px 40px;
             }
             50% {
-                background: url(http://adbyte.cn/wp/wp-admin/images/w-logo-white.png) center 15px no-repeat #4a80aa;
+                background-position: center 15px;
+                background-color: #4a80aa;
                 -webkit-background-size: 70px 70px;
                 background-size: 70px 70px;
             }
             100% {
-                background: url(http://adbyte.cn/wp/wp-admin/images/w-logo-white.png) center 10px no-repeat #0073aa;
+                background-position: center 10px;
+                background-color: #0073aa;
                 -webkit-background-size: 65px 65px;
                 background-size: 65px 65px;
             }
@@ -268,60 +296,60 @@
     </div>
 
 </div>
-<div style="width: 720px;height: 480px; padding-left: 12px;">
+<div style="width: 720px;height: 460px; padding-left: 12px;">
 
     <div class="dl-config">
         <dd>
             <div class="leftPics">
                 <a target="_blank" href="https://www.google.com">
                     <img id="google" alt="google" title="google"
-                         src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_120x44dp.png"
+                         src="http://static.gomro.cn/file/g.png"
                          width="100" height="36">
                 </a>
                 <hr>
                 <a target="_blank" href="https://www.youtube.com">
                     <img id="youtube" alt="youtube" title="youtube"
-                         src="https://www.youtube.com/yt/img/logo_2x.png"
+                         src="http://static.gomro.cn/file/yo.png"
                          width="100"
                          height="36">
                 </a>
                 <hr>
                 <a target="_blank" href="http://mvnrepository.com/">
                     <img id="maven" alt="maven" title="maven"
-                         src="https://maven.apache.org/images/maven-logo-black-on-white.png"
+                         src="http://static.gomro.cn/file/m.png"
                          width="100">
                 </a>
                 <hr>
                 <a target="_blank" href="https://github.com/yaodwwy">
                     <img id="Github" alt="Github" title="Github"
-                         src="https://pbs.twimg.com/profile_images/616309728688238592/pBeeJQDQ_200x200.png"
+                         src="http://static.gomro.cn/file/git.png"
                          height="45" style="margin-right: 5px;">
                 </a>
                 <a target="_blank" href="https://stackoverflow.com/">
                     <img id="Stack Overflow" alt="Stack Overflow" title="Stack Overflow"
-                         src="https://pbs.twimg.com/profile_images/643819371656294405/F-pVCbHg_200x200.png"
+                         src="http://static.gomro.cn/file/s.png"
                          height="45">
                 </a>
                 <hr>
                 <a target="_blank" href="https://www.yahoo.com/">
                     <img id="yahoo" alt="yahoo" title="yahoo"
-                         src="https://pbs.twimg.com/profile_images/747326716746444800/IRfRHRaE_200x200.jpg"
+                         src="http://static.gomro.cn/file/y.jpg"
                          height="45" style="margin-right: 5px;">
                 </a>
                 <a target="_blank" href="https://en.wikipedia.org/wiki/Main_Page">
                     <img id="wikipedia" alt="wikipedia" title="wikipedia"
-                         src="https://pbs.twimg.com/profile_images/874733198336380928/XhA-TwYY_200x200.jpg"
+                         src="http://static.gomro.cn/file/w.jpg"
                          height="45">
                 </a>
                 <hr>
                 <a target="_blank" href="https://www.facebook.com/">
                     <img id="facebook" alt="facebook" title="facebook"
-                         src="https://pbs.twimg.com/profile_images/3513354941/24aaffa670e634a7da9a087bfa83abe6_200x200.png"
+                         src="http://static.gomro.cn/file/f.png"
                          height="45" style="margin-right: 5px;">
                 </a>
                 <a target="_blank" href="https://twitter.com/">
                     <img id="Twitter" alt="Twitter" title="Twitter"
-                         src="https://pbs.twimg.com/profile_images/875087697177567232/Qfy0kRIP_200x200.jpg"
+                         src="http://static.gomro.cn/file/tw.jpg"
                          height="45">
                 </a>
                 <hr>
@@ -429,7 +457,6 @@
                 格式化JSON</a>
         </dd>
         <dt>
-
             <a class="btn btn-primary">
                 <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
                 科学上网</a>
@@ -549,6 +576,7 @@
     </dl>
 
 </div>
+<div id="ss"></div>
 
 <div id="calendar" style="position:absolute; width: 540px;height: 380px;
 		display:none;z-index:3;overflow:hidden; left:50%;top:50%;
@@ -560,6 +588,32 @@
 <script>
 
     $(function () {
+        $.ajax({
+            type: "get",
+            async: true,
+            url: "https://ip-80x86-io.appspot.com/",
+            dataType: 'jsonp',//数据类型为jsonp
+            timeout: 2000,
+            jsonp: "[ by 80x86.io ]",//服务端用于接收callback调用的function名的参数
+            success: function (data, text, xhqr) {
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+            },
+            complete: function (jqXHR, textStatus) {
+                $("#ss").fadeIn(500);
+                if (jqXHR.status == 200) {
+                    $("#ss").addClass("mySuccess");
+                    $("#ss").text("科学上网连接成功！");
+                } else {
+                    $("#ss").addClass("myWarning");
+                    $("#ss").text("科学上网连接失败！");
+                }
+                setTimeout(function () {
+                    $("#ss").fadeOut(1000);
+                }, 3000)
+            }
+        });
+
         $("#q").get(0).addEventListener("input", function (o) {
             $("#kw").val($("#q").val());
         }, false);
@@ -598,30 +652,7 @@
                     .animate({top: "0px"}, 100);
             }
         });
-        $.ajax({
-            type: "get",
-            async: true,
-            url: "https://ip-80x86-io.appspot.com/",
-            dataType: 'jsonp',//数据类型为jsonp
-            timeout: 3000,
-            jsonp: "[ by 80x86.io ]",//服务端用于接收callback调用的function名的参数
-            success: function (data, text, xhqr) {
-                //var data = $.parseJSON(data);
-//                    console.log(data);
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-//                    console.log(JSON.stringify(jqXHR));
-//                    console.log(textStatus);
-//                    console.log(errorThrown);
-            },
-            complete: function (jqXHR, textStatus) {
-                if (jqXHR.status == 200) {
-                    $("#kw").attr("placeholder", "科学上网连接成功!");
-                } else {
-                    $("#kw").attr("placeholder", "科学上网连接失败!");
-                }
-            }
-        });
+
     });
 </script>
 <!-- 百度搜索框提示 -->
