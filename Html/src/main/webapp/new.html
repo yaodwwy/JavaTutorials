@@ -5,17 +5,14 @@
     <meta charset="UTF-8">
     <title>Welcome</title>
     <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
+    <!--<script src="jquery.js"></script>-->
     <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
     <style>
         * {
             font-size: 12px;
         }
 
-        body,
-        dt,
-        dl,
-        dd,
-        a {
+        body, dt, dl, dd, a {
             margin: 0px;
             padding: 0px;
             text-decoration: none;
@@ -28,9 +25,6 @@
 
         .bdsug_copy {
             display: none
-        }
-
-        .primary {
         }
 
         .input-prompt-container {
@@ -195,14 +189,6 @@
 
         hr {
             margin: 8px 0px 8px 0px;
-        }
-
-        #onresize {
-            display: block;
-            position: absolute;
-            height: 20px;
-            left: 0px;
-            top: 0px;
         }
 
         .wp {
@@ -408,7 +394,6 @@
             <a target="_blank" href="http://note.youdao.com/web/file">
                 <img style="max-height: 32px;margin-right: -6px;margin-left: -10px;"
                      src="https://shared-https.ydstatic.com/ynote/ydoc/images/de40898e.loading-pen.gif">
-                <!--<img src="https://note.youdao.com/favicon.ico"/>-->
                 有道笔记</a>
         </dd>
         <dd>
@@ -444,7 +429,10 @@
                 格式化JSON</a>
         </dd>
         <dt>
-            <a class="btn btn-primary">科学上网</a>
+
+            <a class="btn btn-primary">
+                <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                科学上网</a>
         </dt>
         <dd>
             <a target="_blank" href="https://www.google.com/search?q=shadowsocks%E8%B4%A6%E5%8F%B7%E5%85%B1%E4%BA%AB">
@@ -567,12 +555,6 @@
 		margin-left:-270px;margin-top:-188px;border-radius: 6px;
 		border: 4px white solid;box-shadow: 0px 2px 40px grey;"></div>
 <div id="mask" class="mask opacity"></div>
-<div id="onresize">
-    <iframe
-            style="-webkit-transform: scale(0.6); margin-left: -15px;" src="https://ip-80x86-io.appspot.com/"
-            width="115"
-            height="20" scrolling="no" frameborder="0" marginheight="0" marginwidth="0"></iframe>
-</div>
 <script>
 </script>
 <script>
@@ -616,13 +598,36 @@
                     .animate({top: "0px"}, 100);
             }
         });
+        $.ajax({
+            type: "get",
+            async: true,
+            url: "https://ip-80x86-io.appspot.com/",
+            dataType: 'jsonp',//数据类型为jsonp
+            timeout: 3000,
+            jsonp: "[ by 80x86.io ]",//服务端用于接收callback调用的function名的参数
+            success: function (data, text, xhqr) {
+                //var data = $.parseJSON(data);
+//                    console.log(data);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+//                    console.log(JSON.stringify(jqXHR));
+//                    console.log(textStatus);
+//                    console.log(errorThrown);
+            },
+            complete: function (jqXHR, textStatus) {
+                if (jqXHR.status == 200) {
+                    $("#kw").attr("placeholder", "科学上网连接成功!");
+                } else {
+                    $("#kw").attr("placeholder", "科学上网连接失败!");
+                }
+            }
+        });
     });
 </script>
 <!-- 百度搜索框提示 -->
 <script charset="gbk" src="https://www.baidu.com/js/opensug.js"></script>
 <!-- 海词搜索框提示 -->
 <script type="text/javascript" src="inputPrompt.min.js"></script>
-<script type="text/javascript" src="base.min.js"></script>
 </body>
 
 </html>

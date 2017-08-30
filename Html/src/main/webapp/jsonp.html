@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Insert title here</title>
+    <script src="jquery.js"></script>
+</head>
+<script type="text/javascript">
+    $(function () {
+            try {
+                $.ajax({
+                    type: "get",
+                    async: true,
+                    url: "https://ip-80x86-io.appspot.com/",
+                    dataType: 'jsonp',//数据类型为jsonp
+                    timeout: 3000,
+                    jsonp: "[ by 80x86.io ]",//服务端用于接收callback调用的function名的参数
+                    complete: function (XMLHttpRequest, textStatus) {
+                        if (XMLHttpRequest.status == 200) {
+                            $("#kw").attr("placeholder", "科学上网连接成功!");
+                        } else {
+                            $("#kw").attr("placeholder", "科学上网连接失败!");
+                        }
+                    },
+                    success: function (data, textStatus) {
+                        console.info(JSON.stringify(data));
+                    }
+                });
+            } catch (e) {
+                console.info(e);
+            }
+
+
+        /*
+             /!*
+             //简写形式，效果相同
+             $.getJSON("http://app.example.com/base/json.do?sid=1494&busiId=101&jsonpCallback=?",
+                     function(data){
+                         $("#showcontent").text("Result:"+data.result)
+             });
+             *!/
+             $.ajax({
+                 type : "get",
+                 async:false,
+                 url : "http://app.example.com/base/json.do?sid=1494&busiId=101",
+                 dataType : "jsonp",//数据类型为jsonp
+                 jsonp: "jsonpCallback",//服务端用于接收callback调用的function名的参数
+                 success : function(data){
+                     $("#showcontent").text("Result:"+data.result)
+                 },
+                 error:function(){
+                     alert('fail');
+                 }
+             });*/
+    });
+</script>
+<body>
+<div id="showcontent">Result:</div>
+</body>
+</html>
