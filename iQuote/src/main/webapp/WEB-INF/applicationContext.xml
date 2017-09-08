@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:p="http://www.springframework.org/schema/p"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+        http://www.springframework.org/schema/security
+        http://www.springframework.org/schema/security/spring-security-3.2.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <bean id="datasource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.postgresql.Driver"></property>
+        <property name="url" value="jdbc:postgresql://localhost:5432/iquote"></property>
+        <property name="username" value="postgres"></property>
+        <property name="password" value="echoshen"></property>
+    </bean>
+
+    <context:component-scan base-package="cn.adbyte.iquote"/>
+
+    <mvc:annotation-driven/>
+
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
+          p:basename="classpath:message_zh_CN"/>
+
+    <!--*表示对参数不拦截-->
+    <security:http pattern="/login.jsp*" security="none"/>
+
+    <!--保护应用程序中的所有 URL，只有拥有  ROLE_USER 角色的用户才能访问-->
+    <security:http auto-config="true" access-denied-page="/accessDenied.jsp">
+
+        <!--指定登录页-->
+        <security:form-login login-page="/login.jsp"/>
+
+        <!--access 属性定义了请求匹配了指定模式时的需求。逗号分隔的角色队列-->
+        <security:intercept-url pattern="/**" access="ROLE_USER"/>
+        <security:intercept-url pattern="/index.jsp*" access="ROLE_ADMIN,ROLE_USER"/>
+        <security:intercept-url pattern="/admin.jsp*" access="ROLE_ADMIN"/>
+
+        <!--单点登录-->
+        <security:session-management>
+            <security:concurrency-control max-sessions="1" error-if-maximum-exceeded="false"/>
+        </security:session-management>
+
+    </security:http>
+    <!--配置认证管理器-->
+    <security:authentication-manager>
+
+        <security:authentication-provider>
+            <security:password-encoder hash="md5"/>
+            <!--<security:user-service>-->
+                <!--<security:user name="admin" password="21232f297a57a5a743894a0e4a801fc3 " authorities="ROLE_USER"/>-->
+            <!--</security:user-service>-->
+            <security:jdbc-user-service data-source-ref="datasource"/>
+        </security:authentication-provider>
+    </security:authentication-manager>
+</beans>

@@ -1,0 +1,71 @@
+version '1.0'
+
+apply plugin: 'java'
+apply plugin: 'war'
+
+sourceCompatibility = 1.8
+/****************Tomcat plugin***********************/
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.bmuschko:gradle-tomcat-plugin:2.3'
+    }
+}
+apply plugin: 'com.bmuschko.tomcat'
+//apply plugin: 'com.bmuschko.tomcat-base'
+
+dependencies {
+    def tomcatVersion = '8.5.16'
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+            "org.apache.tomcat.embed:tomcat-embed-logging-juli:8.5.2",
+            "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+    providedCompile "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}"
+}
+
+tomcat {
+    httpProtocol = 'org.apache.coyote.http11.Http11Nio2Protocol'
+    ajpProtocol  = 'org.apache.coyote.ajp.AjpNio2Protocol'
+}
+/****************end***********************/
+
+
+dependencies {
+    compile(
+            /* spring security & oauth2 support*/
+//            "org.springframework:spring-context:${springVersion}",
+            "org.springframework:spring-webmvc:${springVersion}",
+            "org.springframework:spring-beans:${springVersion}",
+            "org.springframework.security:spring-security-web:${springSecurityVersion}",
+            "org.springframework.security:spring-security-core:${springSecurityVersion}",
+            "org.springframework.security:spring-security-config:${springSecurityVersion}",
+            "org.springframework.security:spring-security-taglibs:${springSecurityVersion}",
+//            "org.springframework.security.oauth:spring-security-oauth2:${spring-security.oAuth2.version}"
+            "org.postgresql:postgresql:${postgresqlVersion}",
+            /* spring framework support
+            "org.springframework:spring-aop:${springFrameworkVersion}",
+            "org.springframework:spring-beans:${springFrameworkVersion}",
+            "org.springframework:spring-core:${springFrameworkVersion}",
+            "org.springframework:spring-expression:${springFrameworkVersion}",
+            "org.springframework:spring-web:${springFrameworkVersion}",
+            "org.springframework:spring-webmvc:${springFrameworkVersion}",
+            "org.springframework:spring-context:${springFrameworkVersion}",
+            */
+
+            /* spring jdbc support
+            "org.springframework:spring-jdbc:${springFrameworkVersion}",
+            */
+
+            /* thymeleaf support
+            "org.thymeleaf:thymeleaf-spring4:${thymeleafSpring4Version}",
+            "org.thymeleaf.extras:thymeleaf-extras-springsecurity4:${thymeleafSpring4Version}",
+            */
+
+            /* wildfly support
+            "org.wildfly:wildfly-client-all:${wildflyVersion}",
+            "org.wildfly:wildfly-spec-api:${wildflyVersion}",
+            */
+    )
+}
