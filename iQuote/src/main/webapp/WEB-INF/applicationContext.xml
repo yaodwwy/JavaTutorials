@@ -1,3 +1,4 @@
+<!--
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -33,35 +34,35 @@
     <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource"
           p:basename="classpath:message_zh_CN"/>
 
-    <!--*表示对参数不拦截-->
+    &lt;!&ndash;*表示对参数不拦截&ndash;&gt;
     <security:http pattern="/login.jsp*" security="none"/>
 
-    <!--保护应用程序中的所有 URL，只有拥有  ROLE_USER 角色的用户才能访问-->
+    &lt;!&ndash;保护应用程序中的所有 URL，只有拥有  ROLE_USER 角色的用户才能访问&ndash;&gt;
     <security:http auto-config="true" access-denied-page="/accessDenied.jsp">
 
-        <!--指定登录页-->
+        &lt;!&ndash;指定登录页&ndash;&gt;
         <security:form-login login-page="/login.jsp"/>
 
-        <!--access 属性定义了请求匹配了指定模式时的需求。逗号分隔的角色队列-->
+        &lt;!&ndash;access 属性定义了请求匹配了指定模式时的需求。逗号分隔的角色队列&ndash;&gt;
         <security:intercept-url pattern="/**" access="ROLE_USER"/>
         <security:intercept-url pattern="/index.jsp*" access="ROLE_ADMIN,ROLE_USER"/>
         <security:intercept-url pattern="/admin.jsp*" access="ROLE_ADMIN"/>
 
-        <!--单点登录-->
+        &lt;!&ndash;单点登录&ndash;&gt;
         <security:session-management>
             <security:concurrency-control max-sessions="1" error-if-maximum-exceeded="false"/>
         </security:session-management>
 
     </security:http>
-    <!--配置认证管理器-->
+    &lt;!&ndash;配置认证管理器&ndash;&gt;
     <security:authentication-manager>
 
         <security:authentication-provider>
             <security:password-encoder hash="md5"/>
-            <!--<security:user-service>-->
-                <!--<security:user name="admin" password="21232f297a57a5a743894a0e4a801fc3 " authorities="ROLE_USER"/>-->
-            <!--</security:user-service>-->
+            &lt;!&ndash;<security:user-service>&ndash;&gt;
+                &lt;!&ndash;<security:user name="admin" password="21232f297a57a5a743894a0e4a801fc3 " authorities="ROLE_USER"/>&ndash;&gt;
+            &lt;!&ndash;</security:user-service>&ndash;&gt;
             <security:jdbc-user-service data-source-ref="datasource"/>
         </security:authentication-provider>
     </security:authentication-manager>
-</beans>
+</beans>-->

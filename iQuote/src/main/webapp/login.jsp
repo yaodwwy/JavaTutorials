@@ -1,10 +1,11 @@
 <%--
+&lt;%&ndash;
   Created by IntelliJ IDEA.
   User: Adam
   Date: 2017/9/1
   Time: 16:13
   To change this template use File | Settings | File Templates.
---%>
+&ndash;%&gt;
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -34,3 +35,4 @@ ${sessionScope.SPRING_SECURITY_LAST_EXCEPTION.message}
 </form>
 </body>
 </html>
+--%>

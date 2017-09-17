@@ -1,3 +1,4 @@
+<!--
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -20,7 +21,7 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <!-- Spring Secutiry的过滤器链配置 -->
+    &lt;!&ndash; Spring Secutiry的过滤器链配置 &ndash;&gt;
 
     <filter>
         <filter-name>springSecurityFilterChain</filter-name>
@@ -35,4 +36,4 @@
     <welcome-file-list>
         <welcome-file>index.jsp</welcome-file>
     </welcome-file-list>
-</web-app>
+</web-app>-->

@@ -15,6 +15,29 @@ apply from: 'file.gradle'
 apply from: 'other.gradle'
 apply from: 'fileTree.gradle'
 
+/****************Tomcat plugin***********************/
+buildscript {
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath 'com.bmuschko:gradle-tomcat-plugin:2.3'
+    }
+}
+apply plugin: 'com.bmuschko.tomcat'
+dependencies {
+    def tomcatVersion = '8.5.16'
+    tomcat "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}",
+            "org.apache.tomcat.embed:tomcat-embed-logging-juli:8.5.2",
+            "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
+    providedCompile "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}"
+}
+tomcat {
+    httpProtocol = 'org.apache.coyote.http11.Http11Nio2Protocol'
+    ajpProtocol = 'org.apache.coyote.ajp.AjpNio2Protocol'
+}
+/****************end***********************/
+
 repositories {
     //Maven central 仓库
     mavenCentral()
