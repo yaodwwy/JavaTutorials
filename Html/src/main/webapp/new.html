@@ -480,7 +480,9 @@
     </dl>
 
     <dl class="dl-config">
-        <dt><a class="btn btn-primary">资讯娱乐</a></dt>
+        <dt><a id="music-btn" class="btn btn-primary">
+            <span class=" glyphicon glyphicon-headphones" aria-hidden="true"></span>
+            资讯娱乐</a></dt>
         <dd>
             <a target="_blank" href="https://plus.google.com/">
                 <img src="https://plus.google.com/favicon.ico"/>
@@ -524,7 +526,9 @@
                 7060手机电影</a>
         </dd>
         <dt>
-            <a id="calendar-btn" class="btn btn-primary">万年历</a>
+            <a id="calendar-btn" class="btn btn-primary">
+                <span class=" glyphicon glyphicon-calendar" aria-hidden="true"></span>
+                万年历</a>
         </dt>
         <dd>
             <a target="_blank" href="http://class.hujiang.com/1510289_v3">
@@ -578,11 +582,14 @@
 </div>
 <div id="ss"></div>
 
-<div id="calendar" style="position:absolute; width: 540px;height: 380px;
-		display:none;z-index:3;overflow:hidden; left:50%;top:50%;
-		margin-left:-270px;margin-top:-188px;border-radius: 6px;
-		border: 4px white solid;box-shadow: 0px 2px 40px grey;"></div>
+<div id="calendar" style="position:absolute; width: 540px;height: 380px; display:none;z-index:3;
+overflow:hidden; left:50%;top:50%; margin-left:-270px;margin-top:-188px;border-radius: 6px;
+border: 4px white solid;box-shadow: 0px 2px 40px grey;"></div>
+<div id="music" style="background-color:white; position:absolute; width: 340px;height: 235px;
+display:none;z-index:3;overflow:hidden; left:50%;top:50%;margin-left:-270px;margin-top:-188px;
+border-radius: 6px;border: 4px white solid;box-shadow: 0px 2px 40px grey;"></div>
 <div id="mask" class="mask opacity"></div>
+
 <script>
 </script>
 <script>
@@ -624,6 +631,7 @@
         $("#mask").click(function () {
             $("#mask").fadeOut();
             $("#calendar").fadeOut();
+            $("#music").fadeOut();
         });
 
         $("#calendar-btn").click(function (e) {
@@ -631,14 +639,23 @@
             if ($("#calendar").html()) {
                 $("#calendar").fadeIn("fast");
             } else {
-                $("#calendar").html("<iframe style=' margin:-137px 0px 0px -120px;' width='700' height='520' " +
-                    "allowtransparency='true' frameborder='0' scrolling='no' " +
-                    "src='https://www.baidu.com/baidu?word=%E4%B8%87%E5%B9%B4%E5%8E%86'></iframe>");
+                $("#calendar").html("<iframe style=' margin:-137px 0px 0px -120px;' width='700' height='520' allowtransparency='true' frameborder='0' scrolling='no' src='https://www.baidu.com/baidu?word=%E4%B8%87%E5%B9%B4%E5%8E%86'></iframe>");
                 $("#calendar").fadeIn("fast");
             }
             e ? e.stopPropagation() : event.cancelBubble = true;
         });
 
+        $("#music-btn").click(function (e) {
+            $("#mask").fadeIn();
+            if ($("#music").html()) {
+                $("#music").fadeIn("fast");
+            } else {
+                $("#music").html("<iframe frameborder='no' border='0' marginwidth='0' marginheight='0' width='330' height='110' src='//music.163.com/outchain/player?type=0&amp;id=111422234&amp;auto=1&amp;height=90'></iframe>" +
+                    "<iframe frameborder='no' border='0' marginwidth='0' marginheight='0' width='330' height='110' src='//music.163.com/outchain/player?type=0&amp;id=163088881&amp;auto=0&amp;height=90'></iframe>");
+                $("#music").fadeIn("fast");
+            }
+            e ? e.stopPropagation() : event.cancelBubble = true;
+        });
 
         $("a").mouseover(function () {
             $(this).children("img").css("position", "relative");
