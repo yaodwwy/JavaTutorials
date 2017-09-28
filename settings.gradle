@@ -1,6 +1,8 @@
 rootProject.name = 'JavaTutorials'
 
 include 'iQuote'
+include 'DesignPattern'
+include 'Utils'
 
 /***********************
 include '.ear'
@@ -34,8 +36,6 @@ include 'Thymeleaf'
 
 include 'WebService'
 include 'Html'
-include 'DesignPattern'
-include 'Utils'
 include 'GUI'
 ***************************/
 

@@ -2,17 +2,14 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 
-sourceCompatibility = 1.8
-
 dependencies {
-        compile group: 'commons-io', name: 'commons-io', version: '2.5'
-        compile group: 'javax.mail', name: 'mail', version: '1.4.7'
-        compile group: 'javax.jdo', name: 'jdo-api', version: '3.1'
-//        compile group: 'xml-apis', name: 'xml-apis', version: '2.0.2'
-        compile group: 'xerces', name: 'xmlParserAPIs', version: '2.11.0'
+        compile ('commons-io:commons-io:2.5')
+        compile ('javax.mail:mail:1.4.7')
+        compile ('javax.jdo:jdo-api:3.1')
+        compile ('xml-apis:xml-apis:2.0.2')
+        compile ('xerces:xmlParserAPIs:2+')
 
-
-        testCompile group: 'org.jboss.arquillian.junit', name: 'arquillian-junit-container', version: '1.1.13.Final'
-        testCompile 'junit:junit:4.12'
+        testCompile ('org.jboss.arquillian.junit:arquillian-junit-container:1+')
+        testCompile ('junit:junit:4.12')
 
 }

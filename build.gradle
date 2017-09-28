@@ -8,8 +8,8 @@ subprojects {
         mavenCentral()
     }
     dependencies {
-        compile ('org.postgresql:postgresql')//, version: '9.4.1212'
-        compile ('commons-dbcp:commons-dbcp')//, version:'1.4'
+//        compile ('org.postgresql:postgresql')//, version: '9.4.1212'
+//        compile ('commons-dbcp:commons-dbcp')//, version:'1.4'
     }
     version '1.0-SNAPSHOT'
     jar {
