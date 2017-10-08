@@ -20,8 +20,14 @@ public class Start {
     String home() {
         return "Hello World! ";
     }
+    @RequestMapping("/t")
+    @ResponseBody
+    String test() {
+        return "test! ";
+    }
 
     public static void main(String[] args) throws Exception {
+
         SpringApplication.run(Start.class, args);
     }
 }
