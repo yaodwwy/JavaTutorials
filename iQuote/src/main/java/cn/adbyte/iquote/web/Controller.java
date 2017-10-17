@@ -1,17 +1,17 @@
-/*package cn.adbyte.iquote.web;
+package cn.adbyte.iquote.web;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.web.bind.annotation.RequestMapping;*/
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Created by Adam Yao on 2017/9/1.
  */
 
-/*
-@org.springframework.stereotype.Controller
+@RestController
 @RequestMapping("/")
 public class Controller {
 
@@ -28,4 +28,3 @@ public class Controller {
         return "index";
     }
 }
-*/

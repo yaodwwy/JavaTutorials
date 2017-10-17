@@ -32,6 +32,12 @@ dependencies {
             "org.apache.tomcat.embed:tomcat-embed-jasper:${tomcatVersion}"
     providedCompile "org.apache.tomcat.embed:tomcat-embed-core:${tomcatVersion}"
 }
+configurations {
+    // 所有需要忽略的包定义在此
+//        all*.exclude group: 'commons-httpclient'
+//        all*.exclude group: 'commons-logging'
+//        all*.exclude group: 'commons-beanutils', module: 'commons-beanutils'
+}
 tomcat {
     httpProtocol = 'org.apache.coyote.http11.Http11Nio2Protocol'
     ajpProtocol = 'org.apache.coyote.ajp.AjpNio2Protocol'
@@ -266,4 +272,9 @@ task config {
     }
 }
 
+
+/*jar {
+    //将依赖和资源文件打入jar包
+    from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+}*/
 
