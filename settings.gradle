@@ -1,6 +1,6 @@
 rootProject.name = 'JavaTutorials'
 
-include 'iQuote'
+include 'core'
 include 'DesignPattern'
 include 'Utils'
 
