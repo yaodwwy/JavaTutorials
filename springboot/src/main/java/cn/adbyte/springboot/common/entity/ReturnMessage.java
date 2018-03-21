@@ -90,6 +90,10 @@ public class ReturnMessage<T> implements Serializable {
         return new ReturnMessage<>(SysConstant.SUCCESS, "", count, data);
     }
 
+    public static <V> ReturnMessage<V> success(V data) {
+        return new ReturnMessage<>(SysConstant.SUCCESS, "", 1, data);
+    }
+
     public static ReturnMessage success(String msg) {
         return new ReturnMessage<>(SysConstant.SUCCESS, msg, null);
     }

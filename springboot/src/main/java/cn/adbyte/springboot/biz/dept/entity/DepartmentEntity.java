@@ -37,7 +37,7 @@ public class DepartmentEntity extends BaseEntity {
     public DepartmentEntity() {
     }
 
-    public DepartmentEntity(Boolean del, Date last, Date time, Integer operator, DepartmentEntity parent, OrganizationEntity organization, MemberEntity managerMember, String number, String name, String fullname, String contacts, String telephone, String description) {
+    public DepartmentEntity(Boolean del, Date last, Date time, Long operator, DepartmentEntity parent, OrganizationEntity organization, MemberEntity managerMember, String number, String name, String fullname, String contacts, String telephone, String description) {
         super(del, last, time, operator);
         this.parent = parent;
         this.organization = organization;

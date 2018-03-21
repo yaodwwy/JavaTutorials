@@ -1,5 +1,6 @@
 package cn.adbyte.springboot.biz.member.entity;
 
+import cn.adbyte.springboot.biz.authorize.entity.RoleEntity;
 import cn.adbyte.springboot.biz.dept.entity.DepartmentEntity;
 import cn.adbyte.springboot.common.entity.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -10,53 +11,74 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Created by Adam.yao on 2017/10/30.
- * 内容不要轻易改，因为继承Spring安全有使用规范！
+ * Spring安全有使用规范！
  */
 @Entity
 @Cacheable
 @Table(name = "t_member")
+@NamedEntityGraphs({
+        @NamedEntityGraph(name = "member.all",
+                attributeNodes = {//attributeNodes 来定义需要懒加载的属性
+                        @NamedAttributeNode("department"),//无延伸
+                        @NamedAttributeNode(value = "roles",//要懒加载roles属性中的pages元素
+                                subgraph = "resource"),
+                },
+                subgraphs = {//subgraphs 来定义关联对象的属性
+                        @NamedSubgraph(name = "resource",//一层延伸
+                                attributeNodes = @NamedAttributeNode("resource")),
+                        @NamedSubgraph(name = "roles",//两层延伸
+                                attributeNodes = @NamedAttributeNode(
+                                        value = "roles",
+                                        subgraph = "resource"))})})
 public class MemberEntity extends BaseEntity implements UserDetails {
 
     @ManyToOne
     @JoinColumn(name = "department_id")
     private DepartmentEntity department;
-    @Transient
-    private Integer deptID;
-    @Transient
-    private String deptName;
-    @Transient
-    private Integer orgID;
-    @Transient
-    private String orgName;
     private String username;
     private String mobile;
     private String email;
     @JsonIgnore
     private String password;
     private String fullname;
-    private String qq;
     private Boolean expired;
     private Boolean locked;
     private Boolean credentialsExpired;
     private Boolean enabled;
     @Transient
     private Set<GrantedAuthority> authorities;
+    @Transient
+    private Long deptID;
+    @Transient
+    private String deptName;
+    @Transient
+    private Long orgID;
+    @Transient
+    private String orgName;
+    @ManyToMany(cascade = CascadeType.REFRESH)
+    @JoinTable(name = "t_member_role",
+            joinColumns = {@JoinColumn(name = "member_id",
+                    referencedColumnName = "id")},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "role_id", referencedColumnName = "id")})
+    @OrderBy(value = "id DESC")
+    private Set<RoleEntity> roles = new HashSet<>();
 
     public MemberEntity() {
     }
 
     public MemberEntity(DepartmentEntity department, String username, String password, String fullname,
-                        String qq, String email, String mobile, boolean expired, boolean locked, boolean credentialsExpired,
+                        String email, String mobile, boolean expired, boolean locked, boolean credentialsExpired,
                         boolean enabled, Set<GrantedAuthority> authorities) {
         this.department = department;
         this.username = username;
         this.password = password;
         this.fullname = fullname;
-        this.qq = qq;
         this.email = email;
         this.mobile = mobile;
         this.expired = expired;
@@ -65,26 +87,6 @@ public class MemberEntity extends BaseEntity implements UserDetails {
         this.enabled = enabled;
         this.authorities = authorities;
     }
-
-    public MemberEntity(Boolean del, Date last, Date time, Integer operator, DepartmentEntity department,
-                        String username, String password, String fullname, String qq, String email, String mobile,
-                        boolean expired, boolean locked, boolean credentialsExpired, boolean enabled,
-                        Set<GrantedAuthority> authorities) {
-        super(del, last, time, operator);
-        this.department = department;
-        this.username = username;
-        this.password = password;
-        this.fullname = fullname;
-        this.qq = qq;
-        this.email = email;
-        this.mobile = mobile;
-        this.expired = expired;
-        this.locked = locked;
-        this.credentialsExpired = credentialsExpired;
-        this.enabled = enabled;
-        this.authorities = authorities;
-    }
-
 
     public String getUsername() {
         return username;
@@ -110,23 +112,23 @@ public class MemberEntity extends BaseEntity implements UserDetails {
         this.orgName = orgName;
     }
 
-    public Integer getDeptID() {
+    public Long getDeptID() {
         deptID = null != getDepartment() ? getDepartment().getId() : null;
         return deptID;
     }
 
-    public void setDeptID(Integer deptID) {
+    public void setDeptID(Long deptID) {
         this.deptID = deptID;
     }
 
-    public Integer getOrgID() {
+    public Long getOrgID() {
         if (null != getDepartment() && null != getDepartment().getOrganization()) {
             orgID = getDepartment().getOrganization().getId();
         }
         return orgID;
     }
 
-    public void setOrgID(Integer orgID) {
+    public void setOrgID(Long orgID) {
         this.orgID = orgID;
     }
 
@@ -173,14 +175,6 @@ public class MemberEntity extends BaseEntity implements UserDetails {
 
     public void setFullname(String fullname) {
         this.fullname = fullname;
-    }
-
-    public String getQq() {
-        return qq;
-    }
-
-    public void setQq(String qq) {
-        this.qq = qq;
     }
 
     public String getEmail() {
@@ -253,5 +247,13 @@ public class MemberEntity extends BaseEntity implements UserDetails {
 
     public boolean isCredentialsExpired() {
         return credentialsExpired == null ? false : credentialsExpired;
+    }
+
+    public Set<RoleEntity> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<RoleEntity> roles) {
+        this.roles = roles;
     }
 }

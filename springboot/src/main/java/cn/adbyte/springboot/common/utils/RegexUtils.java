@@ -6,11 +6,11 @@ import java.util.regex.Pattern;
 /**
  * @author AdamYao
  */
-public class ValidateUtils {
-    private ValidateUtils() {
+public class RegexUtils {
+    private RegexUtils() {
     }
 
-    enum Type {
+    public enum Type {
         //------------------    正则定义区    ------------------//
         IS_LINK("^http(s)?://([\\w-]+\\.)+[\\w-]+(/[\\w- ./?%&=]*)?$"),
         IS_EMAIL("^\\w+((-\\w+)|(\\.\\w+))*\\@[A-Za-z0-9]+((\\.|-)[A-Za-z0-9]+)*\\.[A-Za-z0-9]+$"),
@@ -57,9 +57,29 @@ public class ValidateUtils {
     }
 
     //------------------    验证方法区        ----------------//
-    //判断字段是否为空 符合返回ture
-    private static synchronized boolean StrisNull(String str) {
-        return null == str || str.trim().length() <= 0;
+    /**
+     * 非空验证频率最高直接调用
+     * @param str
+     * @return
+     */
+    public static synchronized boolean notNull(String str) {
+        return RegexUtils.check(Type.NOT_NULL, str);
+    }
+    /**
+     * 匹配是否符合正则表达式pattern 匹配返回true
+     *
+     * @param pattern 匹配模式
+     * @param str     匹配的字符串
+     * @return boolean
+     */
+    public static boolean regular(String pattern, String str) {
+        boolean result = false;
+        if (RegexUtils.check(Type.NOT_NULL, str)) {
+            Pattern p = Pattern.compile(pattern);
+            Matcher m = p.matcher(str);
+            result = m.matches();
+        }
+        return result;
     }
 
     //匹配是否符合正则表达式pattern 匹配返回true
@@ -73,12 +93,15 @@ public class ValidateUtils {
     }
 
 
-
     public static void main(String[] args) {
 //        Instant instant=new Date().toInstant();
 //        Date date= Date.from(instant);
 //        System.out.println(instant);
 //        System.out.println(date);
-        System.out.println(ValidateUtils.check(Type.IS_CHAR,"whitney.wang@nexteer.com"));
+        System.out.println(RegexUtils.check(Type.IS_EMAIL, "whitney.wang@nexteer.com"));
+        System.out.println(RegexUtils.check(Type.NOT_NULL, " "));
+        System.out.println(RegexUtils.check(Type.NOT_NULL, null));
+        System.out.println(RegexUtils.check(Type.NOT_NULL, ""));
+        System.out.println(RegexUtils.check(Type.NOT_NULL, "ａｂｃ"));
     }
 }

@@ -7,6 +7,8 @@ public class SysConstant {
 
     public static final int SUCCESS = 0;
     public static final int FAILED = -1;
+    public static final int DEF_PAGE = 1;
+    public static final int DEF_SIZE = 20;
 
     public static final int MAX_SIZE = 2000;
 

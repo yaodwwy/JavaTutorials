@@ -13,6 +13,10 @@ public class BaseException extends RuntimeException {
         super(createFriendlyErrMsg(errorCode.des, errorCode.code));
     }
 
+    public BaseException(String errorMsg) {
+        super(createFriendlyErrMsg(errorMsg, SysConstant.FAILED));
+    }
+
     public BaseException(String errorMsg, Number errorCode) {
         super(createFriendlyErrMsg(errorMsg, errorCode));
     }

@@ -12,7 +12,7 @@ public abstract class BaseEntity implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Integer id;
+    protected Long id;
     /**
      * 是否删除
      */
@@ -32,23 +32,23 @@ public abstract class BaseEntity implements Serializable {
     /**
      * 操作人
      */
-    protected Integer operator;
+    protected Long operator;
 
     public BaseEntity() {
     }
 
-    public BaseEntity(Boolean del, Date last, Date time, Integer operator) {
+    public BaseEntity(Boolean del, Date last, Date time, Long operator) {
         this.del = del;
         this.last = last;
         this.time = time;
         this.operator = operator;
     }
 
-    public Integer getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(Long id) {
         this.id = id;
     }
 
@@ -76,11 +76,11 @@ public abstract class BaseEntity implements Serializable {
         this.time = time;
     }
 
-    public Integer getOperator() {
+    public Long getOperator() {
         return operator;
     }
 
-    public void setOperator(Integer operator) {
+    public void setOperator(Long operator) {
         this.operator = operator;
     }
 }

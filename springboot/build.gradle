@@ -1,11 +1,10 @@
 buildscript {
 	ext {
-		springBootVersion = '2.0.1.BUILD-SNAPSHOT'
+		springBootVersion = '2+'
 	}
 	repositories {
+		maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
 		mavenCentral()
-		maven { url "https://repo.spring.io/snapshot" }
-		maven { url "https://repo.spring.io/milestone" }
 	}
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
@@ -23,9 +22,8 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 9
 
 repositories {
+	maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
 	mavenCentral()
-	maven { url "https://repo.spring.io/snapshot" }
-	maven { url "https://repo.spring.io/milestone" }
 }
 
 configurations {
@@ -50,7 +48,10 @@ dependencies {
 			"javax.xml.bind:jaxb-api:${javaXmlBindVersion}", //#解决因java9模块化产生的找不到类的异常
 			"com.sun.xml.bind:jaxb-core:${javaXmlBindVersion}", //#解决因java9模块化产生的找不到类的异常
 			"com.sun.xml.bind:jaxb-impl:${javaXmlBindVersion}", //#解决因java9模块化产生的找不到类的异常
+//			"org.springframework.security.oauth:spring-security-oauth2:${springOauth2Version}",
 	)
+
+
 	runtime('org.postgresql:postgresql')
 	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
