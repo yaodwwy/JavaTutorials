@@ -9,6 +9,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 //@EnableWebSecurity
 @SpringBootApplication
+@EnableAutoConfiguration
 public class MainApplication {
 
 	public static void main(String[] args) {

@@ -51,9 +51,7 @@ dependencies {
 //			"org.springframework.security.oauth:spring-security-oauth2:${springOauth2Version}",
 	)
 
-
-	runtime('org.postgresql:postgresql')
-	providedRuntime('org.springframework.boot:spring-boot-starter-tomcat')
+	compile('org.springframework.boot:spring-boot-starter-tomcat')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.springframework.security:spring-security-test')
 }

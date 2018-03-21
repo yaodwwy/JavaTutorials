@@ -1,5 +1,6 @@
 rootProject.name = 'JavaTutorials'
 
+include 'springboot'
 /***********************
 include 'core'
 include 'DesignPattern'

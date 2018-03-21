@@ -9,10 +9,10 @@ import org.springframework.data.jpa.repository.EntityGraph;
  */
 public interface IMemberRepository extends BaseRepository<MemberEntity, Long> {
     //通过@EntityGraph来指定MemberEntity类中定义的NamedEntityGraph
-    @EntityGraph(value="member.all",type= EntityGraph.EntityGraphType.FETCH)
+//    @EntityGraph(value="member.all",type= EntityGraph.EntityGraphType.FETCH)
     MemberEntity findByUsername(String username);
-    @EntityGraph(value="member.all",type= EntityGraph.EntityGraphType.FETCH)
+//    @EntityGraph(value="member.all",type= EntityGraph.EntityGraphType.FETCH)
     MemberEntity findByEmail(String email);
-    @EntityGraph(value="member.all",type= EntityGraph.EntityGraphType.FETCH)
+//    @EntityGraph(value="member.all",type= EntityGraph.EntityGraphType.FETCH)
     MemberEntity findByMobile(String mobile);
 }
