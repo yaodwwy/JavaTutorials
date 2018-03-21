@@ -65,7 +65,7 @@ public class BaseRepositoryImpl<T extends BaseEntity, ID extends Serializable> e
 
     @Override
     public List<T> saveAll(List<T> entitys) {
-        return super.save(entitys);
+        return super.saveAll(entitys);
     }
 
     @Transactional
@@ -117,7 +117,7 @@ public class BaseRepositoryImpl<T extends BaseEntity, ID extends Serializable> e
     }
 
     public boolean exists(ID id) {
-        return super.exists(id);
+        return super.existsById(id);
     }
 
     public T findOne(ID id) {
