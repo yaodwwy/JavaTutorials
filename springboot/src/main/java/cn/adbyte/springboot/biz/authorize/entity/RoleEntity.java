@@ -2,7 +2,13 @@ package cn.adbyte.springboot.biz.authorize.entity;
 
 import cn.adbyte.springboot.biz.org.entity.OrganizationEntity;
 import cn.adbyte.springboot.common.entity.BaseEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+import org.hibernate.annotations.Where;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.data.jpa.repository.EntityGraph;
+import org.springframework.security.core.GrantedAuthority;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -11,7 +17,9 @@ import java.util.Set;
 @Entity
 @Cacheable
 @Table(name = "t_role")
-public class RoleEntity extends BaseEntity {
+//@NamedEntityGraph(name = "role.resource",
+//        attributeNodes = @NamedAttributeNode(value = "resource"))
+public class RoleEntity extends BaseEntity implements GrantedAuthority {
 
     @ManyToOne
     @JoinColumn(name = "organization_id")
@@ -20,14 +28,13 @@ public class RoleEntity extends BaseEntity {
     private String description;
     @Transient//用于输出是否授权的资源
     private Boolean granted;
-    @ManyToMany(cascade = CascadeType.REFRESH)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name = "t_role_resource",
-            joinColumns = {@JoinColumn(name = "role_id",
-                    referencedColumnName = "id")},
-            inverseJoinColumns = {
-                    @JoinColumn(name = "resource_id", referencedColumnName = "id")})
+            joinColumns = {@JoinColumn(name = "role_id", referencedColumnName = "id")},
+            inverseJoinColumns = {@JoinColumn(name = "resource_id", referencedColumnName = "id")})
     @OrderBy(value = "id DESC")
-    private Set<RoleEntity> resource = new HashSet<>();
+    @Where(clause = "del = false")
+    private Set<ResourceEntity> resource = new HashSet<>();
 
     public RoleEntity() {
     }
@@ -70,11 +77,16 @@ public class RoleEntity extends BaseEntity {
         this.granted = granted;
     }
 
-    public Set<RoleEntity> getResource() {
+    public Set<ResourceEntity> getResource() {
         return resource;
     }
 
-    public void setResource(Set<RoleEntity> resource) {
+    public void setResource(Set<ResourceEntity> resource) {
         this.resource = resource;
+    }
+
+    @Override
+    public String getAuthority() {
+        return name;
     }
 }

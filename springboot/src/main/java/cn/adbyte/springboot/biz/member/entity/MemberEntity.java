@@ -21,20 +21,11 @@ import java.util.Set;
 @Entity
 @Cacheable
 @Table(name = "t_member")
-@NamedEntityGraphs({
-        @NamedEntityGraph(name = "member.all",
-                attributeNodes = {//attributeNodes 来定义需要懒加载的属性
-                        @NamedAttributeNode("department"),//无延伸
-                        @NamedAttributeNode(value = "roles",//要懒加载roles属性中的pages元素
-                                subgraph = "resource"),
-                },
-                subgraphs = {//subgraphs 来定义关联对象的属性
-                        @NamedSubgraph(name = "resource",//一层延伸
-                                attributeNodes = @NamedAttributeNode("resource")),
-                        @NamedSubgraph(name = "roles",//两层延伸
-                                attributeNodes = @NamedAttributeNode(
-                                        value = "roles",
-                                        subgraph = "resource"))})})
+//@NamedEntityGraphs({@NamedEntityGraph(name = "member.all",
+//        attributeNodes = {//attributeNodes 来定义需要懒加载的属性
+//                @NamedAttributeNode(value = "department", subgraph = "managerMember"),
+//                @NamedAttributeNode(value = "authorities", subgraph = "resource")
+//        })})
 public class MemberEntity extends BaseEntity implements UserDetails {
 
     @ManyToOne
@@ -50,8 +41,14 @@ public class MemberEntity extends BaseEntity implements UserDetails {
     private Boolean locked;
     private Boolean credentialsExpired;
     private Boolean enabled;
-    @Transient
-    private Set<GrantedAuthority> authorities;
+    @ManyToMany(cascade = CascadeType.REFRESH,fetch = FetchType.LAZY)
+    @JoinTable(name = "t_member_role",
+            joinColumns = {@JoinColumn(name = "member_id",
+                    referencedColumnName = "id")},
+            inverseJoinColumns = {
+                    @JoinColumn(name = "role_id", referencedColumnName = "id")})
+    @OrderBy(value = "id DESC")
+    private Set<RoleEntity> authorities = new HashSet<>();//GrantedAuthority
     @Transient
     private Long deptID;
     @Transient
@@ -60,21 +57,21 @@ public class MemberEntity extends BaseEntity implements UserDetails {
     private Long orgID;
     @Transient
     private String orgName;
-    @ManyToMany(cascade = CascadeType.REFRESH)
-    @JoinTable(name = "t_member_role",
-            joinColumns = {@JoinColumn(name = "member_id",
-                    referencedColumnName = "id")},
-            inverseJoinColumns = {
-                    @JoinColumn(name = "role_id", referencedColumnName = "id")})
-    @OrderBy(value = "id DESC")
-    private Set<RoleEntity> roles = new HashSet<>();
+//    @ManyToMany(cascade = CascadeType.REFRESH)
+//    @JoinTable(name = "t_member_role",
+//            joinColumns = {@JoinColumn(name = "member_id",
+//                    referencedColumnName = "id")},
+//            inverseJoinColumns = {
+//                    @JoinColumn(name = "role_id", referencedColumnName = "id")})
+//    @OrderBy(value = "id DESC")
+//    private Set<RoleEntity> roles = new HashSet<>();
 
     public MemberEntity() {
     }
 
     public MemberEntity(DepartmentEntity department, String username, String password, String fullname,
                         String email, String mobile, boolean expired, boolean locked, boolean credentialsExpired,
-                        boolean enabled, Set<GrantedAuthority> authorities) {
+                        boolean enabled, Set<RoleEntity> authorities) {
         this.department = department;
         this.username = username;
         this.password = password;
@@ -225,7 +222,7 @@ public class MemberEntity extends BaseEntity implements UserDetails {
         this.enabled = enabled;
     }
 
-    public void setAuthorities(Set<GrantedAuthority> authorities) {
+    public void setAuthorities(Set<RoleEntity> authorities) {
         this.authorities = authorities;
     }
 
@@ -249,11 +246,4 @@ public class MemberEntity extends BaseEntity implements UserDetails {
         return credentialsExpired == null ? false : credentialsExpired;
     }
 
-    public Set<RoleEntity> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(Set<RoleEntity> roles) {
-        this.roles = roles;
-    }
 }

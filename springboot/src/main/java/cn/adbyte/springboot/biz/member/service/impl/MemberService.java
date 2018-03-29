@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 /**
@@ -25,7 +26,7 @@ public class MemberService implements IMemberService,UserDetailsService {
     @Resource
     private IMemberRepository iMemberRepository;
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+    public MemberEntity loadUserByUsername(String username) throws UsernameNotFoundException {
         MemberEntity member = null;
         if (RegexUtils.check(RegexUtils.Type.IS_EMAIL,username)) {
             member = iMemberRepository.findByEmail(username);
@@ -39,12 +40,12 @@ public class MemberService implements IMemberService,UserDetailsService {
         if (member == null) {
             throw new UsernameNotFoundException(ErrorCode.UsernameNotFoundException.des);
         }
-        Set<RoleEntity> roles = member.getRoles();
-        Set<GrantedAuthority> auths = new HashSet<>();
-        roles.forEach(mre -> auths.add(new SimpleGrantedAuthority(mre.getName())));
-        member.setAuthorities(auths);
         return member;
     }
 
 
+    @Override
+    public MemberEntity get(Long id) {
+        return iMemberRepository.get(id);
+    }
 }

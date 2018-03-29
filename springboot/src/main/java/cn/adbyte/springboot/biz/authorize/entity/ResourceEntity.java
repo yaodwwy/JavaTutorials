@@ -3,6 +3,8 @@ package cn.adbyte.springboot.biz.authorize.entity;
 import cn.adbyte.springboot.biz.authorize.enums.ResourceTypeEnum;
 import cn.adbyte.springboot.common.entity.BaseEntity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.*;
@@ -10,8 +12,9 @@ import java.util.*;
 @Entity
 @Table(name = "t_resource")
 public class ResourceEntity extends BaseEntity {
-    @ManyToOne
-    @JoinColumn(name = "parent_id")
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "parent_id", nullable = true)
     private ResourceEntity parent;
     private ResourceTypeEnum type;
     private String name;
@@ -24,16 +27,16 @@ public class ResourceEntity extends BaseEntity {
     private Boolean enabled;
     @Transient//用于输出是否授权的资源
     private Boolean granted;
-    @SuppressWarnings("JpaModelReferenceInspection")
+
     @JsonIgnore
-    @OneToMany(cascade = CascadeType.DETACH)
-    @JoinColumn(name = "parent_id",referencedColumnName = "id")
+    @OrderBy("name")
+    @OneToMany(targetEntity=ResourceEntity.class, mappedBy="parent", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
     private Set<ResourceEntity> children = new HashSet<>();
 
     public ResourceEntity() {
     }
 
-    public ResourceEntity(ResourceEntity parent, ResourceTypeEnum type, String name, String url, String iconCls, Integer moduleSort, Integer menuSort, Integer tabSort, Integer funcSort, Boolean enabled) {
+    public ResourceEntity(ResourceEntity parent, ResourceTypeEnum type, String name, String url, String iconCls, Integer moduleSort, Integer menuSort, Integer tabSort, Integer funcSort, Boolean enabled, Boolean granted, Set<ResourceEntity> children) {
         this.parent = parent;
         this.type = type;
         this.name = name;
@@ -44,7 +47,10 @@ public class ResourceEntity extends BaseEntity {
         this.tabSort = tabSort;
         this.funcSort = funcSort;
         this.enabled = enabled;
+        this.granted = granted;
+        this.children = children;
     }
+
     public ResourceEntity getParent() {
         return parent;
     }
@@ -85,6 +91,14 @@ public class ResourceEntity extends BaseEntity {
         this.iconCls = iconCls;
     }
 
+    public Integer getModuleSort() {
+        return moduleSort;
+    }
+
+    public void setModuleSort(Integer moduleSort) {
+        this.moduleSort = moduleSort;
+    }
+
     public Integer getMenuSort() {
         return menuSort;
     }
@@ -107,14 +121,6 @@ public class ResourceEntity extends BaseEntity {
 
     public void setFuncSort(Integer funcSort) {
         this.funcSort = funcSort;
-    }
-
-    public Integer getModuleSort() {
-        return moduleSort;
-    }
-
-    public void setModuleSort(Integer moduleSort) {
-        this.moduleSort = moduleSort;
     }
 
     public Boolean getEnabled() {

@@ -4,6 +4,8 @@ import cn.adbyte.springboot.biz.member.entity.MemberEntity;
 import cn.adbyte.springboot.common.repo.BaseRepository;
 import org.springframework.data.jpa.repository.EntityGraph;
 
+import java.util.Optional;
+
 /**
  * Created by Adam Yao on 2018/3/21.
  */
@@ -15,4 +17,5 @@ public interface IMemberRepository extends BaseRepository<MemberEntity, Long> {
     MemberEntity findByEmail(String email);
 //    @EntityGraph(value="member.all",type= EntityGraph.EntityGraphType.FETCH)
     MemberEntity findByMobile(String mobile);
+    MemberEntity get(Long id);
 }

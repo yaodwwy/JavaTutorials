@@ -47,7 +47,7 @@ public class BasePageImpl implements Serializable {
     }
 
     public PageRequest getRequestPage() {
-        return new PageRequest(this.page - 1, this.limit, this.sort);
+        return PageRequest.of(this.page - 1, this.limit, this.sort);
     }
 
     public void setRequestPage(PageRequest requestPage) {

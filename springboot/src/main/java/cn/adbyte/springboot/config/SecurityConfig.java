@@ -21,6 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
             "/druid/**",
             "/static/**",
             "/login",
+            "/test",
             // web
             "/"
     };

@@ -68,7 +68,7 @@ public class BaseRepositoryImpl<T extends BaseEntity, ID extends Serializable> e
         return super.saveAll(entitys);
     }
 
-    @Transactional
+    @Override
     public T update(T entity) {
         entity.setLast(new Date());
         return super.saveAndFlush(entity);
@@ -96,7 +96,7 @@ public class BaseRepositoryImpl<T extends BaseEntity, ID extends Serializable> e
 
     @Transactional
     public boolean remove(ID id) {
-        T one = findOne(id);
+        T one = get(id);
         if (null != one) {
             one.setDel(true);
             this.update(one);
@@ -120,7 +120,7 @@ public class BaseRepositoryImpl<T extends BaseEntity, ID extends Serializable> e
         return super.existsById(id);
     }
 
-    public T findOne(ID id) {
+    public T get(ID id) {
         Assert.notNull(id, "Id's must not be null!");
         Optional<T> byId = super.findById(id);
         return byId.orElse(null);
