@@ -1,6 +1,6 @@
 /**
  * Created by Adam Yao on 2017/6/13.
- *
+ * 原型模式
  * @Link https://en.wikipedia.org/wiki/Prototype_pattern
  */
 /** Prototype Class **/
