@@ -36,6 +36,10 @@ public class ResourceEntity extends BaseEntity {
     public ResourceEntity() {
     }
 
+    public ResourceEntity(String name) {
+        this.name = name;
+    }
+
     public ResourceEntity(ResourceEntity parent, ResourceTypeEnum type, String name, String url, String iconCls, Integer moduleSort, Integer menuSort, Integer tabSort, Integer funcSort, Boolean enabled, Boolean granted, Set<ResourceEntity> children) {
         this.parent = parent;
         this.type = type;
