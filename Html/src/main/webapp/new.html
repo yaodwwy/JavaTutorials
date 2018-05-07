@@ -499,7 +499,7 @@
                 音乐</a>
         </dd>
         <dd>
-            <a class="two" target="_blank" href="http://v.ifeng.com/live/">
+            <a class="two" target="_blank" href="http://www.tvyan.com/tai/fhzxt/index_5.html">
                 <img src="http://www.ifeng.com/favicon.ico"/>
                 凤凰</a>
             <a class="two" target="_blank" href="http://tv.cctv.com/live/">
@@ -582,7 +582,6 @@
     </dl>
 
 </div>
-<div id="ss"></div>
 
 <div id="calendar" style="position:absolute; width: 540px;height: 380px; display:none;z-index:3;
 overflow:hidden; left:50%;top:50%; margin-left:-270px;margin-top:-188px;border-radius: 6px;
@@ -597,31 +596,6 @@ border-radius: 6px;border: 4px white solid;box-shadow: 0px 2px 40px grey;"></div
 <script>
 
     $(function () {
-        $.ajax({
-            type: "get",
-            async: true,
-            url: "https://ip-80x86-io.appspot.com/",
-            dataType: 'jsonp',//数据类型为jsonp
-            timeout: 2500,
-            jsonp: "[ by 80x86.io ]",//服务端用于接收callback调用的function名的参数
-            success: function (data, text, xhqr) {
-            },
-            error: function (jqXHR, textStatus, errorThrown) {
-            },
-            complete: function (jqXHR, textStatus) {
-                $("#ss").fadeIn(500);
-                if (jqXHR.status == 200) {
-                    $("#ss").addClass("mySuccess");
-                    $("#ss").text("科学上网连接成功！");
-                } else {
-                    $("#ss").addClass("myWarning");
-                    $("#ss").text("科学上网连接失败！");
-                }
-                setTimeout(function () {
-                    $("#ss").fadeOut(1000);
-                }, 3000)
-            }
-        });
 
         $("#q").get(0).addEventListener("input", function (o) {
             $("#kw").val($("#q").val());
