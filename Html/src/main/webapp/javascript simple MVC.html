@@ -11,11 +11,11 @@
   // controller
   Animal = {
    start : function() {
-    this.view.start();//´ÓÊÓÍ¼´¥·¢
+    this.view.start();//ä»è§†å›¾è§¦å‘
    },
    set : function(animalName) {
        this.model.setAnimal(animalName);
-       //controller ¸Ä±ä model 
+       //controller æ”¹å˜ model 
    }
   };
   // model
@@ -32,7 +32,7 @@
    },
    onchange : function() {
        Animal.view.update();
-       //model´«µİ½á¹ûµ½View(¸öÈË¾õµÃÕâÀï¿ÉÒÔÓÉControllerÀ´×¨µİ£¬×îºÃ²»ÒªÖ±½Ó²Ù×÷ÊÓÍ¼)
+       //modelä¼ é€’ç»“æœåˆ°View(ä¸ªäººè§‰å¾—è¿™é‡Œå¯ä»¥ç”±Controlleræ¥ä¸“é€’ï¼Œæœ€å¥½ä¸è¦ç›´æ¥æ“ä½œè§†å›¾)
    },
    getAnimalAction : function() {
     return this.currentAnimal ? this.currentAnimal + ' ' + this.animalDictionary[this.currentAnimal] : 'unknow';
@@ -42,19 +42,19 @@
   Animal.view = {
    start : function() {
        document.getElementById('setAnimal').onchange = this.onchange;
-       //ÊÓÍ¼°ó¶¨ÊÂ¼ş
+       //è§†å›¾ç»‘å®šäº‹ä»¶
    },
    onchange : function() {
        Animal.set(document.getElementById('setAnimal').value);
-       //ÊÓÍ¼Ö´ĞĞ²Ù×÷£¬µ÷ÓÃController
+       //è§†å›¾æ‰§è¡Œæ“ä½œï¼Œè°ƒç”¨Controller
    },
    update : function() {
-     //ÊÓÍ¼Ö´ĞĞ×îºóµÄ¸üĞÂÏìÓ¦  
+     //è§†å›¾æ‰§è¡Œæœ€åçš„æ›´æ–°å“åº”  
      console.log(Animal.model.getAnimalAction());
      document.getElementById('animalDo').innerHTML = Animal.model.getAnimalAction();
    }
   };
-  Animal.start();//Èë¿Ú
+  Animal.start();//å…¥å£
  </script>
  
  
