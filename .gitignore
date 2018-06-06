@@ -8,3 +8,12 @@ out
 /*.iml
 /*/gradle/
 /*/*.iml
+
+/blog/node_modules
+/blog/public
+/blog/scaffolds
+/blog/themes/landscape
+/blog/.gitignore
+/blog/_config.yml
+/blog/package.json
+/blog/package-lock.json
