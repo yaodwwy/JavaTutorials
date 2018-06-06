@@ -3,12 +3,12 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: adbyte.cn
-subtitle:
-description:
-keywords:
-author: yaodwwy
-language:
+title: Adbyte
+subtitle: 程序开发日志
+description:  程序员经验之谈
+keywords: JAVA Python Spring JPA
+author: Adam.Yao
+language: zh-CN
 timezone:
 
 # URL
@@ -29,6 +29,7 @@ i18n_dir: :lang
 skip_render:
   - '*.html'
   - 'html/**'
+  - 'README.md'
 
 
 # Writing
@@ -79,10 +80,6 @@ pagination_dir: page
 theme: aath
 
 # Comment
-## disqus
-## livere
-disqus_shortname: your_disqus_shortname
-livere_uid: your_livere_uid
 
 # favicon
 favicon: /favicon.ico
@@ -93,8 +90,8 @@ favicon: /favicon.ico
 ## aside-description
 ## links
 search: true
-avatar: http://adbyte.cn/img/mplusg.png
-aside-description: 个人博客
+avatar: http://adbyte.cn/img/mplusg-250.png
+aside-description: 程序开发日志
 links:
   谷歌: https://www.google.com/
   知乎: https://www.zhihu.com/

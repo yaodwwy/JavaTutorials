@@ -1,18 +1,4 @@
-###linux java 环境变量
 
-filePath : /etc/profile 
-
-
-export JAVA_HOME=/home/adam/java/jdk1.8.0_101/
-export PATH=$JAVA_HOME/bin:$PATH 
-export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar 
-
-GRADLE_HOME=/home/adam/java/gradle-3.1
-export PATH=$PATH:$GRADLE_HOME/bin 
-
-
-
-filePath: /etc/hosts
 
 ###chrome通过file协议浏览
 

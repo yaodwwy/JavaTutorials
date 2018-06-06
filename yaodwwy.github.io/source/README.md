@@ -25,8 +25,5 @@
     #清理
     hexo clean
     
-    #生成
-    hexo generate
-    
     #部署
-    hexo deploy
+    hexo d -g

@@ -1,8 +1,11 @@
-﻿#使用Java实现面向对象编程
--------------
+﻿---
+title: 使用Java实现面向对象编程
+date: 2015-12-20 00:00:00
+tag: Java基础
+---
 
-一、抽象和封装总结
-----
+## 一、抽象和封装总结
+
 class    object    static    final    private    public    protect    overloading    constructor    encapsulation
 
 现实世界是“面向对象”的，面向对象就是采用“现象模拟”的方法设计和开发程序。
@@ -13,8 +16,8 @@ class    object    static    final    private    public    protect    overloadin
 封装就是将类的成员属性声明为私有的，同时提供公有的方法实现对该成员属性的存取操作。
 封装的好处主要有：隐藏类的实现细节；让使用者只能通过程序员规定的方法来访问数据；可以方便地加入存取控制语句，限制不合理操作。
 
-二、继承总结
-----
+## 二、继承总结
+
 inheritance    extend    super    override    constructor    public    abstract    final
 
 继承是Java中实现代码重用的重要手段之一。Java中只支持单继承，即一个类只能有一个直接父类。java.lang.Object类是所有Java类的祖先。
@@ -24,8 +27,8 @@ inheritance    extend    super    override    constructor    public    abstract 
 抽象类不能实例化。抽象类中可以没有，可以有一个或多个抽象的方法。子类必须重写所有的抽象方法才能实例化，否则子类还是一个抽象类。
 用final修饰的类，不能再被继承。用final修饰的方法，不能被子类重写。用final修饰的变量将变成常量，只能赋值一次。
 
-三、多态总结
-----
+## 三、多态总结
+
 polymorphism  
 
 通过多态可以减少类中代码量，可以提高代码的可扩展性和可维护性。继承是多态的基础，没有继承就没有多态。
@@ -35,9 +38,10 @@ polymorphism
 instanceof运算符通常和强制类型转换结合使用，首先通过instanceof进行类型判断，然后进行相应的强制类型转换。
 使用父类作为方法形参是使用多态的常用方法。
 
--------------------
 
-##1、 JSP有哪几个内置对象，每个对象的作用是什么，并写出常用方法
+
+## 1、 JSP有哪几个内置对象，每个对象的作用是什么，并写出常用方法
+
 JSP中一共预先定义了9个这样的对象，分别为：request、response、session、application、out、pagecontext、config、page、exception
 request对象代表了客户端的请求信息，主要用于接受通过HTTP协议传送到服务器的数据。（包括头信息、系统信息、请求方式以及请求参数等）。request对象的作用域为一次请求。
 Request常用的方法：getParameter(String strTextName) 获取表单提交的信息.
@@ -74,7 +78,8 @@ config 对象的主要作用是取得服务器的配置信息。通过 pageConex
  
 exception 对象的作用是显示异常信息, 只有在包含 isErrorPage="true" 的页面中才有效
  
-##2、 什么是Cookie，有哪些常用方法？ JSP中Session和Cookie的区别是什么，请详细阐述
+## 2、 什么是Cookie，有哪些常用方法？ JSP中Session和Cookie的区别是什么，请详细阐述
+
 Cookie是Web服务器保存在用户硬盘上的一段文本。Cookie允许一个Web站点在用户电脑上保存信息并且随后再取回它。Cookie对象的典型应用是用来统计网站的访问人数。由于代理服务器、缓存等的使用，唯一能帮助网站精确统计来访人数的方法就是为每个访问者建立一个唯一ID。使用Cookie，常用方法如下:
 setMaxAge(long time); 设置Cookie的有效时间，单位是秒
 response.addCookie(c); 将Cookie对象传送到客户端
@@ -85,7 +90,8 @@ response.addCookie(c); 将Cookie对象传送到客户端
 4．Sessoin一般存储较为重要的数据。Cookie一般存储不重要，但常用的数据，如简化登录操作，商品信息对比操作。
  
  
-##3、 jQuery的选择器有哪几种类型？jQuery基本选择器分为哪几类，各自的特点是什么？
+## 3、 jQuery的选择器有哪几种类型？jQuery基本选择器分为哪几类，各自的特点是什么？
+
 1、 基本选择器
 2、 层次选择器
 3、 过滤选择器
@@ -100,7 +106,8 @@ ID选择器，根据给定的id匹配一个元素，例如：$(‘test’)选取
 全部选择器，匹配所有元素，例如：$(‘*’)选择所有元素
 并集选择器，将每一个选择器匹配到的元素合并后一起返回，例如：$(‘div,span,p.myclass’)选择所有<div>,<span>和拥有class为myclass的<p>元素的一组元素
  
-##4、 请详细描述Ajax的工作原理，是如何实现页面无刷新的
+## 4、 请详细描述Ajax的工作原理，是如何实现页面无刷新的
+
 AJAX全称为(异步JavaScript和XML），是一种创建交互式网页应用的网页开发技术
 Ajax的工作原理相当于在用户和服务器之间加了—个中间层(AJAX引擎),使用户操作与服务器响应异步化。并不​是所有的用户请求都提交给服务器,像—些数据验证和数据处理等都交给Ajax引擎自己来做, 只有确定需要从服​务器读取新数据时再由Ajax引擎代为向服务器提交请求。
  
@@ -111,7 +118,8 @@ Ajax的工作原理相当于在用户和服务器之间加了—个中间层(AJA
 创建回调函数，处理服务器返回的数据，将返回的数据动态地显示在JSP页面上。
  
  
-##5、 什么是盒子模型？盒子模型的属性有哪些？它们的作用分别是什么？
+## 5、 什么是盒子模型？盒子模型的属性有哪些？它们的作用分别是什么？
+
 在网页中，一个元素占有空间的大小由几个部分构成，其中包括元素的内容，元素的内间距，元素的边框，元素的边界四个部分，四个部分一起构成了css中元素的盒模型
 盒子模型的属性包括：
 border，用来设置边框的样式，包括：粗细、样式和颜色
@@ -119,7 +127,8 @@ padding，用来设置内边距
 margin:用来设置外边距
  
  
-##6、 JSP中转发和重定向的区别是什么，请详细阐述
+## 6、 JSP中转发和重定向的区别是什么，请详细阐述
+
 转发：request.getRequestDispatcher(url).forward(request,response);
 重定向：response.sendRedirect(url);
 区别1：转发后浏览器地址栏不变，仍然是发起跳转操作的资源地址，而重定向后改变为目标网页地址
@@ -127,7 +136,8 @@ margin:用来设置外边距
 区别3：转发可以访问WEB-INF目录下的资源，而重定向不可以
 区别4：重定向可以访问站外资源，比如链接到其他网站，而重定向只能访问本站内部的资源
  
-##7、 请阐述MVC架构各个单词的含义，以及运行原理，同时说明在JSP开发中每层的常用实现技术
+## 7、 请阐述MVC架构各个单词的含义，以及运行原理，同时说明在JSP开发中每层的常用实现技术
+
 M：model模型，模型表示企业数据和业务规则
 V：view 视图，视图是用户看到并与之交互的界面，负责数据采集和显示
 C：controller控制器, 控制器接受用户的输入并调用模型和视图去完成用户的需求，负责整个应用程序的调度
@@ -139,10 +149,12 @@ C：controller控制器, 控制器接受用户的输入并调用模型和视图�
  
 在JSP开发中，模型通常由JavaBean充当，视图由JSP充当，控制器由Servlet充当
  
-##8、 请描述Servlet的生命周期
+## 8、 请描述Servlet的生命周期
+
 web容器加载servlet，生命周期开始。通过调用servlet的init()方法进行servlet的初始化。通过调用service()方法实现，根据请求的不同调用doGet()或doPost()方法。结束服务，web容器调用servlet的destroy()方法
  
-##9、 jQuery对象和dom对象是怎样转换的？
+## 9、 jQuery对象和dom对象是怎样转换的？
+
 两种转换方式将一个jQuery对象转换成DOM对象：[index]和.get(index); 
 (1)jQuery对象是一个数据对象，可以通过[index]的方法，来得到相应的DOM对象。
 如：
@@ -161,7 +173,8 @@ DOM对象转成jQuery对象:
 var $v=$(v); //jQuery对象 
 转换后，就可以任意使用jQuery的方法了。
  
-##10、 列出解析XML的常用技术，并阐述各自特点
+## 10、 列出解析XML的常用技术，并阐述各自特点
+
 Java通过DOM解析XML
 DOM是基于树形结构的的节点或信息片段的集合，允许开发人员使用DOM API遍历XML树、检索所需数据。分析该结构通常需要加载整个文档和构造树形结构，然后才可以检索和更新节点信息。
 使用DOM对XML文件进行操作时，首先要解析文件，将文件分为独立的元素、属性和注释等，然后以节点树的形式在内存中对XML文件进行表示，就可以通过节点树访问文档的内容，并根据需要修改文档。因为整个DOM树已经被载入内存，所以可以随机访问任意节点信息。
@@ -169,19 +182,22 @@ DOM是基于树形结构的的节点或信息片段的集合，允许开发人�
 Java通过SAX解析XML
 SAX解析器是一种基于事件的解析器，事件驱动的流式解析方式是，从文件的开始顺序解析到文档的结束，不可暂停或倒退。它的核心是事件处理模式，SAX解析器的优点是解析速度快，占用内存少。
 
---------------------------------
 
-##一、Spring依赖注入的3种实现方式是什么？
+
+## 一、Spring依赖注入的3种实现方式是什么？
+
 依赖注入的3种实现方式分别是：接口注入（interface injection）、Set注入（setter injection）和构造注入（constructor injection）。接口注入指的就是在接口中定义要注入的信息，并通过接口完成注入。其具体步骤包括（1）编写一个接口,各种数据的注入将通过这个接口进行。（2）任何想要使用数据的类都必须实现这个接口 。Set注入指的就是在接受注入的类中定义一个Set方法，并在参数中定义需要注入的元素。构造注入指的就是在接受注入的类中定义一个构造方法，并在参数中定义需要注入的元素。
  
-##二、SSH 框架配置流程是什么？
+## 二、SSH 框架配置流程是什么？
+
 1.创建java web项目：添加struts包：freemarker，ognl，struts2-core，struts2-spring-plugin，xwork-core，commons-fileupload、commons-io、 commons-lang等 ；添加spring包：spring-aop、spring-aspects、spring-beans、spring-context、spring-core、spring-jdbc、spring-orm、spring-web等；添加hibernate包：hibernate-core等；添加其他包：ojdbc等
 2.配置struts（1）配置struts核心过滤器。打开web.xml，配置struts核心过滤器和过滤器映射。（2）建立Action，继承ActionSupport类。
 （3）配置action。在struts.xml文件中，添加对Action的配置。包含<package><action><result>等元素的配置（4）新建视图页面
 3.配置hibernate：（1）建立数据库与数据表（2）创建持久层实体类及映射文件（3）编写数据访问类，集成HibernateDaoSupport父类
 4.配置spring：（1）配置applicationContext.xml文件，配置spring会话工厂bean，数据访问bean ,业务bean和action bean等。（2）引入aop和tx命名空间，配置声明式事务（3）配置web.xml，添加Spring监听器和context-param初始化参数，告知监听器applicationContext.xml的位置。
  
-##三、Struts的运行机制是什么
+## 三、Struts的运行机制是什么
+
 1、客户端初始化一个指向Servlet容器（例如Tomcat）的请求；
 2、这个请求经过一系列的过滤器（Filter）（这些过滤器中有一个叫做ActionContextCleanUp的可选过滤器，这个过滤器对于Struts2和其他框架的集成很有帮助，例如：SiteMesh Plugin）；
 3、接着StrutsPrepareAndExecuteFilter被调用，StrutsPrepareAndExecuteFilter询问ActionMapper来决定这个请求是否需要调用某个Action
@@ -191,10 +207,12 @@ SAX解析器是一种基于事件的解析器，事件驱动的流式解析方�
 7、ActionInvocation实例使用命名模式来调用，在调用Action的过程前后，涉及到相关拦截器（Intercepter）的调用。
 8、一旦Action执行完毕，ActionInvocation负责根据struts.xml中的配置找到对应的返回结果。返回结果通常是 （但不总是，也可能是另外的一个Action链）一个需要被表示的JSP或者FreeMarker的模版。在表示的过程中可以使用Struts2 框架中继承的标签。在这个过程中需要涉及到ActionMapper。
  
-##四、说说IOC和AOP的概念以及在Spring中是如何应用的
+## 四、说说IOC和AOP的概念以及在Spring中是如何应用的
+
 1.控制反转（Inversion of Control，英文缩写为IoC）是一个重要的面向对象编程的法则来削减计算机程序的耦合问题，也是轻量级的Spring框架的核心。 控制反转一般分为两种类型，依赖注入（Dependency Injection，简称DI）和依赖查找（Dependency Lookup）。依赖注入应用比较广泛。2.AOP为Aspect Oriented Programming的缩写，意为：面向切面编程，通过预编译方式和运行期动态代理实现程序功能的统一维护的一种技术。AOP是OOP的延续。利用AOP可以对业务逻辑的各个部分进行隔离，从而使得业务逻辑各部分之间的耦合度降低，提高程序的可重用性，同时提高了开发的效率。3.IOC是典型的工厂模式，而AOP则是典型的代理模式的体现。spring的IoC容器是spring的核心，spring AOP是spring框架的重要组成部分4.在spring中ioc最典型的应用就是整合并管理各个组件，如整合ssh时，spring可以管理datasource,sessionfactory,dao,service,action等bean,这些传统开发方式中均是由硬编码的方式实现；而aop则在spring中表现为各种通知，spring提供了诸如MethodBeforeAdvice,AfterReturningAdvice,AfterThrowingAdvice等API，并在spring提供的声明式事务中也提供了相应的tx命名空间，利用aop简化事务配置
  
-##五、Struts中mvc中分别使用的什么技术？
+## 五、Struts中mvc中分别使用的什么技术？
+
 1.在Action的实现方面，而Struts2中可以是一个POJO。Struts2支持通过拦截器堆栈为每一个Action创建不同的生命周期，其中拦截器在AOP（Aspect-Oriented Programming）中用于在某个方法或字段被访问之前或之后加入某些操作
 2.线程模型方面，Struts2的Action是一个请求对应一个实例（每次请求时都新new出一个对象）,没有线程安全方面的问题。
 3.Servlet依赖方面，Struts2中的Action不再依赖于Servlet API，有利于测试，并且实现TDD。
@@ -204,19 +222,24 @@ SAX解析器是一种基于事件的解析器，事件驱动的流式解析方�
 7.类型转换，Struts2中使用OGNL进行转换，可以更方便的使用。
 8.Struts2支持重写validate方法或者使用XWork的验证框架。同时也很好的使用了Java的国际化机制
  
-##六、Spring是怎么实现事务处理的？
+## 六、Spring是怎么实现事务处理的？
+
 Spring 提供两种事务处理方式，一种是编程式事务处理；一种是声明式事务处理。其中编程式事务处理使用TransactionTemplate进行事务处理（Spring进行commit和rollback）。而Spring 的声明式事务处理，可以说是 Spring AOP的一种实现。因为事务处理是所谓方面（ Aspect ）的一个子集。因此默认情况下，事务处理是利用 Java动态代理机制实现的，这样就必须先定义一个接口，然后再编写实现；而对于没有接口的Javabean ，则通过 CGLIB 实现。这部分是SpringAOP 部分的内容。  其实就是在执行某个业务方法之前添加了tx.beginTran()事务开启，若没有异常，业务方法执行完毕后添加了tx.commitTran()事务提交。若有异常抛出，则添加了tx.rollbackTran();事务回滚。使用Spring?AOP进行事务控制需要具备一定的规则，若是开发人员的业务Service或者说业务Service中的业务方法命名不按照事前定义好的规则进行命名的话，AOP是拦截不到的。
  
-##七、谈谈Hibernate的缓存机制
+## 七、谈谈Hibernate的缓存机制
+
 Hibernate的缓存包括Session的缓存和SessionFactory的缓存，其中SessionFactory的缓存又可以分为两类：内置缓存和外置缓存。Session的缓存是内置的，不能被卸载，也被称为Hibernate的第一级缓存。SessionFactory的内置缓存和Session的缓存在实现方式上比较相似，前者是SessionFactory对象的一些集合属性包含的数据，后者是指Session的一些集合属性包含的数据。SessionFactory的内置缓存中存放了映射元数据和预定义SQL语句，映射元数据是映射文件中数据的拷贝，而预定义SQL语句是在Hibernate初始化阶段根据映射元数据推导出来，SessionFactory的内置缓存是只读的，应用程序不能修改缓存中的映射元数据和预定义SQL语句，因此SessionFactory不需要进行内置缓存与映射文件的同步。SessionFactory的外置缓存是一个可配置的插件。在默认情况下，SessionFactory不会启用这个插件。外置缓存的数据是数据库数据的拷贝，外置缓存的介质可以是内存或者硬盘。SessionFactory的外置缓存也被称为Hibernate的第二级缓存。
  
-##八、MyBatis和Hibernate有什么区别
+## 八、MyBatis和Hibernate有什么区别
+
 1)MyBATIS非常简单易学，Hibernate相对较复杂，门槛较高。2) 二者都是比较优秀的开源产品。但Hibernate现在已经是主流O/R Mapping框架，从文档的丰富性，产品的完善性，版本的开发速度都要强于MyBatis。3) 当系统属于二次开发，无法对数据库结构做到控制和修改，那MyBatis的灵活性将比Hibernate更适合。4) 系统数据处理量巨大，性能要求极为苛刻，在这种情况下MyBatis会有更好的可控性和表现。因为MyBatis比Hibernate更容易进行sql的优化。5) MyBatis 可以进行细粒度的优化，减少与数据库的交互，对于性能的提升是非常重要。6) MyBatis需要手写sql语句，也可以生成一部分，Hibernate则基本上可以自动生成，偶尔会写一些Hql。如果涉及到数据库字段的修改，Hibernate修改的地方很少。7) 开发方面：开发效率上，两者差不多 ；可维护性方面，MyBatis更好一些。8)  运行效率：在不考虑cache的情况下，MyBatis应该会比hibernate快一些或者很多（根据实际情况会有所不同）。 9) 对不同数据库类型的支持。MyBatis对不同数据库类型的支持不够好，如果你要开发的系统是要在对中数据间移植，那可能用hibernate比较好。10)对缺省的cache支持。MyBatis对缺省的cache支持不够好，但是hibernate的cache支持其实也不是很好，而且很复杂。尤其是对于大并发量的应用。
  
-##九、Hashmap和Hashtable的区别
+## 九、Hashmap和Hashtable的区别
+
 1 HashMap不是线程安全的，hastmap是将键映射到值的对象，其中键和值都是对象，并且不能包含重复键，但可以包含重复值。HashMap允许null key和null value，而hashtable不允许。2 .HashTable是线程安全的一个Collection。HashMap是Hashtable的轻量级实现（非线程安全的实现），他们都完成了Map接口，主要区别在于HashMap允许空（null）键值（key）,由于非线程安全，效率上可能高于Hashtable。 HashMap允许将null作为一个entry的key或者value，而Hashtable不允许。 HashMap把Hashtable的contains方法去掉了，改成containsvalue和containsKey。Hashtable继承自Dictionary类，而HashMap是Java1.2引进的Map interface的一个实现。最大的不同是，Hashtable的方法是Synchronize的，而HashMap不是，在多个线程访问Hashtable时，不需要自己为它的方法实现同步，而HashMap 就必须为之提供外同步。 Hashtable和HashMap采用的hash/rehash算法都大概一样，所以性能不会有很大的差异
  
-##十、JDBC与Hibernate的优缺点比较
+## 十、JDBC与Hibernate的优缺点比较
+
 JDBC与Hibernate在性能上相比，JDBC灵活性有优势。而Hibernate在易学性，易用性上有些优势。当用到很多复杂的多表联查和复杂的数据库操作时，JDBC有优势。
 相同点：
 ◆两者都是JAVA的数据库操作中间件。
