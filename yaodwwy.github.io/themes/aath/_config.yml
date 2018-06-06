@@ -4,9 +4,10 @@ language: en
 
 # main menu navigation
 menu:
+  导航: /new
   首页: /
   关于: /about
-  归档: /archives
+  文章: /archives
   标签: /tags
 
 # Miscelaneous

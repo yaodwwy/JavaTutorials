@@ -8,7 +8,7 @@ subtitle:
 description:
 keywords:
 author: yaodwwy
-language: zh_cn
+language:
 timezone:
 
 # URL
@@ -27,6 +27,9 @@ category_dir: categories
 code_dir: downloads/code
 i18n_dir: :lang
 skip_render:
+  - '*.html'
+  - 'html/**'
+
 
 # Writing
 new_post_name: :title.md # File name of new posts
@@ -49,7 +52,7 @@ highlight:
 # per_page: Posts displayed per page. (0 = disable pagination)
 # order_by: Posts order. (Order by date descending by default)
 index_generator:
-  path: '/blog/'
+  path: ''
   per_page: 10
   order_by: -date
   
@@ -90,7 +93,7 @@ favicon: /favicon.ico
 ## aside-description
 ## links
 search: true
-avatar: http://adbyte.cn/img/git.png
+avatar: http://adbyte.cn/img/mplusg.png
 aside-description: 个人博客
 links:
   谷歌: https://www.google.com/
