@@ -44,6 +44,10 @@ tag: Linux环境下JAVA开发基础
     ./data/tomcat/bin/startup.sh
     ./data/tomcat/bin/shutdown.sh
     
+#### Tomcat时时刷新日志：
+
+    tail -fn 1000 /data/tomcat/logs/catalina.out
+    
 #### Tomcat界面管理员配置：
 
 >user.xml(配置管理员用户名密码，用于管理/host-manager和/manager)：
