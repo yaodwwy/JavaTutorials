@@ -9,7 +9,7 @@ table th, table td { padding: 6px 0px!important;}
 table tr td:first-child{ width:90px;}
 </style>
 
-| \ | [![Google]](https://www.google.com) |   [![YouTube]](https://www.youtube.com)| [![Maven]](http://mvnrepository.com)|[![Github]](https://github.com/yaodwwy) [![StackOverflow]](https://stackoverflow.com) [![Yahoo]](https://www.yahoo.com)[![Wikipedia]](https://en.wikipedia.org/wiki/Main_Page)|[![Facebook]](https://www.facebook.com) [![Twitter]](https://twitter.com)
+| [![Google]](https://www.google.com) |   [![YouTube]](https://www.youtube.com)| [![Maven]](http://mvnrepository.com)|[![Github]](https://github.com/yaodwwy)|[![StackOverflow]](https://stackoverflow.com) [![Yahoo]](https://www.yahoo.com)|[![Wikipedia]](https://en.wikipedia.org/wiki/Main_Page)
 |:---------------:|:---------------:|:---------------:|:---------------:|:---------------:|:---------------:|
 |技术|[CodeCademy](https://www.codecademy.com/learn/python)|[极客学院](http://wiki.jikexueyuan.com)|[W3school](http://www.w3school.com.cn)|[java样例](https://www.programcreek.com/java-api-examples)|[博客园](http://www.cnblogs.com)|
 ||[Bootstrap](http://v3.bootcss.com/css)|[EeasyUi](http://www.jeasyui.net/tutorial) > [EUI文档](http://www.jeasyui.com/documentation)|[H5+](http://www.html5plus.org/doc/h5p.html) > [jQuery](http://hemin.cn/jq)|[MUI文档](http://dev.dcloud.net.cn/mui/ui)|[51cto](http://www.51cto.com)|
