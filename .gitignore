@@ -10,12 +10,10 @@ out
 /*/*.iml
 
 /yaodwwy.github.io/.deploy_git
-/yaodwwy.github.io/scaffolds
-/yaodwwy.github.io/node_modules
+/yaodwwy.github.io/node_modulesm
 /yaodwwy.github.io/public
 /yaodwwy.github.io/scaffolds
 /yaodwwy.github.io/themes/landscape
 /yaodwwy.github.io/.gitignore
+
 /yaodwwy.github.io/_config.yml
-/yaodwwy.github.io/package.json
-/yaodwwy.github.io/package-lock.json
