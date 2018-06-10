@@ -86,11 +86,11 @@ favicon: /favicon.ico
 
 # Aside
 ## search
-## avatar 251-185
+## avatar 325-185
 ## aside-description
 ## links
 search: true
-avatar: http://adbyte.cn/img/mplusg.png
+avatar: https://picsum.photos/480/270/?random
 aside-description: 程序开发日志
 links:
   谷歌: https://www.google.com/

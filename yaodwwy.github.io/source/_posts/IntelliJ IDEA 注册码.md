@@ -1,7 +1,7 @@
 ---
 title: IntelliJ IDEA 注册码
 date: 2018-05-09 00:00:00
-tag: idea 注册码
+tag: Idea注册码
 ---
 
 

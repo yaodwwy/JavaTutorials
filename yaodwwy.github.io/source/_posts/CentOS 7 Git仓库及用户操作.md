@@ -1,12 +1,13 @@
 ---
 title: CentOS 7 Git仓库及用户操作
-date: 2018-06-07 09:54:00
+date: 2018-06-07 09:44:00
 tag: Git
 ---
+Git is a free and open source distributed version control system designed to handle everything from small to very large projects with speed and efficiency.
 
-## Git仓库管理及常用操作
+Git is easy to learn and has a tiny footprint with lightning fast performance. It outclasses SCM tools like Subversion, CVS, Perforce, and ClearCase with features like cheap local branching, convenient staging areas, and multiple workflows.
 
-### 创建仓库：
+#### 创建仓库：
 
     $ git init --bare
    
@@ -23,21 +24,21 @@ tag: Git
     -b：在命令行中一并输入用户名和密码而不是根据提示输入密码； 
     -D：删除指定的用户。
     
-### 创建用户：
+#### 创建用户：
 
     $ htpasswd -d passwd 用户名
     
-### 删除用户：
+#### 删除用户：
 
     $ htpasswd -D passwd customizeName
 
-### 克隆项目：
+#### 克隆项目：
     $ mkdir /data/myProject
     $ cd /data/myProject/
     $ git clone https://github.com/spring-cloud-samples/sso.git
 
 
-### 提交项目：
+#### 提交项目：
 
     $ git config --global user.name 用户名
     $ git config --global user.email 邮箱
