@@ -46,25 +46,72 @@ $('section h1').remove();
 
 | [![Google]](https://www.google.com)|[![YouTube]](https://www.youtube.com)|[![Maven]](http://mvnrepository.com)|[![Yahoo]](https://www.yahoo.com)|[![StackOverflow]](https://stackoverflow.com)[![Wikipedia]](https://en.wikipedia.org/wiki/Main_Page)|[![Github]](https://github.com/yaodwwy)
 |:---------------:|:---------------:|:---------------:|:---------------:|:---------------:|:---------------:|
-|技术学习|[CodeCademy](https://www.codecademy.com/learn/python)|[极客学院](http://wiki.jikexueyuan.com)|[W3school](http://www.w3school.com.cn)|[java样例](https://www.programcreek.com/java-api-examples)|[博客园](http://www.cnblogs.com)|
-||[Bootstrap](http://v3.bootcss.com/css)|[EeasyUi](http://www.jeasyui.net/tutorial) > [EUI文档](http://www.jeasyui.com/documentation)|[H5+](http://www.html5plus.org/doc/h5p.html) > [jQuery](http://hemin.cn/jq)|[MUI文档](http://dev.dcloud.net.cn/mui/ui)|[51cto](http://www.51cto.com)|
-|常用工具|[有道笔记](http://note.youdao.com/web/file)|[设备列表](http://sunlogin.oray.com/console/remote)|[站长统计](http://tool.chinaz.com)|[网盘搜索](http://www.wangpansou.cn)|[Qwins](http://www.atuser.com)|
-||[分辨率测试](http://testsize.com)|[格式化JSON](http://www.bejson.com)|[微博图片](http://sinaimg.cx)|[盛天云盘](http://pan.stnts.com)|[iok.la](http://yaoo.iok.la:9990)|
-|素材收藏|[ITellYou](https://msdn.itellyou.cn)|[昵图网](http://www.nipic.com)|[亿品元素](http://www.epinv.com)|||
-|资讯娱乐|[Google+](https://plus.google.com)|[电影](http://www.dy2018.com/html/gndy/dyzz/index.html)|[音乐](http://www.9ku.com/fm)|[凤凰](http://www.tvyan.com/tai/fhzxt)|[央视](http://tv.cctv.com/live)|
-||[it之家](http://www.ithome.com)|[CSDN](http://ask.csdn.net)|[新浪新闻](http://news.sina.com.cn)|[影视吧](http://www.ysba.cc)|[复旦自考](http://www.cce.fudan.edu.cn)|
-||[上海考试院](https://www.shmeea.edu.cn)|[洛阳书社](https://weidian.com/dynamic.html?userid=1170745491&wfr=wx_profile)||||
-|收藏夹|[淘宝网](http://www.taobao.com)|[京东](http://www.jd.com)|[1号店](http://www.yhd.com)|[58同城](http://www.58.com)|[赶集网](http://www.ganji.com)|
-     
-[Google]:http://static.gomro.cn/file/img/google.png "谷歌"
+|技术学习|[CodeCademy]|[极客学院]|[W3school]|[java样例]|[博客园]|
+||[Bootstrap]|[EasyUi]> [EUI文档]|[H5+] > [jQuery]|[MUI文档]|[51cto]|
+|常用工具|[有道笔记]|[设备列表]|[站长统计]|[网盘搜索]|[Qwins]|
+||[分辨率测试]|[格式化JSON]|[微博图片]|[盛天云盘]|[iok.la]|
+|素材收藏|[ITellYou]|[昵图网]|[亿品元素]|||
+|资讯娱乐|[Google+]|[电影]|[音乐]|[凤凰]|[央视]|
+||[it之家]|[CSDN]|[新浪新闻]|[影视吧]|[复旦自考]|
+||[上海考试院]|[洛阳书社]||||
+|收藏夹|[淘宝网]|[京东]|[1号店]|[58同城]|[赶集网]|
+
+[Google]: http://static.gomro.cn/file/img/google.png "谷歌"
 [YouTube]: http://static.gomro.cn/file/img/youtube.png "YouTube"
-[Maven]:http://static.gomro.cn/file/img/maven.png "Maven"
-[Github]:http://static.gomro.cn/file/img/github.png "Github"
-[StackOverflow]:http://static.gomro.cn/file/img/stack.png "StackOverflow"
-[Yahoo]:http://static.gomro.cn/file/img/yahoo.png "Yahoo"
-[Wikipedia]:http://static.gomro.cn/file/img/wiki.jpg "Wikipedia"
-[Facebook]:http://static.gomro.cn/file/img/facebook.png "Facebook"
-[Twitter]:http://static.gomro.cn/file/img/twitter.jpg "Twitter"
+[Maven]: http://static.gomro.cn/file/img/maven.png "Maven"
+[Yahoo]: http://static.gomro.cn/file/img/yahoo.png "Yahoo"
+[StackOverflow]: http://static.gomro.cn/file/img/stack.png "StackOverflow"
+[Wikipedia]: http://static.gomro.cn/file/img/wiki.jpg "Wikipedia"
+[Github]: http://static.gomro.cn/file/img/github.png "Github"
+[Facebook]: http://static.gomro.cn/file/img/facebook.png "Facebook"
+[Twitter]: http://static.gomro.cn/file/img/twitter.jpg "Twitter"
+
+[CodeCademy]: https://www.codecademy.com/learn/python
+[极客学院]: http://wiki.jikexueyuan.com
+[W3school]: http://www.w3school.com.cn
+[java样例]: https://www.programcreek.com/java-api-examples
+[博客园]: http://www.cnblogs.com
+[Bootstrap]: http://v3.bootcss.com/css
+[EasyUi]: http://www.jeasyui.net/tutorial
+[EUI文档]: http://www.jeasyui.com/documentation
+[H5+]: http://www.html5plus.org/doc/h5p.html
+[jQuery]: http://hemin.cn/jq
+[MUI文档]: http://dev.dcloud.net.cn/mui/ui
+[51cto]: http://www.51cto.com
+
+[有道笔记]: http://note.youdao.com/web/file
+[设备列表]: http://sunlogin.oray.com/console/remote
+[站长统计]: http://tool.chinaz.com
+[网盘搜索]: http://www.wangpansou.cn
+[Qwins]: http://www.atuser.com
+[分辨率测试]: http://testsize.com
+[格式化JSON]: http://www.bejson.com
+[微博图片]: http://sinaimg.cx
+[盛天云盘]: http://pan.stnts.com
+[iok.la]: http://yaoo.iok.la:9990
+
+[ITellYou]: https://msdn.itellyou.cn
+[昵图网]: http://www.nipic.com
+[亿品元素]: http://www.epinv.com
+[Google+]: https://plus.google.com
+[电影]: http://www.dy2018.com/html/gndy/dyzz/index.html
+[音乐]: http://www.9ku.com/fm
+[凤凰]: http://www.tvyan.com/tai/fhzxt
+[央视]: http://tv.cctv.com/live
+[it之家]: http://www.ithome.com
+[CSDN]: http://ask.csdn.net
+[新浪新闻]: http://news.sina.com.cn
+[影视吧]: http://www.ysba.cc
+[复旦自考]: http://www.cce.fudan.edu.cn
+[上海考试院]: https://www.shmeea.edu.cn
+[洛阳书社]: https://weidian.com/dynamic.html?userid=1170745491&wfr=wx_profile
+
+[淘宝网]: http://www.taobao.com
+[京东]: http://www.jd.com
+[1号店]: http://www.yhd.com
+[58同城]: http://www.58.com
+[赶集网]: http://www.ganji.com
+
 
 <script>
 (function(){
