@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <title>pics for test</title>
+    <title>Images</title>
     <link rel="stylesheet" href="http://static.gomro.cn/js/jQuery/mui.min.css">
 
     <style>
@@ -17,47 +17,64 @@
 </head>
 
 <body>
+<div id="img">
 
-    <script src="http://static.gomro.cn/js/jQuery/mui.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+</div>
 
-    <script>
-        var imageCount = 6;
-        var keys = ['%e7%be%8e%e5%a5%b3', '%e8%af%b1%e6%83%91', '%e7%be%8e%e4%b9%b3',
-            '%e5%86%85%e8%a1%a3', '%e7%a7%81%e6%88%bf', '%e5%a4%a7%e8%83%b8', '%e6%af%94%e5%9f%ba%e5%b0%bc',
-            '%e6%97%a5%e6%9c%ac', '%e6%83%85%e8%b6%a3', '%e7%88%86%e4%b9%b3', '%e9%a3%8e%e9%aa%9a',
-            '%e5%88%b6%e6%9c%8d', 'Beauties'
-        ];
+<div id="page">
+    <a href="x.html?page=last">上一页</a>
+    <a href="x.html?page=next">下一页</a>
+</div>
 
-        render();
+<script src="http://static.gomro.cn/js/jQuery/mui.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
 
-        $(window).scroll(function () {
+<script>
+    var imageCount = 0;
+    var keys = ['%e7%be%8e%e5%a5%b3', '%e8%af%b1%e6%83%91', '%e7%be%8e%e4%b9%b3',
+        '%e5%86%85%e8%a1%a3', '%e5%a4%a7%e8%83%b8', '%e6%af%94%e5%9f%ba%e5%b0%bc',
+        '%e6%97%a5%e6%9c%ac', '%e6%83%85%e8%b6%a3', '%e7%88%86%e4%b9%b3', '%e9%a3%8e%e9%aa%9a',
+        '%e5%88%b6%e6%9c%8d', 'Beauties'
+    ];
 
-            if ($(document).scrollTop() + $(window).height() >= $(document).height()) {
-                render();
-            }
+    render();
 
-        });
+    /*$(window).scroll(function () {
 
-        function render() {
-            for (let i = 0; i < 6; i++) {
+        if ($(document).scrollTop() + $(window).height() >= $(document).height()) {
+            render();
+        }
+
+    });*/
+
+    function addImage(src) {
+        var Img = new Image();
+        Img.src = src;
+        Img.onload = function () {
+            document.getElementById('img').appendChild(Img);
+            if (imageCount < 60) {
                 setTimeout(function () {
-                    $('body').append('<div><img src="https://uploadbeta.com/api/pictures/random/?key=' + keys[
-                        RandomNum(1, 12)] + '&' + new Date().getTime() + '"/></div>');
-                    imageCount++;
-                }, 500);
+                    render();
+                }, 100);
             }
-            mui.toast("已加载 " + imageCount + " 张美图");
-        }
+            mui.toast("已加载 " + imageCount + " 张");
+        };
+    }
 
-        //产生随机数函数
-        function RandomNum(Min, Max) {
-            var Range = Max - Min;
-            var Rand = Math.random();
-            var num = Min + Math.round(Rand * Range);
-            return num;
-        }
-    </script>
+    function render() {
+        var imgUrl = 'https://uploadbeta.com/api/pictures/random/?key=' + keys[RandomNum(1, 12)] + '&' + new Date().getTime();
+        addImage(imgUrl);
+        imageCount++;
+    }
+
+    //产生随机数函数
+    function RandomNum(Min, Max) {
+        var Range = Max - Min;
+        var Rand = Math.random();
+        var num = Min + Math.round(Rand * Range);
+        return num;
+    }
+</script>
 
 </body>
 
