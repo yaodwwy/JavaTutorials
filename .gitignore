@@ -8,12 +8,3 @@ out
 /*.iml
 /*/gradle/
 /*/*.iml
-
-/yaodwwy.github.io/.deploy_git
-/yaodwwy.github.io/node_modulesm
-/yaodwwy.github.io/public
-/yaodwwy.github.io/scaffolds
-/yaodwwy.github.io/themes/landscape
-/yaodwwy.github.io/.gitignore
-
-/yaodwwy.github.io/_config.yml

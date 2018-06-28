@@ -1,6 +1,8 @@
 buildscript {
+    ext {
+        springBootVersion = '2.0.3.RELEASE'
+    }
     repositories {
-        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
         mavenCentral()
     }
     dependencies {
@@ -11,16 +13,11 @@ buildscript {
 allprojects {
     apply plugin: 'java'
     apply plugin: 'idea'
-    apply plugin: 'eclipse'
 
     group  'cn.adbyte'
     version '1.0-SNAPSHOT'
 
     repositories {
-        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
-        maven { url "http://mvn.gt.igexin.com/nexus/content/repositories/releases/" }
-        maven { url "http://repo.maven.apache.org/maven2" }
-        maven { url "https://repo.spring.io/milestone" }
         mavenCentral()
     }
 }
