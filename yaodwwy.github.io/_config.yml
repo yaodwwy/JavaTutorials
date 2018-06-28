@@ -80,6 +80,7 @@ pagination_dir: page
 theme: aath
 
 # Comment
+disqus_shortname: adbyte-cn
 
 # favicon
 favicon: /favicon.ico
