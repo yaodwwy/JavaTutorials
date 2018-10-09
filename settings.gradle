@@ -1,3 +1,4 @@
 rootProject.name = 'JavaTutorials'
 
 include 'DesignPattern'
+include 'Utils'

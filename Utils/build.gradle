@@ -8,6 +8,9 @@ dependencies {
         compile ('javax.jdo:jdo-api:3.1')
         compile ('xml-apis:xml-apis:2.0.2')
         compile ('xerces:xmlParserAPIs:2+')
+        compile group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.9.7'
+        compile group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.6'
+        compile group: 'org.apache.httpcomponents', name: 'httpmime', version: '4.5.6'
 
         testCompile ('org.jboss.arquillian.junit:arquillian-junit-container:1+')
         testCompile ('junit:junit:4.12')
