@@ -36,15 +36,14 @@ public class RootController {
     @RequestMapping("/")
     public ReturnMessage get() {
         Page<RoleEntity> list = iRoleService.list(new BasePageImpl(), null);
-        System.out.println("---------------->>");
         return ReturnMessage.success(list);
     }
 
     @ResponseBody
     @RequestMapping("/test")
     public ReturnMessage test() {
-        UserDetails gomro = userDetailsService.loadUserByUsername("gomro");
-        return ReturnMessage.success(gomro);
+        UserDetails user = userDetailsService.loadUserByUsername("user");
+        return ReturnMessage.success(user);
     }
 
     @RequestMapping("/login")
