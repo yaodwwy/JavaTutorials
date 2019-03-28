@@ -1,7 +1,6 @@
 /*
 package utils;
 
-import cn.gomro.mid.core.common.message.ReturnMessage;
 import com.aliyun.oss.ClientConfiguration;
 import com.aliyun.oss.OSSClient;
 import com.aliyun.oss.model.*;
@@ -86,14 +85,13 @@ public class OssUtils {
         return object.getKey();
     }
 
-    public static ReturnMessage putObject(InputStream inputStream, String path, String name, String suffix){
+    public static void putObject(InputStream inputStream, String path, String name, String suffix){
         String key = path + "/" + name + suffix;
         ClientConfiguration conf = new ClientConfiguration();
         conf.setIdleConnectionTime(1000);
         client = new OSSClient(endpoint, accessKeyId, accessKeySecret, conf);
         PutObjectResult putObjectResult = client.putObject(bucketName, key, inputStream);
         String eTag = putObjectResult.getETag();
-        return ReturnMessage.success(eTag);
     }
 
     private static void inputstreamtofile(InputStream ins, File file) {
