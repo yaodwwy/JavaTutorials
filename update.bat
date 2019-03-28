@@ -22,12 +22,12 @@ call echo %%i %%date%% %%time%%	>>	AutogitPull.log
 ::执行更新
 cd C:\dev\IdeaProjects\mid
 
-ECHO C:\dev\IdeaProjects\gomro.mid >>  AutogitPull.log
+ECHO C:\dev\IdeaProjects\example.mid >>  AutogitPull.log
 git pull  >>  AutogitPull.log
 
 cd C:\dev\IdeaProjects\web
 
-ECHO C:\dev\IdeaProjects\gomro.web >>  AutogitPull.log
+ECHO C:\dev\IdeaProjects\example.web >>  AutogitPull.log
 git pull  >>  AutogitPull.log
 
 ping -n 100 127.1>NUL
